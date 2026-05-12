@@ -286,6 +286,7 @@
             .chart-grid { grid-template-columns: 1fr; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
     <nav class="navbar">
@@ -299,8 +300,8 @@
 
     <!-- 配置提示 -->
     <div id="configAlert" class="config-box" style="display:none;max-width:1200px;margin:20px auto;">
-        <div style="font-size:16px;font-weight:700;color:#e65100;margin-bottom:8px;">⚠️ 请先配置云端接口</div>
-        <div style="font-size:13px;color:#666;">请将 Google Apps Script Web App URL 填入下方，所有设备签到数据将实时同步到 Google 表格</div>
+        <div style="font-size:16px;font-weight:700;color:#2e7d32;margin-bottom:8px;">✅ 云端接口已预配置</div>
+        <div style="font-size:13px;color:#666;">如需更换云端地址，管理员可在此修改</div>
         <input type="text" id="apiUrlInput" placeholder="https://script.google.com/macros/s/xxxxxxxx/exec">
         <button onclick="saveApiUrl()">💾 保存配置</button>
     </div>
@@ -471,8 +472,8 @@
         // ==================== 配置 ====================
         // ⚠️ 部署后请将此变量替换为您的 Google Apps Script Web App URL
         // 获取方式：部署 GAS 后复制的 URL，格式如：https://script.google.com/macros/s/AKfycb.../exec
-        const DEFAULT_API_URL = '';
-        let API_URL = localStorage.getItem('checkin_api_url') || DEFAULT_API_URL;
+        const DEFAULT_API_URL = 'https://script.google.com/macros/s/AKfycbz0ooz3j6aGnXHsLR8ugHiBDc0c4SxS_hpEXIOiv5EH0hAJNLDpCtEo2oclSTxbA7NV1Q/exec';
+        let API_URL = DEFAULT_API_URL;
         const ADMIN_PASSWORD = 'admin888';
         let isAdmin = false;
         let chartInstances = {};
@@ -527,7 +528,6 @@
                 return;
             }
             API_URL = url;
-            localStorage.setItem('checkin_api_url', url);
             document.getElementById('configAlert').style.display = 'none';
             showToast('✅ 配置已保存，正在连接云端...', 'success');
             setTimeout(() => location.reload(), 800);
@@ -882,14 +882,11 @@
         }
 
         // ==================== 初始化 ====================
-        if (API_URL) {
+        // 预配置模式：API已内置
             document.getElementById('configAlert').style.display = 'none';
             setInterval(updateCheckinPage, 5000); // 每5秒刷新云端数据
             updateCheckinPage();
-        } else {
-            document.getElementById('configAlert').style.display = 'block';
-            document.getElementById('checkinStatus').textContent = '⚠️ 请先配置云端接口地址';
-        }
+        
 
         document.getElementById('qDate').value = getTodayStr();
         document.getElementById('aFilterDate').value = getTodayStr();
