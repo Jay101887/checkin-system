@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>工地签到管理系统 - 云端版</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .navbar h1 { font-size: 18px; }
+        .nav-tabs { display: flex; gap: 5px; flex-wrap: wrap; }
+        .nav-tab {
+            padding: 8px 16px;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        .nav-tab:hover { background: rgba(255,255,255,0.2); }
+        .nav-tab.active { background: white; color: #1a237e; font-weight: 600; }
+        .page { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .page.active { display: block; }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a237e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card.green { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        .stat-card.orange { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .stat-card.blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .stat-number { font-size: 32px; font-weight: 700; margin-bottom: 4px; }
+        .stat-label { font-size: 13px; opacity: 0.9; }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #555;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e8e8e8;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+        }
+        .form-group .readonly { background: #f0f0f0; color: #666; }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(102,126,234,0.4); }
+        .btn-primary:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
+        .btn-success { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; }
+        .btn-danger { background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); color: white; }
+        .btn-warning { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+        .btn-secondary { background: #f0f0f0; color: #555; }
+        .btn-sm { padding: 8px 14px; font-size: 12px; }
+        .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid #eee; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+        }
+        td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; color: #444; }
+        tr:hover { background: #f8f9ff; }
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .badge-in { background: #e3f2fd; color: #1565c0; }
+        .badge-out { background: #fce4ec; color: #c62828; }
+        .badge-area { background: #f3e5f5; color: #6a1b9a; }
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+            align-items: flex-end;
+        }
+        .filter-bar .form-group { margin: 0; flex: 1; min-width: 150px; }
+        .filter-bar input, .filter-bar select { padding: 10px 12px; font-size: 13px; }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .chart-box { height: 280px; position: relative; }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+        .modal-overlay.show { display: flex; }
+        .modal {
+            background: white;
+            padding: 32px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal h2 { margin-bottom: 20px; color: #1a237e; }
+        .modal input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e8e8e8;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        .modal input:focus { outline: none; border-color: #667eea; }
+        .modal-btns { display: flex; gap: 10px; }
+        .modal-btns .btn { flex: 1; justify-content: center; }
+        .toast {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: #333;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 14px;
+            z-index: 2000;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast.success { background: #2e7d32; }
+        .toast.error { background: #c62828; }
+        .checkin-status {
+            text-align: center;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .status-pending { background: #fff3e0; color: #e65100; }
+        .status-half { background: #e3f2fd; color: #1565c0; }
+        .status-done { background: #e8f5e9; color: #2e7d32; }
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .fade-in { animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .config-box {
+            background: #fff3e0;
+            border: 2px dashed #ff9800;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .config-box input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .config-box button {
+            margin-top: 10px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 10px; padding: 12px; }
+            .nav-tabs { width: 100%; justify-content: center; }
+            .page { padding: 12px; }
+            .card { padding: 16px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .filter-bar { flex-direction: column; }
+            .filter-bar .form-group { width: 100%; }
+            .chart-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>🏗️ 工地签到管理系统 <small style="font-size:12px;opacity:0.7">☁️ 云端版</small></h1>
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchPage('checkin')">📋 员工签到</button>
+            <button class="nav-tab" onclick="switchPage('records')">📊 记录查询</button>
+            <button class="nav-tab" onclick="openAdminModal()">🔐 管理员后台</button>
+        </div>
+    </nav>
+
+    <!-- 配置提示 -->
+    <div id="configAlert" class="config-box" style="display:none;max-width:1200px;margin:20px auto;">
+        <div style="font-size:16px;font-weight:700;color:#e65100;margin-bottom:8px;">⚠️ 请先配置云端接口</div>
+        <div style="font-size:13px;color:#666;">请将 Google Apps Script Web App URL 填入下方，所有设备签到数据将实时同步到 Google 表格</div>
+        <input type="text" id="apiUrlInput" placeholder="https://script.google.com/macros/s/xxxxxxxx/exec">
+        <button onclick="saveApiUrl()">💾 保存配置</button>
+    </div>
+
+    <!-- ========== 签到页 ========== -->
+    <div id="page-checkin" class="page active">
+        <div class="card fade-in">
+            <div class="checkin-status" id="checkinStatus">检测中...</div>
+            <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="stat-card blue">
+                    <div class="stat-number" id="todayCount">0</div>
+                    <div class="stat-label">今日签到</div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-number" id="deviceIdShort">--</div>
+                    <div class="stat-label">设备编号</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-number" id="currentTime">--:--</div>
+                    <div class="stat-label">当前时间</div>
+                </div>
+            </div>
+            <form id="checkinForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>📅 日期</label>
+                        <input type="text" id="cDate" class="readonly" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>🕐 签到时间</label>
+                        <input type="text" id="cTime" class="readonly" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>👤 姓名 *</label>
+                        <input type="text" id="cName" placeholder="请输入姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label>🆔 准证后四位 *</label>
+                        <input type="text" id="cPassport" placeholder="4位数字" maxlength="4" pattern="\d{4}" inputmode="numeric" required>
+                    </div>
+                    <div class="form-group">
+                        <label>🏗️ 工作区域 *</label>
+                        <select id="cArea" required>
+                            <option value="">请选择</option>
+                            <option value="1区">1区</option>
+                            <option value="2区">2区</option>
+                            <option value="3区">3区</option>
+                            <option value="4区">4区</option>
+                            <option value="5区">5区</option>
+                            <option value="6区">6区</option>
+                            <option value="7区">7区</option>
+                            <option value="预制厂">预制厂</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>👷 负责督工 *</label>
+                        <select id="cSupervisor" required>
+                            <option value="">请选择</option>
+                            <option value="Shahjahan">Shahjahan</option>
+                            <option value="Alagesan">Alagesan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top:16px;">
+                    <label>📝 工作内容 *</label>
+                    <textarea id="cContent" placeholder="请描述今日工作内容" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="cSubmit" style="width:100%;margin-top:10px;padding:16px;font-size:16px;">
+                    提交签到
+                </button>
+            </form>
+        </div>
+        <div class="card">
+            <div class="card-title">📋 我的今日记录</div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>类型</th><th>时间</th><th>区域</th><th>督工</th><th>工作内容</th></tr></thead>
+                    <tbody id="myRecords"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 记录查询页 ========== -->
+    <div id="page-records" class="page">
+        <div class="card">
+            <div class="card-title">🔍 记录查询</div>
+            <div class="filter-bar">
+                <div class="form-group"><label>日期</label><input type="date" id="qDate"></div>
+                <div class="form-group"><label>姓名</label><input type="text" id="qName" placeholder="输入姓名"></div>
+                <div class="form-group">
+                    <label>工作区域</label>
+                    <select id="qArea"><option value="">全部</option><option value="1区">1区</option><option value="2区">2区</option><option value="3区">3区</option><option value="4区">4区</option><option value="5区">5区</option><option value="6区">6区</option><option value="7区">7区</option><option value="预制厂">预制厂</option></select>
+                </div>
+                <div class="form-group">
+                    <label>督工</label>
+                    <select id="qSupervisor"><option value="">全部</option><option value="Shahjahan">Shahjahan</option><option value="Alagesan">Alagesan</option></select>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="queryRecords()">查询</button>
+                <button class="btn btn-secondary btn-sm" onclick="resetQuery()">重置</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>日期</th><th>类型</th><th>姓名</th><th>准证</th><th>时间</th><th>区域</th><th>督工</th><th>工作内容</th></tr></thead>
+                    <tbody id="queryResult"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 管理员后台 ========== -->
+    <div id="page-admin" class="page">
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number" id="aTotalRecords">0</div><div class="stat-label">总记录数</div></div>
+            <div class="stat-card green"><div class="stat-number" id="aTodayRecords">0</div><div class="stat-label">今日签到</div></div>
+            <div class="stat-card orange"><div class="stat-number" id="aTodayPeople">0</div><div class="stat-label">今日人数</div></div>
+            <div class="stat-card blue"><div class="stat-number" id="aCompleteRate">0%</div><div class="stat-label">完整签到率</div></div>
+        </div>
+        <div class="chart-grid">
+            <div class="card"><div class="card-title">📊 近7日签到趋势</div><div class="chart-box"><canvas id="trendChart"></canvas></div></div>
+            <div class="card"><div class="card-title">🌍 工作区域分布</div><div class="chart-box"><canvas id="areaChart"></canvas></div></div>
+        </div>
+        <div class="card">
+            <div class="card-title"><span>📋 全部记录管理</span><div style="display:flex;gap:8px;"><button class="btn btn-success btn-sm" onclick="adminExport()">📊 导出Excel</button><button class="btn btn-danger btn-sm" onclick="adminClear()">🗑️ 清空数据</button></div></div>
+            <div class="filter-bar">
+                <div class="form-group"><label>日期筛选</label><input type="date" id="aFilterDate"></div>
+                <div class="form-group"><label>姓名</label><input type="text" id="aFilterName" placeholder="输入姓名"></div>
+                <div class="form-group">
+                    <label>区域</label>
+                    <select id="aFilterArea"><option value="">全部</option><option value="1区">1区</option><option value="2区">2区</option><option value="3区">3区</option><option value="4区">4区</option><option value="5区">5区</option><option value="6区">6区</option><option value="7区">7区</option><option value="预制厂">预制厂</option></select>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="adminFilter()">筛选</button>
+                <button class="btn btn-secondary btn-sm" onclick="adminResetFilter()">重置</button>
+            </div>
+            <div class="table-wrap" style="max-height:500px;overflow-y:auto;">
+                <table>
+                    <thead><tr><th>ID</th><th>日期</th><th>类型</th><th>姓名</th><th>准证</th><th>时间</th><th>区域</th><th>督工</th><th>设备</th><th>操作</th></tr></thead>
+                    <tbody id="adminTable"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">📅 每日签到汇总表</div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>日期</th><th>姓名</th><th>准证</th><th>上班时间</th><th>下班时间</th><th>工作区域</th><th>工作内容</th><th>督工</th><th>状态</th></tr></thead>
+                    <tbody id="summaryTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 登录模态框 -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal">
+            <h2>🔐 管理员登录</h2>
+            <input type="password" id="adminPwd" placeholder="请输入管理员密码" onkeypress="if(event.key==='Enter')adminLogin()">
+            <div class="modal-btns">
+                <button class="btn btn-secondary" onclick="closeAdminModal()">取消</button>
+                <button class="btn btn-primary" onclick="adminLogin()">登录</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ==================== 配置 ====================
+        // ⚠️ 部署后请将此变量替换为您的 Google Apps Script Web App URL
+        // 获取方式：部署 GAS 后复制的 URL，格式如：https://script.google.com/macros/s/AKfycb.../exec
+        const DEFAULT_API_URL = '';
+        let API_URL = localStorage.getItem('checkin_api_url') || DEFAULT_API_URL;
+        const ADMIN_PASSWORD = 'admin888';
+        let isAdmin = false;
+        let chartInstances = {};
+        let allRecordsCache = [];
+
+        // ==================== 设备指纹 ====================
+        function getDeviceId() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.textBaseline = 'top'; ctx.font = '14px Arial'; ctx.fillText('fp', 2, 2);
+            const fp = canvas.toDataURL();
+            const raw = [navigator.userAgent, navigator.language, screen.width, screen.height, new Date().getTimezoneOffset(), fp, navigator.hardwareConcurrency].join('|');
+            let h = 0;
+            for (let i = 0; i < raw.length; i++) h = ((h << 5) - h) + raw.charCodeAt(i), h |= 0;
+            return 'D' + Math.abs(h).toString(36).toUpperCase().slice(0, 6);
+        }
+        const DEVICE_ID = getDeviceId();
+
+        // ==================== API 封装 ====================
+        async function apiGet(action, params = {}) {
+            if (!API_URL) throw new Error('未配置 API 地址');
+            const url = new URL(API_URL);
+            url.searchParams.append('action', action);
+            Object.keys(params).forEach(k => url.searchParams.append(k, params[k]));
+            const res = await fetch(url.toString(), { method: 'GET', mode: 'cors' });
+            return await res.json();
+        }
+        async function apiPost(action, data = {}) {
+            if (!API_URL) throw new Error('未配置 API 地址');
+            const res = await fetch(API_URL, {
+                method: 'POST',
+                mode: 'cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action, ...data })
+            });
+            return await res.json();
+        }
+
+        // ==================== 配置管理 ====================
+        function checkConfig() {
+            if (!API_URL) {
+                document.getElementById('configAlert').style.display = 'block';
+                return false;
+            }
+            document.getElementById('configAlert').style.display = 'none';
+            return true;
+        }
+        function saveApiUrl() {
+            const url = document.getElementById('apiUrlInput').value.trim();
+            if (!url || !url.includes('script.google.com')) {
+                showToast('请输入有效的 Google Apps Script URL', 'error');
+                return;
+            }
+            API_URL = url;
+            localStorage.setItem('checkin_api_url', url);
+            document.getElementById('configAlert').style.display = 'none';
+            showToast('✅ 配置已保存，正在连接云端...', 'success');
+            setTimeout(() => location.reload(), 800);
+        }
+
+        // ==================== 页面切换 ====================
+        function switchPage(page) {
+            if (page === 'admin' && !isAdmin) { openAdminModal(); return; }
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('page-' + page).classList.add('active');
+            event.target.classList.add('active');
+            if (page === 'admin') renderAdmin();
+            if (page === 'records') queryRecords();
+        }
+
+        // ==================== 管理员登录 ====================
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.add('show');
+            document.getElementById('adminPwd').value = '';
+            setTimeout(() => document.getElementById('adminPwd').focus(), 100);
+        }
+        function closeAdminModal() { document.getElementById('adminModal').classList.remove('show'); }
+        function adminLogin() {
+            if (document.getElementById('adminPwd').value === ADMIN_PASSWORD) {
+                isAdmin = true; closeAdminModal();
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.getElementById('page-admin').classList.add('active');
+                document.querySelectorAll('.nav-tab')[2].classList.add('active');
+                renderAdmin();
+                showToast('✅ 管理员登录成功', 'success');
+            } else { showToast('❌ 密码错误', 'error'); }
+        }
+
+        // ==================== 签到页 ====================
+        async function updateCheckinPage() {
+            const now = new Date();
+            const dateStr = now.getFullYear() + '年' + String(now.getMonth()+1).padStart(2,'0') + '月' + String(now.getDate()).padStart(2,'0') + '日';
+            const timeStr = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0') + ':' + String(now.getSeconds()).padStart(2,'0');
+            document.getElementById('cDate').value = dateStr;
+            document.getElementById('cTime').value = timeStr;
+            document.getElementById('currentTime').textContent = timeStr.slice(0,5);
+            document.getElementById('deviceIdShort').textContent = DEVICE_ID;
+
+            if (!checkConfig()) return;
+
+            try {
+                const res = await apiGet('getRecords', { deviceId: DEVICE_ID, dateString: now.toDateString() });
+                const myRecords = res.success ? res.records.sort((a,b) => new Date(a['时间戳']) - new Date(b['时间戳'])) : [];
+                const count = myRecords.length;
+                document.getElementById('todayCount').textContent = count;
+
+                const statusEl = document.getElementById('checkinStatus');
+                const btn = document.getElementById('cSubmit');
+                if (count === 0) {
+                    statusEl.className = 'checkin-status status-pending';
+                    statusEl.innerHTML = '🟡 今日未签到 · 还可签到 <b>2次</b>';
+                    btn.textContent = '⬆️ 提交签到（上班）'; btn.disabled = false;
+                } else if (count === 1) {
+                    statusEl.className = 'checkin-status status-half';
+                    statusEl.innerHTML = '🟢 已签到 <b>1次</b> · 还可签到 <b>1次</b>';
+                    btn.textContent = '⬇️ 提交签到（下班）'; btn.disabled = false;
+                } else {
+                    statusEl.className = 'checkin-status status-done';
+                    statusEl.innerHTML = '🔴 今日已完成 <b>2次</b> 签到';
+                    btn.textContent = '✅ 今日签到已完成'; btn.disabled = true;
+                }
+
+                const tbody = document.getElementById('myRecords');
+                if (myRecords.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#999;">暂无今日记录</td></tr>';
+                } else {
+                    tbody.innerHTML = myRecords.map((r,i) => `
+                        <tr>
+                            <td><span class="badge ${i===0?'badge-in':'badge-out'}">${i===0?'上班':'下班'}</span></td>
+                            <td>${r['时间']}</td>
+                            <td><span class="badge badge-area">${esc(r['工作区域'])}</span></td>
+                            <td>${esc(r['负责督工'])}</td>
+                            <td>${esc(r['工作内容'].substring(0,20))}${r['工作内容'].length>20?'...':''}</td>
+                        </tr>
+                    `).join('');
+                }
+            } catch(e) {
+                document.getElementById('checkinStatus').className = 'checkin-status status-pending';
+                document.getElementById('checkinStatus').textContent = '⚠️ 云端连接失败，请检查API配置';
+            }
+        }
+
+        document.getElementById('checkinForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if (!checkConfig()) return;
+            const btn = document.getElementById('cSubmit');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span> 提交中...';
+
+            try {
+                const now = new Date();
+                const data = {
+                    deviceId: DEVICE_ID,
+                    dateString: now.toDateString(),
+                    date: document.getElementById('cDate').value,
+                    time: document.getElementById('cTime').value,
+                    name: document.getElementById('cName').value.trim(),
+                    passport: document.getElementById('cPassport').value.trim(),
+                    workArea: document.getElementById('cArea').value,
+                    workContent: document.getElementById('cContent').value.trim(),
+                    supervisor: document.getElementById('cSupervisor').value,
+                    checkinType: document.getElementById('todayCount').textContent === '0' ? '上班' : '下班'
+                };
+                const res = await apiPost('checkin', data);
+                if (res.success) {
+                    showToast(`${res.checkinType}签到成功！`, 'success');
+                    document.getElementById('cArea').value = '';
+                    document.getElementById('cContent').value = '';
+                    document.getElementById('cSupervisor').value = '';
+                } else {
+                    showToast(res.error || '签到失败', 'error');
+                }
+            } catch(err) {
+                showToast('网络错误：' + err.message, 'error');
+            }
+            await updateCheckinPage();
+        });
+
+        // ==================== 记录查询 ====================
+        async function queryRecords() {
+            if (!checkConfig()) return;
+            const tbody = document.getElementById('queryResult');
+            tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#999;">加载中...</td></tr>';
+
+            try {
+                const params = {};
+                const date = document.getElementById('qDate').value;
+                if (date) params.dateString = new Date(date).toDateString();
+                if (document.getElementById('qName').value) params.name = document.getElementById('qName').value.trim();
+                if (document.getElementById('qArea').value) params.workArea = document.getElementById('qArea').value;
+                if (document.getElementById('qSupervisor').value) params.supervisor = document.getElementById('qSupervisor').value;
+
+                const res = await apiGet('getRecords', params);
+                if (res.success) renderQueryTable(res.records);
+                else tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#999;">加载失败</td></tr>';
+            } catch(e) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#999;">网络错误</td></tr>';
+            }
+        }
+        function renderQueryTable(records) {
+            const tbody = document.getElementById('queryResult');
+            if (records.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#999;padding:30px;">暂无记录</td></tr>';
+                return;
+            }
+            tbody.innerHTML = records.map(r => `
+                <tr>
+                    <td>${r['日期']}</td>
+                    <td><span class="badge ${r['签到类型']==='上班'?'badge-in':'badge-out'}">${r['签到类型']}</span></td>
+                    <td>${esc(r['姓名'])}</td>
+                    <td>****${esc(r['准证后四位'])}</td>
+                    <td>${r['时间']}</td>
+                    <td><span class="badge badge-area">${esc(r['工作区域'])}</span></td>
+                    <td>${esc(r['负责督工'])}</td>
+                    <td>${esc(r['工作内容'].substring(0,15))}${r['工作内容'].length>15?'...':''}</td>
+                </tr>
+            `).join('');
+        }
+        function resetQuery() {
+            document.getElementById('qDate').value = '';
+            document.getElementById('qName').value = '';
+            document.getElementById('qArea').value = '';
+            document.getElementById('qSupervisor').value = '';
+            queryRecords();
+        }
+
+        // ==================== 管理员后台 ====================
+        async function renderAdmin() {
+            if (!checkConfig()) return;
+            try {
+                const [statsRes, recordsRes, summaryRes] = await Promise.all([
+                    apiGet('getStats'),
+                    apiGet('getRecords', {}),
+                    apiGet('getSummary')
+                ]);
+
+                if (statsRes.success) {
+                    document.getElementById('aTotalRecords').textContent = statsRes.totalRecords || 0;
+                    document.getElementById('aTodayRecords').textContent = statsRes.todayRecords || 0;
+                    document.getElementById('aTodayPeople').textContent = statsRes.todayPeople || 0;
+                    document.getElementById('aCompleteRate').textContent = (statsRes.completeRate || 0) + '%';
+                    renderCharts(statsRes);
+                }
+
+                if (recordsRes.success) {
+                    allRecordsCache = recordsRes.records;
+                    adminFilter();
+                }
+
+                if (summaryRes.success) renderSummaryTable(summaryRes.summary);
+            } catch(e) {
+                showToast('加载管理后台失败：' + e.message, 'error');
+            }
+        }
+
+        function renderCharts(stats) {
+            // 近7日趋势
+            const days = [], counts = [];
+            for (let i = 6; i >= 0; i--) {
+                const d = new Date(); d.setDate(d.getDate() - i);
+                const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+                days.push(String(d.getMonth()+1) + '/' + String(d.getDate()));
+                counts.push(stats.dailyCount[key] || 0);
+            }
+            if (chartInstances.trend) chartInstances.trend.destroy();
+            chartInstances.trend = new Chart(document.getElementById('trendChart'), {
+                type: 'line',
+                data: { labels: days, datasets: [{ label: '签到次数', data: counts, borderColor: '#667eea', backgroundColor: 'rgba(102,126,234,0.1)', fill: true, tension: 0.4 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+            });
+
+            // 区域分布
+            const areas = Object.keys(stats.areaCount || {});
+            const areaCounts = Object.values(stats.areaCount || {});
+            if (chartInstances.area) chartInstances.area.destroy();
+            chartInstances.area = new Chart(document.getElementById('areaChart'), {
+                type: 'doughnut',
+                data: { labels: areas, datasets: [{ data: areaCounts, backgroundColor: ['#667eea','#764ba2','#f093fb','#f5576c','#4facfe','#00f2fe','#11998e','#38ef7d'] }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } } } }
+            });
+        }
+
+        function adminFilter() {
+            const date = document.getElementById('aFilterDate').value;
+            const name = document.getElementById('aFilterName').value.trim().toLowerCase();
+            const area = document.getElementById('aFilterArea').value;
+
+            let records = [...allRecordsCache];
+            if (date) {
+                const ds = new Date(date).toDateString();
+                records = records.filter(r => new Date(r['时间戳']).toDateString() === ds);
+            }
+            if (name) records = records.filter(r => r['姓名'].toLowerCase().includes(name));
+            if (area) records = records.filter(r => r['工作区域'] === area);
+
+            const tbody = document.getElementById('adminTable');
+            if (records.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;color:#999;padding:30px;">暂无记录</td></tr>';
+                return;
+            }
+            tbody.innerHTML = records.map(r => `
+                <tr>
+                    <td>${String(r['ID']).slice(-6)}</td>
+                    <td>${r['日期']}</td>
+                    <td><span class="badge ${r['签到类型']==='上班'?'badge-in':'badge-out'}">${r['签到类型']}</span></td>
+                    <td>${esc(r['姓名'])}</td>
+                    <td>****${esc(r['准证后四位'])}</td>
+                    <td>${r['时间']}</td>
+                    <td><span class="badge badge-area">${esc(r['工作区域'])}</span></td>
+                    <td>${esc(r['负责督工'])}</td>
+                    <td>${r['设备ID']}</td>
+                    <td><button class="btn btn-danger btn-sm" onclick="delRecord(${r['ID']})">删除</button></td>
+                </tr>
+            `).join('');
+        }
+        function adminResetFilter() {
+            document.getElementById('aFilterDate').value = '';
+            document.getElementById('aFilterName').value = '';
+            document.getElementById('aFilterArea').value = '';
+            adminFilter();
+        }
+
+        function renderSummaryTable(summary) {
+            const tbody = document.getElementById('summaryTable');
+            if (!summary || summary.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;">暂无数据</td></tr>';
+                return;
+            }
+            tbody.innerHTML = summary.map(s => `
+                <tr>
+                    <td>${s.date}</td>
+                    <td>${esc(s.name)}</td>
+                    <td>****${esc(s.passport)}</td>
+                    <td>${s.checkinTime}</td>
+                    <td>${s.checkoutTime || '-'}</td>
+                    <td><span class="badge badge-area">${esc(s.workArea)}</span></td>
+                    <td>${esc(s.workContent.substring(0,15))}${s.workContent.length>15?'...':''}</td>
+                    <td>${esc(s.supervisor)}</td>
+                    <td>${s.status === '完整' ? '✅ 完整' : (s.status === '仅上班' ? '🟡 仅上班' : '🟠 仅下班')}</td>
+                </tr>
+            `).join('');
+        }
+
+        async function delRecord(id) {
+            if (!confirm('确定删除这条记录？')) return;
+            try {
+                const res = await apiPost('delete', { id });
+                if (res.success) { showToast('记录已删除', 'success'); renderAdmin(); }
+                else showToast(res.error, 'error');
+            } catch(e) { showToast('删除失败', 'error'); }
+        }
+
+        async function adminExport() {
+            if (!checkConfig()) return;
+            try {
+                const [recordsRes, summaryRes] = await Promise.all([
+                    apiGet('getRecords', {}),
+                    apiGet('getSummary')
+                ]);
+                if (!recordsRes.success || recordsRes.records.length === 0) { showToast('暂无数据', 'error'); return; }
+
+                const wb = XLSX.utils.book_new();
+                const detail = recordsRes.records.map(r => ({
+                    '日期': r['日期'], '签到类型': r['签到类型'], '姓名': r['姓名'], '准证后四位': r['准证后四位'],
+                    '时间': r['时间'], '工作区域': r['工作区域'], '工作内容': r['工作内容'],
+                    '负责督工': r['负责督工'], '设备编号': r['设备ID']
+                }));
+                XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(detail), '详细记录');
+
+                if (summaryRes.success) {
+                    const sum = summaryRes.summary.map(s => ({
+                        '日期': s.date, '姓名': s.name, '准证后四位': s.passport,
+                        '上班时间': s.checkinTime, '下班时间': s.checkoutTime || '',
+                        '工作区域': s.workArea, '工作内容': s.workContent, '负责督工': s.supervisor, '签到次数': s.count
+                    }));
+                    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(sum), '每日汇总');
+                }
+
+                const today = new Date();
+                const fname = '签到记录_' + today.getFullYear() + String(today.getMonth()+1).padStart(2,'0') + String(today.getDate()).padStart(2,'0') + '.xlsx';
+                XLSX.writeFile(wb, fname);
+                showToast('Excel导出成功', 'success');
+            } catch(e) { showToast('导出失败', 'error'); }
+        }
+
+        async function adminClear() {
+            if (!confirm('⚠️ 确定清空所有数据？此操作不可恢复！')) return;
+            try {
+                const res = await apiPost('clearAll', { password: ADMIN_PASSWORD });
+                if (res.success) { showToast('所有数据已清空', 'success'); renderAdmin(); }
+                else showToast(res.error, 'error');
+            } catch(e) { showToast('清空失败', 'error'); }
+        }
+
+        // ==================== 工具 ====================
+        function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+        function showToast(msg, type) {
+            const t = document.getElementById('toast');
+            t.textContent = msg; t.className = 'toast ' + type + ' show';
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+        function getTodayStr() {
+            const d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+        }
+
+        // ==================== 初始化 ====================
+        if (API_URL) {
+            document.getElementById('configAlert').style.display = 'none';
+            setInterval(updateCheckinPage, 5000); // 每5秒刷新云端数据
+            updateCheckinPage();
+        } else {
+            document.getElementById('configAlert').style.display = 'block';
+            document.getElementById('checkinStatus').textContent = '⚠️ 请先配置云端接口地址';
+        }
+
+        document.getElementById('qDate').value = getTodayStr();
+        document.getElementById('aFilterDate').value = getTodayStr();
+        document.getElementById('adminModal').addEventListener('click', function(e) { if (e.target === this) closeAdminModal(); });
+    </script>
+</body>
+</html>
