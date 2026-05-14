@@ -989,10 +989,14 @@
         }
 
         // ==================== 督工管理 ====================
-        function saveSupervisors() {
-            localStorage.setItem('checkin_supervisors', JSON.stringify(supervisors));
-            updateSupervisorSelects();
+        async function saveSupervisors() {
+        localStorage.setItem('checkin_supervisors', JSON.stringify(supervisors));
+         updateSupervisorSelects();
+          try {
+        await apiPost('saveSupervisors', { supervisors: JSON.stringify(supervisors) });
+         } catch(e) { console.log('Sync supervisors failed:', e); }
         }
+       
         function updateSupervisorSelects() {
             const selects = ['cSupervisor', 'qSupervisor'];
             const filterSup = document.getElementById('aFilterSupervisor');
@@ -1023,7 +1027,7 @@
                 empSup.value = cur;
             }
         }
-        function addSupervisor() {
+        async function addSupervisor() {
             const name = document.getElementById('newSupervisorName').value.trim();
             const passport = document.getElementById('newSupervisorPassport').value.trim();
             if (!name || !passport || passport.length !== 4 || !/^[\dA-Za-z]{4}$/.test(passport)) {
@@ -1035,7 +1039,7 @@
                 return;
             }
             supervisors.push({ name, passport });
-            saveSupervisors();
+            await saveSupervisors();
             document.getElementById('newSupervisorName').value = '';
             document.getElementById('newSupervisorPassport').value = '';
             renderSupervisorList();
@@ -1043,11 +1047,11 @@
             addAdminLog('添加督工', '添加督工: ' + name);
             showToast('督工添加成功', 'success');
         }
-        function deleteSupervisor(index) {
+        async function deleteSupervisor(index) {
             if (!confirm('确定删除督工 ' + supervisors[index].name + '？')) return;
             addAdminLog('删除督工', '删除督工: ' + supervisors[index].name);
             supervisors.splice(index, 1);
-            saveSupervisors();
+            await saveSupervisors();
             renderSupervisorList();
             renderSupervisorStats();
         }
@@ -1095,10 +1099,14 @@
         }
 
         // ==================== 工种管理 ====================
-        function saveTrades() {
-            localStorage.setItem('checkin_trades', JSON.stringify(trades));
-            updateTradeSelects();
-        }
+        
+        async function saveTrades() {
+    localStorage.setItem('checkin_trades', JSON.stringify(trades));
+    updateTradeSelects();
+    try {
+        await apiPost('saveTrades', { trades: JSON.stringify(trades) });
+    } catch(e) { console.log('Sync trades failed:', e); }
+}
         function updateWorkAreaSelects() {
             const selects = [
                 { id: 'cArea', placeholder: '请选择', includeAll: false },
@@ -1147,22 +1155,22 @@
                 empTrade.value = cur;
             }
         }
-        function addTrade() {
+        async function addTrade() {
             const name = document.getElementById('newTradeName').value.trim();
             if (!name) { showToast('请输入工种名称', 'error'); return; }
             if (trades.includes(name)) { showToast('该工种已存在', 'error'); return; }
             trades.push(name);
             saveTrades();
             document.getElementById('newTradeName').value = '';
-            renderTradeList();
+            await renderTradeList();
             addAdminLog('添加工种', name);
             showToast('工种添加成功', 'success');
         }
-        function deleteTrade(index) {
+        async function deleteTrade(index) {
             if (!confirm('确定删除工种 ' + trades[index] + '？')) return;
             addAdminLog('删除工种', trades[index]);
             trades.splice(index, 1);
-            saveTrades();
+            await saveTrades();
             renderTradeList();
         }
         function renderTradeList() {
@@ -1198,7 +1206,7 @@
                 </tr>
             `).join('');
         }
-        function addEmployee() {
+        async function addEmployee() {
             const name = document.getElementById('newEmpName').value.trim();
             const passport = document.getElementById('newEmpPassport').value.trim();
             const supervisor = document.getElementById('newEmpSupervisor').value;
@@ -1213,17 +1221,23 @@
             }
             employees.push({ name, passport, supervisor, trade, created: new Date().toISOString() });
             localStorage.setItem('checkin_employees', JSON.stringify(employees));
+            try {
+        await apiPost('saveEmployees', { employees: JSON.stringify(employees) });
+    } catch(e) { console.log('Sync employees failed:', e); }
             document.getElementById('newEmpName').value = '';
             document.getElementById('newEmpPassport').value = '';
             renderEmployeeManagement();
             addAdminLog('添加员工', '添加员工: ' + name + (supervisor ? ' (督工:'+supervisor+')' : '') + (trade ? ' (工种:'+trade+')' : ''));
             showToast('员工添加成功', 'success');
         }
-        function deleteEmployee(index) {
+        async function deleteEmployee(index) {
             if (!confirm('确定删除员工 ' + employees[index].name + '？')) return;
             addAdminLog('删除员工', '删除员工: ' + employees[index].name);
             employees.splice(index, 1);
             localStorage.setItem('checkin_employees', JSON.stringify(employees));
+            try {
+        await apiPost('saveEmployees', { employees: JSON.stringify(employees) });
+    } catch(e) { console.log('Sync employees failed:', e); }
             renderEmployeeManagement();
         }
 
@@ -1861,6 +1875,38 @@
             return false;
         }
 
+        async function loadSupervisorsFromServer() {
+    try {
+        const res = await apiGet('getSupervisors');
+        if (res.success && res.supervisors && res.supervisors.length > 0) {
+            supervisors = res.supervisors;
+            localStorage.setItem('checkin_supervisors', JSON.stringify(supervisors));
+            updateSupervisorSelects();
+        }
+    } catch(e) { console.log('Supervisors load failed:', e); }
+}
+
+async function loadTradesFromServer() {
+    try {
+        const res = await apiGet('getTrades');
+        if (res.success && res.trades && res.trades.length > 0) {
+            trades = res.trades;
+            localStorage.setItem('checkin_trades', JSON.stringify(trades));
+            updateTradeSelects();
+        }
+    } catch(e) { console.log('Trades load failed:', e); }
+}
+
+async function loadEmployeesFromServer() {
+    try {
+        const res = await apiGet('getEmployees');
+        if (res.success && res.employees && res.employees.length > 0) {
+            employees = res.employees;
+            localStorage.setItem('checkin_employees', JSON.stringify(employees));
+        }
+    } catch(e) { console.log('Employees load failed:', e); }
+}
+
         async function saveSiteLocation() {
             const lat = document.getElementById('siteLat').value.trim();
             const lng = document.getElementById('siteLng').value.trim();
@@ -2047,6 +2093,12 @@
         loadConfigFromServer().then(() => {
             updateWorkAreaSelects();
         }).catch(e => console.log('Config load failed:', e));
+        loadConfigFromServer().then(() => {
+    updateWorkAreaSelects();
+}).catch(e => console.log('Config load failed:', e));
+loadSupervisorsFromServer().catch(e => console.log('Supervisors load failed:', e));
+loadTradesFromServer().catch(e => console.log('Trades load failed:', e));
+loadEmployeesFromServer().catch(e => console.log('Employees load failed:', e));
         updateGPSStatus();
 
         const thMap = {
