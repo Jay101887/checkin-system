@@ -455,14 +455,6 @@
                         <label id="label-area">🏗️ 工作区域 *</label>
                         <select id="cArea" required>
                             <option value="">请选择</option>
-                            <option value="1区">1区 / Zone 1 / জোন ১</option>
-                            <option value="2区">2区 / Zone 2 / জোন ২</option>
-                            <option value="3区">3区 / Zone 3 / জোন ৩</option>
-                            <option value="4区">4区 / Zone 4 / জোন ৪</option>
-                            <option value="5区">5区 / Zone 5 / জোন ৫</option>
-                            <option value="6区">6区 / Zone 6 / জোন ৬</option>
-                            <option value="7区">7区 / Zone 7 / জোন ৭</option>
-                            <option value="预制厂">预制厂 / Precast / প্রিকাস্ট</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -505,7 +497,7 @@
                 </div>
                 <div class="form-group">
                     <label id="query-label-area">工作区域</label>
-                    <select id="qArea"><option value="">全部</option><option value="1区">1区</option><option value="2区">2区</option><option value="3区">3区</option><option value="4区">4区</option><option value="5区">5区</option><option value="6区">6区</option><option value="7区">7区</option><option value="预制厂">预制厂</option></select>
+                    <select id="qArea"><option value="">全部</option></select>
                 </div>
                 <div class="form-group">
                     <label id="query-label-supervisor">督工</label>
@@ -573,6 +565,22 @@
                 <div class="card"><div class="card-title" id="chart-area-title">🌍 工作区域分布</div><div class="chart-box"><canvas id="areaChart"></canvas></div></div>
             </div>
 
+            <!-- 工作区域管理 -->
+            <div class="card">
+                <div class="card-title"><span id="workarea-manage-title">🏗️ 工作区域管理</span></div>
+                <div class="form-grid" style="margin-bottom:15px;">
+                    <div class="form-group">
+                        <label id="workarea-name-label">区域名称</label>
+                        <input type="text" id="newWorkAreaName" placeholder="输入区域名称（如：8区）">
+                    </div>
+                    <div class="form-group" style="display:flex;align-items:flex-end;">
+                        <button class="btn btn-success" onclick="addWorkArea()" id="btn-add-workarea">添加区域</button>
+                    </div>
+                </div>
+                <div class="card-title" id="workarea-list-title">📋 区域列表</div>
+                <div id="workAreaList"></div>
+            </div>
+
             <!-- 督工管理 -->
             <div class="card">
                 <div class="card-title"><span id="supervisor-manage-title">👷 督工管理</span></div>
@@ -630,7 +638,7 @@
                     </div>
                     <div class="form-group">
                         <label id="filter-label-area">区域</label>
-                        <select id="aFilterArea"><option value="">全部</option><option value="1区">1区</option><option value="2区">2区</option><option value="3区">3区</option><option value="4区">4区</option><option value="5区">5区</option><option value="6区">6区</option><option value="7区">7区</option><option value="预制厂">预制厂</option></select>
+                        <select id="aFilterArea"><option value="">全部</option></select>
                     </div>
                     <div class="form-group">
                         <label>状态筛选</label>
@@ -799,6 +807,7 @@
                 config_ok: '云端接口已预配置', config_ready: '系统已就绪，可直接使用',
                 supervisor_manage: '督工管理', supervisor_name: '督工姓名', supervisor_passport: '准证后四位',
                 btn_add_supervisor: '添加督工', supervisor_list: '督工列表', supervisor_stats: '督工签到统计',
+                workarea_manage: '工作区域管理', workarea_name: '区域名称', btn_add_workarea: '添加区域', workarea_list: '区域列表',
                 trade_manage: '工种管理', trade_name: '工种名称', btn_add_trade: '添加工种', trade_list: '工种列表',
                 action_delete: '删除', confirm_delete: '确定删除这条记录？',
                 confirm_clear: '确定清空所有数据？此操作不可恢复！',
@@ -834,6 +843,7 @@
                 config_ok: 'Cloud API configured', config_ready: 'System ready',
                 supervisor_manage: 'Supervisor Management', supervisor_name: 'Supervisor Name', supervisor_passport: 'IC No. (Last 4)',
                 btn_add_supervisor: 'Add Supervisor', supervisor_list: 'Supervisor List', supervisor_stats: 'Supervisor Statistics',
+                workarea_manage: 'Work Area Management', workarea_name: 'Area Name', btn_add_workarea: 'Add Area', workarea_list: 'Area List',
                 trade_manage: 'Trade Management', trade_name: 'Trade Name', btn_add_trade: 'Add Trade', trade_list: 'Trade List',
                 action_delete: 'Delete', confirm_delete: 'Delete this record?',
                 confirm_clear: 'Clear all data? This cannot be undone!',
@@ -869,6 +879,7 @@
                 config_ok: 'ক্লাউড API কনফিগারড', config_ready: 'সিস্টেম প্রস্তুত',
                 supervisor_manage: 'সুপারভাইজার ব্যবস্থাপনা', supervisor_name: 'সুপারভাইজার নাম', supervisor_passport: 'পাসপোর্ট (শেষ ৪)',
                 btn_add_supervisor: 'সুপারভাইজার যোগ করুন', supervisor_list: 'সুপারভাইজার তালিকা', supervisor_stats: 'সুপারভাইজার পরিসংখ্যান',
+                workarea_manage: 'কাজের এলাকা ব্যবস্থাপনা', workarea_name: 'এলাকার নাম', btn_add_workarea: 'এলাকা যোগ', workarea_list: 'এলাকার তালিকা',
                 trade_manage: 'ট্রেড ব্যবস্থাপনা', trade_name: 'ট্রেড নাম', btn_add_trade: 'ট্রেড যোগ', trade_list: 'ট্রেড তালিকা',
                 action_delete: 'মুছুন', confirm_delete: 'এই রেকর্ড মুছবেন?',
                 confirm_clear: 'সব ডেটা মুছবেন? এটি ফেরত যাবে না!',
@@ -928,8 +939,25 @@
                     url.searchParams.append(k, String(params[k]));
                 }
             });
-            const res = await fetch(url.toString(), { method: 'GET', mode: 'cors', cache: 'no-cache' });
-            return await res.json();
+            console.log('[API GET]', action, params, '→ URL:', url.toString());
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+            try {
+                const res = await fetch(url.toString(), { 
+                    method: 'GET', 
+                    mode: 'cors', 
+                    cache: 'no-cache',
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+                const data = await res.json();
+                console.log('[API RES]', action, '→', data);
+                return data;
+            } catch(err) {
+                clearTimeout(timeoutId);
+                console.log('[API ERR]', action, '→', err.message);
+                return { success: false, error: err.message };
+            }
         }
         async function apiPost(action, data = {}) {
             const url = new URL(API_URL);
@@ -939,8 +967,25 @@
                     url.searchParams.append(k, String(data[k]));
                 }
             });
-            const res = await fetch(url.toString(), { method: 'GET', mode: 'cors', cache: 'no-cache' });
-            return await res.json();
+            console.log('[API POST]', action, data, '→ URL:', url.toString());
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+            try {
+                const res = await fetch(url.toString(), { 
+                    method: 'GET', 
+                    mode: 'cors', 
+                    cache: 'no-cache',
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+                const result = await res.json();
+                console.log('[API RES]', action, '→', result);
+                return result;
+            } catch(err) {
+                clearTimeout(timeoutId);
+                console.log('[API ERR]', action, '→', err.message);
+                return { success: false, error: err.message };
+            }
         }
 
         // ==================== 督工管理 ====================
@@ -1053,6 +1098,26 @@
         function saveTrades() {
             localStorage.setItem('checkin_trades', JSON.stringify(trades));
             updateTradeSelects();
+        }
+        function updateWorkAreaSelects() {
+            const selects = [
+                { id: 'cArea', placeholder: '请选择', includeAll: false },
+                { id: 'qArea', placeholder: '全部', includeAll: true },
+                { id: 'aFilterArea', placeholder: '全部', includeAll: true }
+            ];
+            selects.forEach(cfg => {
+                const el = document.getElementById(cfg.id);
+                if (!el) return;
+                const currentVal = el.value;
+                el.innerHTML = '<option value="">' + cfg.placeholder + '</option>';
+                workAreas.forEach(area => {
+                    const opt = document.createElement('option');
+                    opt.value = area;
+                    opt.textContent = area;
+                    el.appendChild(opt);
+                });
+                el.value = currentVal;
+            });
         }
         function updateTradeSelects() {
             const selects = ['cTrade', 'qTrade', 'aFilterTrade'];
@@ -1330,7 +1395,7 @@
             document.getElementById('deviceIdShort').textContent = DEVICE_ID;
 
             try {
-                const res = await apiGet('getRecords', { deviceId: DEVICE_ID, dateString: getSGDateStringISO(now) });
+                const res = await apiGet('getRecords', { deviceId: DEVICE_ID, dateString: now.toDateString() });
                 const myRecords = res.success ? res.records.sort((a,b) => new Date(a['时间戳']) - new Date(b['时间戳'])) : [];
                 const count = myRecords.length;
                 document.getElementById('todayCount').textContent = count;
@@ -1368,8 +1433,11 @@
                     }).join('');
                 }
             } catch(e) {
-                document.getElementById('checkinStatus').className = 'checkin-status status-pending';
-                document.getElementById('checkinStatus').textContent = '⚠️ 云端连接失败';
+                console.log('updateCheckinPage error:', e);
+                statusEl.className = 'checkin-status status-pending';
+                statusEl.innerHTML = '🟡 ' + t('status_pending').replace('2', '<b>2</b>');
+                btn.textContent = '⬆️ ' + t('btn_checkin_in'); btn.disabled = false;
+                document.getElementById('todayCount').textContent = '?';
             }
         }
 
@@ -1411,7 +1479,7 @@
 
                 const data = {
                     deviceId: DEVICE_ID,
-                    dateString: getSGDateStringISO(now),
+                    dateString: now.toDateString(),
                     date: document.getElementById('cDate').value,
                     time: document.getElementById('cTime').value,
                     name: document.getElementById('cName').value.trim(),
@@ -1499,12 +1567,11 @@
             try {
                 const d = new Date(timeVal);
                 if (isNaN(d.getTime())) return String(timeVal);
-                // 情况2：Google Sheets Time类型（1899-12-30），直接从ISO字符串提取时间
+                // 情况2：Google Sheets Time类型（1899-12-30），用本地时间读取
                 if (d.getFullYear() < 2000) {
-                    const iso = d.toISOString();
-                    const match = iso.match(/T(\d{2}:\d{2}:\d{2})/);
-                    if (match) return match[1];
-                    return String(timeVal);
+                    return String(d.getHours()).padStart(2, '0') + ':' + 
+                           String(d.getMinutes()).padStart(2, '0') + ':' + 
+                           String(d.getSeconds()).padStart(2, '0');
                 }
                 // 情况3：正常时间戳，统一按 GMT+8 显示
                 const offsetMs = 8 * 60 * 60 * 1000;
@@ -1572,6 +1639,7 @@
                 }
 
                 if (summaryRes.success) renderSummaryTable(summaryRes.summary);
+                renderWorkAreaList();
                 renderSupervisorList();
                 renderSupervisorStats();
                 renderTradeList();
@@ -1766,9 +1834,34 @@
 
         // ==================== GPS位置管理 ====================
         let currentLocation = { lat: null, lng: null, accuracy: null };
-        let siteLocation = JSON.parse(localStorage.getItem('checkin_site_location') || '{"lat":"","lng":"","radius":500}');
+        let siteLocation = { lat: '', lng: '', radius: 500 };
+        let workAreas = ["1区","2区","3区","4区","5区","6区","7区","预制厂"];
 
-        function saveSiteLocation() {
+        async function loadConfigFromServer() {
+            try {
+                const res = await apiGet('getConfig');
+                if (res.success) {
+                    siteLocation = {
+                        lat: res.siteLat || '',
+                        lng: res.siteLng || '',
+                        radius: parseInt(res.siteRadius) || 500
+                    };
+                    if (res.workAreas && res.workAreas.length > 0) {
+                        workAreas = res.workAreas;
+                    }
+                    localStorage.setItem('checkin_site_location', JSON.stringify(siteLocation));
+                    localStorage.setItem('checkin_work_areas', JSON.stringify(workAreas));
+                    return true;
+                }
+            } catch(e) { console.log('Config load failed:', e); }
+            const savedSite = localStorage.getItem('checkin_site_location');
+            const savedAreas = localStorage.getItem('checkin_work_areas');
+            if (savedSite) { try { siteLocation = JSON.parse(savedSite); } catch(e) {} }
+            if (savedAreas) { try { workAreas = JSON.parse(savedAreas); } catch(e) {} }
+            return false;
+        }
+
+        async function saveSiteLocation() {
             const lat = document.getElementById('siteLat').value.trim();
             const lng = document.getElementById('siteLng').value.trim();
             const radius = parseInt(document.getElementById('siteRadius').value) || 500;
@@ -1778,8 +1871,15 @@
             }
             siteLocation = { lat: parseFloat(lat), lng: parseFloat(lng), radius: radius };
             localStorage.setItem('checkin_site_location', JSON.stringify(siteLocation));
+            try {
+                await apiPost('saveConfig', {
+                    siteLat: siteLocation.lat,
+                    siteLng: siteLocation.lng,
+                    siteRadius: siteLocation.radius
+                });
+            } catch(e) { console.log('Save config to server failed:', e); }
             addAdminLog('修改位置', '更新工地位置: ' + lat + ', ' + lng + ' 范围' + radius + 'm');
-            showToast('工地位置已保存', 'success');
+            showToast('工地位置已保存（已同步云端）', 'success');
         }
 
         function loadSiteLocation() {
@@ -1789,6 +1889,50 @@
             if (elLat && siteLocation.lat !== undefined && siteLocation.lat !== '') elLat.value = siteLocation.lat;
             if (elLng && siteLocation.lng !== undefined && siteLocation.lng !== '') elLng.value = siteLocation.lng;
             if (elRadius && siteLocation.radius) elRadius.value = siteLocation.radius;
+        }
+        function saveWorkAreas() {
+            localStorage.setItem('checkin_work_areas', JSON.stringify(workAreas));
+        }
+        async function syncWorkAreasToServer() {
+            try {
+                await apiPost('saveConfig', { workAreas: JSON.stringify(workAreas) });
+            } catch(e) { console.log('Sync workAreas failed:', e); }
+        }
+        function addWorkArea() {
+            const name = document.getElementById('newWorkAreaName').value.trim();
+            if (!name) { showToast('请输入区域名称', 'error'); return; }
+            if (workAreas.includes(name)) { showToast('该区域已存在', 'error'); return; }
+            workAreas.push(name);
+            saveWorkAreas();
+            syncWorkAreasToServer();
+            document.getElementById('newWorkAreaName').value = '';
+            renderWorkAreaList();
+            updateWorkAreaSelects();
+            addAdminLog('添加区域', name);
+            showToast('工作区域添加成功（已同步云端）', 'success');
+        }
+        function deleteWorkArea(index) {
+            if (!confirm('确定删除工作区域 ' + workAreas[index] + '？')) return;
+            addAdminLog('删除区域', '删除区域: ' + workAreas[index]);
+            workAreas.splice(index, 1);
+            saveWorkAreas();
+            syncWorkAreasToServer();
+            renderWorkAreaList();
+            updateWorkAreaSelects();
+        }
+        function renderWorkAreaList() {
+            const container = document.getElementById('workAreaList');
+            if (!container) return;
+            if (workAreas.length === 0) {
+                container.innerHTML = '<div style="text-align:center;color:#999;padding:10px;">暂无工作区域</div>';
+                return;
+            }
+            container.innerHTML = workAreas.map((area, i) => `
+                <div class="supervisor-card" style="margin-bottom:8px;">
+                    <div class="supervisor-info"><div class="supervisor-name">${esc(area)}</div></div>
+                    <button class="btn btn-danger btn-sm" onclick="deleteWorkArea(${i})">${t('action_delete')}</button>
+                </div>
+            `).join('');
         }
 
         function getDistance(lat1, lng1, lat2, lng2) {
@@ -1896,9 +2040,13 @@
         document.getElementById('gps-retry-desc').textContent = t('gps_retry_desc');
         document.getElementById('gps-retry-btn').textContent = t('gps_retry_btn');
 
+        updateWorkAreaSelects();
         updateSupervisorSelects();
         updateTradeSelects();
         loadSiteLocation();
+        loadConfigFromServer().then(() => {
+            updateWorkAreaSelects();
+        }).catch(e => console.log('Config load failed:', e));
         updateGPSStatus();
 
         const thMap = {
