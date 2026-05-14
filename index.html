@@ -1355,16 +1355,17 @@
                 if (myRecords.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#999;">暂无记录</td></tr>';
                 } else {
-                    tbody.innerHTML = myRecords.map((r,i) => `
-                        <tr>
+                    tbody.innerHTML = myRecords.map((r,i) => {
+                        const timeStr = formatTimeField(r['时间']) || formatTimeFromTimestamp(r['时间戳']) || '-';
+                        return `<tr>
                             <td><span class="badge ${i===0?'badge-in':'badge-out'}">${i===0?t('type_in'):t('type_out')}</span></td>
-                            <td>${r['时间']}</td>
+                            <td>${timeStr}</td>
                             <td><span class="badge badge-area">${esc(r['工种'] || '-')}</span></td>
                             <td><span class="badge badge-area">${esc(r['工作区域'])}</span></td>
                             <td>${esc(r['负责督工'])}</td>
                             <td>${esc((r['工作内容'] || '').substring(0,20))}${(r['工作内容'] || '').length>20?'...':''}</td>
-                        </tr>
-                    `).join('');
+                        </tr>`;
+                    }).join('');
                 }
             } catch(e) {
                 document.getElementById('checkinStatus').className = 'checkin-status status-pending';
@@ -1461,25 +1462,81 @@
                 tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;">Network error</td></tr>';
             }
         }
+        function formatDateFromTimestamp(ts) {
+            if (!ts) return '-';
+            try {
+                const d = new Date(ts);
+                if (isNaN(d.getTime())) return String(ts).slice(0, 10);
+                const offsetMs = 8 * 60 * 60 * 1000;
+                const sgDate = new Date(d.getTime() + offsetMs);
+                return sgDate.getUTCFullYear() + '-' + 
+                       String(sgDate.getUTCMonth() + 1).padStart(2, '0') + '-' + 
+                       String(sgDate.getUTCDate()).padStart(2, '0');
+            } catch(e) { 
+                return String(ts).slice(0, 10); 
+            }
+        }
+        function formatTimeFromTimestamp(ts) {
+            if (!ts) return '-';
+            try {
+                const d = new Date(ts);
+                if (isNaN(d.getTime())) return String(ts);
+                const offsetMs = 8 * 60 * 60 * 1000;
+                const sgDate = new Date(d.getTime() + offsetMs);
+                return String(sgDate.getUTCHours()).padStart(2, '0') + ':' + 
+                       String(sgDate.getUTCMinutes()).padStart(2, '0') + ':' + 
+                       String(sgDate.getUTCSeconds()).padStart(2, '0');
+            } catch(e) { 
+                return String(ts); 
+            }
+        }
+        function formatTimeField(timeVal) {
+            if (!timeVal) return '-';
+            // 情况1：已经是纯文本 HH:MM:SS，直接返回
+            if (typeof timeVal === 'string' && /^\d{1,2}:\d{2}:\d{2}$/.test(timeVal.trim())) {
+                return timeVal.trim();
+            }
+            try {
+                const d = new Date(timeVal);
+                if (isNaN(d.getTime())) return String(timeVal);
+                // 情况2：Google Sheets Time类型（1899-12-30），直接从ISO字符串提取时间
+                if (d.getFullYear() < 2000) {
+                    const iso = d.toISOString();
+                    const match = iso.match(/T(\d{2}:\d{2}:\d{2})/);
+                    if (match) return match[1];
+                    return String(timeVal);
+                }
+                // 情况3：正常时间戳，统一按 GMT+8 显示
+                const offsetMs = 8 * 60 * 60 * 1000;
+                const sgDate = new Date(d.getTime() + offsetMs);
+                return String(sgDate.getUTCHours()).padStart(2, '0') + ':' + 
+                       String(sgDate.getUTCMinutes()).padStart(2, '0') + ':' + 
+                       String(sgDate.getUTCSeconds()).padStart(2, '0');
+            } catch(e) { 
+                return String(timeVal); 
+            }
+        }
         function renderQueryTable(records) {
             const tbody = document.getElementById('queryResult');
             if (records.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;padding:30px;">No records</td></tr>';
                 return;
             }
-            tbody.innerHTML = records.map(r => `
-                <tr>
-                    <td>${r['日期']}</td>
+            tbody.innerHTML = records.map(r => {
+                const dateStr = formatDateFromTimestamp(r['时间戳']) || r['日期'] || '-';
+                const timeStr = formatTimeField(r['时间']) || formatTimeFromTimestamp(r['时间戳']) || '-';
+                return `<tr>
+                    <td>${dateStr}</td>
                     <td><span class="badge ${r['签到类型']==='上班'?'badge-in':'badge-out'}">${r['签到类型']==='上班'?t('type_in'):t('type_out')}</span></td>
                     <td>${esc(r['姓名'])}</td>
                     <td>****${esc(r['准证后四位'])}</td>
                     <td><span class="badge badge-area">${esc(r['工种'] || '-')}</span></td>
-                    <td>${r['时间']}</td>
+                    <td>${timeStr}</td>
                     <td><span class="badge badge-area">${esc(r['工作区域'])}</span></td>
                     <td>${esc(r['负责督工'])}</td>
                     <td>${esc((r['工作内容'] || '').substring(0,15))}${(r['工作内容'] || '').length>15?'...':''}</td>
-                </tr>
-            `).join('');
+                </tr>`;
+            }).join('');
         }
         function resetQuery() {
             document.getElementById('qDate').value = '';
@@ -1583,14 +1640,16 @@
                 const anomalyHtml = isAnomaly ? `<div style="margin-top:4px;">${anomalies.map(a=>`<span class="anomaly-tag">${esc(a)}</span>`).join('')}</div>` : '<span style="color:#2e7d32;font-size:11px;">✓ 正常</span>';
                 const distBadge = r['距离'] ? `<span class="distance-badge ${parseInt(r['距离'])>(siteLocation.radius||500)?'dist-far':'dist-ok'}">${r['距离']}m</span>` : '--';
                 const locInfo = r['纬度'] ? `${parseFloat(r['纬度']).toFixed(4)}, ${parseFloat(r['经度']).toFixed(4)}` : '--';
+                const dateStr = formatDateFromTimestamp(r['时间戳']) || r['日期'] || '-';
+                const timeStr = formatTimeField(r['时间']) || formatTimeFromTimestamp(r['时间戳']) || '-';
                 return `<tr ${rowClass}>
                     <td>${String(r['ID']).slice(-6)}</td>
-                    <td>${r['日期']}</td>
+                    <td>${dateStr}</td>
                     <td><span class="badge ${r['签到类型']==='上班'?'badge-in':'badge-out'}">${r['签到类型']==='上班'?t('type_in'):t('type_out')}</span></td>
                     <td>${esc(r['姓名'])}</td>
                     <td>****${esc(r['准证后四位'])}</td>
                     <td><span class="badge badge-area">${esc(r['工种'] || '-')}</span></td>
-                    <td>${r['时间']}</td>
+                    <td>${timeStr}</td>
                     <td><span class="badge badge-area">${esc(r['工作区域'])}</span></td>
                     <td>${esc(r['负责督工'])}</td>
                     <td style="font-size:11px;color:#666;">${locInfo}</td>
@@ -1622,13 +1681,16 @@
                 if (s.status === '完整') statusHtml = '✅ ' + t('status_complete');
                 else if (s.status === '仅上班') statusHtml = '🟡 ' + t('status_in_only');
                 else statusHtml = '🟠 ' + t('status_out_only');
+                const dateStr = s.date ? s.date.replace(/[年月日]/g, '-') : '-';
+                const checkinTimeStr = formatTimeField(s.checkinTime) || s.checkinTime || '-';
+                const checkoutTimeStr = formatTimeField(s.checkoutTime) || s.checkoutTime || '-';
                 return `<tr>
-                    <td>${s.date}</td>
+                    <td>${dateStr}</td>
                     <td>${esc(s.name)}</td>
                     <td>****${esc(s.passport)}</td>
                     <td><span class="badge badge-area">${esc(s.trade || '-')}</span></td>
-                    <td>${s.checkinTime}</td>
-                    <td>${s.checkoutTime || '-'}</td>
+                    <td>${checkinTimeStr}</td>
+                    <td>${checkoutTimeStr}</td>
                     <td><span class="badge badge-area">${esc(s.workArea)}</span></td>
                     <td>${esc((s.workContent || '').substring(0,15))}${(s.workContent || '').length>15?'...':''}</td>
                     <td>${esc(s.supervisor)}</td>
