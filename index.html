@@ -1330,7 +1330,7 @@
             document.getElementById('deviceIdShort').textContent = DEVICE_ID;
 
             try {
-                const res = await apiGet('getRecords', { deviceId: DEVICE_ID, dateString: now.toDateString() });
+                const res = await apiGet('getRecords', { deviceId: DEVICE_ID, dateString: getSGDateStringISO(now) });
                 const myRecords = res.success ? res.records.sort((a,b) => new Date(a['时间戳']) - new Date(b['时间戳'])) : [];
                 const count = myRecords.length;
                 document.getElementById('todayCount').textContent = count;
@@ -1411,7 +1411,7 @@
 
                 const data = {
                     deviceId: DEVICE_ID,
-                    dateString: now.toDateString(),
+                    dateString: getSGDateStringISO(now),
                     date: document.getElementById('cDate').value,
                     time: document.getElementById('cTime').value,
                     name: document.getElementById('cName').value.trim(),
@@ -1449,7 +1449,7 @@
             try {
                 const params = {};
                 const date = document.getElementById('qDate').value;
-                if (date) params.dateString = new Date(date).toDateString();
+                if (date) params.dateString = getSGDateStringISO(new Date(date));
                 if (document.getElementById('qName').value) params.name = document.getElementById('qName').value.trim();
                 if (document.getElementById('qTrade').value) params.trade = document.getElementById('qTrade').value;
                 if (document.getElementById('qArea').value) params.workArea = document.getElementById('qArea').value;
@@ -1614,8 +1614,8 @@
 
             let records = [...allRecordsCache];
             if (date) {
-                const ds = new Date(date).toDateString();
-                records = records.filter(r => { try { return new Date(r['时间戳']).toDateString() === ds; } catch(e) { return false; } });
+                const ds = getSGDateStringISO(new Date(date));
+                records = records.filter(r => { try { return getSGDateStringISO(new Date(r['时间戳'])) === ds; } catch(e) { return false; } });
             }
             if (name) records = records.filter(r => r['姓名'] && String(r['姓名']).toLowerCase().includes(name));
             if (trade) records = records.filter(r => r['工种'] === trade);
@@ -1753,6 +1753,11 @@
             const t = document.getElementById('toast');
             t.textContent = msg; t.className = 'toast ' + type + ' show';
             setTimeout(() => t.classList.remove('show'), 3000);
+        }
+        function getSGDateStringISO(date) {
+            const offsetMs = 8 * 60 * 60 * 1000;
+            const sgDate = new Date(date.getTime() + offsetMs);
+            return sgDate.getUTCFullYear() + '-' + String(sgDate.getUTCMonth() + 1).padStart(2, '0') + '-' + String(sgDate.getUTCDate()).padStart(2, '0');
         }
         function getTodayStr() {
             const d = new Date();
