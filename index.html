@@ -41,56 +41,31 @@
         }
         .nav-tab:hover { background: rgba(255,255,255,0.2); }
         .nav-tab.active { background: white; color: #1a237e; font-weight: 600; }
-        .lang-switch {
-            display: flex;
-            gap: 5px;
-            margin-left: auto;
-        }
+        .lang-switch { display: flex; gap: 5px; margin-left: auto; }
         .lang-btn {
-            padding: 4px 10px;
-            border: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s;
+            padding: 4px 10px; border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1); color: white; border-radius: 6px;
+            cursor: pointer; font-size: 12px; transition: all 0.3s;
         }
         .lang-btn:hover { background: rgba(255,255,255,0.2); }
         .lang-btn.active { background: white; color: #1a237e; font-weight: 600; }
         .page { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
         .page.active { display: block; }
         .card {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            background: white; border-radius: 16px; padding: 24px;
+            margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
         .card-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #1a237e;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #1a237e;
+            display: flex; align-items: center; gap: 8px; justify-content: space-between; flex-wrap: wrap;
         }
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-bottom: 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px; margin-bottom: 20px;
         }
         .stat-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
+            color: white; padding: 20px; border-radius: 16px; position: relative; overflow: hidden;
         }
         .stat-card.green { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
         .stat-card.orange { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
@@ -98,54 +73,23 @@
         .stat-card.red { background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); }
         .stat-number { font-size: 32px; font-weight: 700; margin-bottom: 4px; }
         .stat-label { font-size: 13px; opacity: 0.9; }
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+        .form-group label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: #555; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px 14px; border: 2px solid #e8e8e8; border-radius: 10px;
+            font-size: 15px; transition: all 0.3s; background: #fafafa;
         }
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #555;
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 2px solid #e8e8e8;
-            border-radius: 10px;
-            font-size: 15px;
-            transition: all 0.3s;
-            background: #fafafa;
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            background: white;
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: #667eea; background: white;
         }
         .form-group .readonly { background: #f0f0f0; color: #666; }
         .form-group textarea { resize: vertical; min-height: 80px; }
         .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            padding: 12px 24px; border: none; border-radius: 10px; font-size: 14px;
+            font-weight: 600; cursor: pointer; transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 6px;
         }
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(102,126,234,0.4); }
         .btn-primary:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
         .btn-success { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; }
@@ -156,156 +100,61 @@
         .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid #eee; }
         table { width: 100%; border-collapse: collapse; font-size: 13px; }
         th {
-            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
-            color: white;
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-            white-space: nowrap;
-            position: sticky;
-            top: 0;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%); color: white;
+            padding: 12px; text-align: left; font-weight: 600; white-space: nowrap; position: sticky; top: 0;
         }
         td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; color: #444; }
         tr:hover { background: #f8f9ff; }
-        .badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-        }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
         .badge-in { background: #e3f2fd; color: #1565c0; }
         .badge-out { background: #fce4ec; color: #c62828; }
         .badge-area { background: #f3e5f5; color: #6a1b9a; }
-        .filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 16px;
-            align-items: flex-end;
-        }
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: flex-end; }
         .filter-bar .form-group { margin: 0; flex: 1; min-width: 150px; }
         .filter-bar input, .filter-bar select { padding: 10px 12px; font-size: 13px; }
-        .chart-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
+        .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .chart-box { height: 280px; position: relative; }
         .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.6);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;
             backdrop-filter: blur(4px);
         }
         .modal-overlay.show { display: flex; }
         .modal {
-            background: white;
-            padding: 32px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            animation: modalIn 0.3s ease;
+            background: white; padding: 32px; border-radius: 20px; width: 90%; max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: modalIn 0.3s ease;
         }
-        @keyframes modalIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes modalIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         .modal h2 { margin-bottom: 20px; color: #1a237e; }
-        .modal input {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid #e8e8e8;
-            border-radius: 10px;
-            font-size: 16px;
-            margin-bottom: 16px;
-        }
+        .modal input { width: 100%; padding: 14px; border: 2px solid #e8e8e8; border-radius: 10px; font-size: 16px; margin-bottom: 16px; }
         .modal input:focus { outline: none; border-color: #667eea; }
         .modal-btns { display: flex; gap: 10px; }
         .modal-btns .btn { flex: 1; justify-content: center; }
         .toast {
-            position: fixed;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100px);
-            background: #333;
-            color: white;
-            padding: 14px 28px;
-            border-radius: 12px;
-            font-size: 14px;
-            z-index: 2000;
-            transition: transform 0.3s;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-100px);
+            background: #333; color: white; padding: 14px 28px; border-radius: 12px; font-size: 14px;
+            z-index: 2000; transition: transform 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
         .toast.show { transform: translateX(-50%) translateY(0); }
         .toast.success { background: #2e7d32; }
         .toast.error { background: #c62828; }
-        .checkin-status {
-            text-align: center;
-            padding: 16px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
+        .checkin-status { text-align: center; padding: 16px; border-radius: 12px; margin-bottom: 20px; font-weight: 600; }
         .status-pending { background: #fff3e0; color: #e65100; }
         .status-half { background: #e3f2fd; color: #1565c0; }
         .status-done { background: #e8f5e9; color: #2e7d32; }
-        .loading {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 0.8s linear infinite;
-        }
+        .loading { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
         .fade-in { animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .config-box {
-            background: #fff3e0;
-            border: 2px dashed #ff9800;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .config-box input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ff9800;
-            border-radius: 8px;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-        .config-box button {
-            margin-top: 10px;
-            background: #ff9800;
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-        }
+        .config-box { background: #fff3e0; border: 2px dashed #ff9800; border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: center; }
         .supervisor-card {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 15px; border-radius: 12px; margin-bottom: 10px;
+            display: flex; justify-content: space-between; align-items: center;
         }
         .supervisor-info { flex: 1; }
         .supervisor-name { font-weight: 600; color: #1a237e; font-size: 15px; }
         .supervisor-passport { font-size: 12px; color: #666; margin-top: 2px; }
-        .supervisor-count { font-size: 24px; font-weight: 700; color: #667eea; margin-right: 15px; }
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 10px; padding: 12px; }
             .nav-tabs { width: 100%; justify-content: center; }
@@ -317,36 +166,14 @@
             .chart-grid { grid-template-columns: 1fr; }
             .lang-switch { margin-left: 0; margin-top: 5px; }
         }
-        .gps-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
+        .gps-status { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
         .gps-in { background: #e8f5e9; color: #2e7d32; }
         .gps-out { background: #ffebee; color: #c62828; }
         .gps-loading { background: #fff3e0; color: #e65100; }
-        .location-config {
-            background: #e3f2fd;
-            border: 2px dashed #2196f3;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .distance-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-        }
+        .location-config { background: #e3f2fd; border: 2px dashed #2196f3; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .distance-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
         .dist-ok { background: #e8f5e9; color: #2e7d32; }
         .dist-far { background: #ffebee; color: #c62828; }
-
-        /* ===== 管理员后台子标签样式 ===== */
         .admin-tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
         .admin-tab { padding:8px 16px; border:none; background:#e8e8e8; color:#555; border-radius:8px; cursor:pointer; font-size:13px; transition:all 0.3s; }
         .admin-tab:hover { background:#d0d0d0; }
@@ -362,18 +189,13 @@
         .checkbox-group { display:flex; align-items:center; gap:10px; }
         .checkbox-group input { width:18px; height:18px; accent-color:#667eea; }
         .checkbox-group label { margin:0; font-weight:500; }
-        .gps-retry-box {
-            background: #ffebee;
-            border: 2px dashed #c62828;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            text-align: center;
-            display: none;
-        }
+        .gps-retry-box { background: #ffebee; border: 2px dashed #c62828; border-radius: 12px; padding: 20px; margin-bottom: 15px; text-align: center; display: none; }
         .gps-retry-box.show { display: block; }
-</style>
-<base target="_blank">
+        .sync-badge { display:inline-flex; align-items:center; gap:4px; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:600; }
+        .sync-ok { background:#e8f5e9; color:#2e7d32; }
+        .sync-err { background:#ffebee; color:#c62828; }
+        .sync-loading { background:#fff3e0; color:#e65100; }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -390,23 +212,16 @@
         </div>
     </nav>
 
-    <!-- 配置提示 -->
-    <div id="configAlert" class="config-box" style="display:none;max-width:1200px;margin:20px auto;">
-        <div style="font-size:16px;font-weight:700;color:#2e7d32;margin-bottom:8px;" id="config-title">✅ 云端接口已预配置</div>
-        <div style="font-size:13px;color:#666;" id="config-desc">系统已就绪，可直接使用</div>
-    </div>
-
     <!-- ========== 签到页 ========== -->
     <div id="page-checkin" class="page active">
         <div class="card fade-in">
-            <div class="checkin-status" id="checkinStatus">检测中...</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <div class="checkin-status" id="checkinStatus" style="flex:1;">检测中...</div>
+                <div id="syncStatusBadge" class="sync-badge sync-loading" style="margin-left:10px;"><span class="loading" style="width:10px;height:10px;border-width:1px;"></span> 同步中</div>
+            </div>
             <div style="display:flex;gap:10px;margin-bottom:15px;flex-wrap:wrap;">
-                <div class="gps-status gps-loading" id="gpsStatus">
-                    <span class="loading"></span> 正在获取位置...
-                </div>
-                <div class="gps-status" id="distanceStatus" style="display:none;">
-                    📍 <span id="distanceText">--</span>
-                </div>
+                <div class="gps-status gps-loading" id="gpsStatus"><span class="loading"></span> 正在获取位置...</div>
+                <div class="gps-status" id="distanceStatus" style="display:none;">📍 <span id="distanceText">--</span></div>
             </div>
             <div class="gps-retry-box" id="gpsRetryBox">
                 <div style="color:#c62828;font-weight:700;margin-bottom:8px;" id="gps-retry-title">⚠️ 定位权限被拒绝或未获取</div>
@@ -414,72 +229,28 @@
                 <button class="btn btn-primary" onclick="updateGPSStatus()" id="gps-retry-btn">🔄 重新获取定位</button>
             </div>
             <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <div class="stat-card blue">
-                    <div class="stat-number" id="todayCount">0</div>
-                    <div class="stat-label" id="stat-today">今日签到</div>
-                </div>
-                <div class="stat-card green">
-                    <div class="stat-number" id="deviceIdShort">--</div>
-                    <div class="stat-label" id="stat-device">设备编号</div>
-                </div>
-                <div class="stat-card orange">
-                    <div class="stat-number" id="currentTime">--:--</div>
-                    <div class="stat-label" id="stat-time">当前时间</div>
-                </div>
+                <div class="stat-card blue"><div class="stat-number" id="todayCount">0</div><div class="stat-label" id="stat-today">今日签到</div></div>
+                <div class="stat-card green"><div class="stat-number" id="deviceIdShort">--</div><div class="stat-label" id="stat-device">设备编号</div></div>
+                <div class="stat-card orange"><div class="stat-number" id="currentTime">--:--</div><div class="stat-label" id="stat-time">当前时间</div></div>
             </div>
             <form id="checkinForm">
                 <div class="form-grid">
-                    <div class="form-group">
-                        <label id="label-date">📅 日期</label>
-                        <input type="text" id="cDate" class="readonly" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label id="label-time">🕐 签到时间</label>
-                        <input type="text" id="cTime" class="readonly" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label id="label-name">👤 姓名 *</label>
-                        <input type="text" id="cName" placeholder="请输入姓名" required>
-                    </div>
-                    <div class="form-group">
-                        <label id="label-passport">🆔 准证后四位 *</label>
-                        <input type="text" id="cPassport" placeholder="准证后四位" maxlength="4" required>
-                    </div>
-                    <div class="form-group">
-                        <label id="label-trade">🔧 工种 *</label>
-                        <select id="cTrade" required>
-                            <option value="">请选择</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label id="label-area">🏗️ 工作区域 *</label>
-                        <select id="cArea" required>
-                            <option value="">请选择</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label id="label-supervisor">👷 负责督工 *</label>
-                        <select id="cSupervisor" required>
-                            <option value="">请选择</option>
-                        </select>
-                    </div>
+                    <div class="form-group"><label id="label-date">📅 日期</label><input type="text" id="cDate" class="readonly" readonly></div>
+                    <div class="form-group"><label id="label-time">🕐 签到时间</label><input type="text" id="cTime" class="readonly" readonly></div>
+                    <div class="form-group"><label id="label-name">👤 姓名 *</label><input type="text" id="cName" placeholder="请输入姓名" required></div>
+                    <div class="form-group"><label id="label-passport">🆔 准证后四位 *</label><input type="text" id="cPassport" placeholder="准证后四位" maxlength="4" required></div>
+                    <div class="form-group"><label id="label-trade">🔧 工种 *</label><select id="cTrade" required><option value="">请选择</option></select></div>
+                    <div class="form-group"><label id="label-area">🏗️ 工作区域 *</label><select id="cArea" required><option value="">请选择</option></select></div>
+                    <div class="form-group"><label id="label-supervisor">👷 负责督工 *</label><select id="cSupervisor" required><option value="">请选择</option></select></div>
                 </div>
-                <div class="form-group" style="margin-top:16px;">
-                    <label id="label-content">📝 工作内容 *</label>
-                    <textarea id="cContent" placeholder="请描述今日工作内容" maxlength="300" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" id="cSubmit" style="width:100%;margin-top:10px;padding:16px;font-size:16px;">
-                    提交签到
-                </button>
+                <div class="form-group" style="margin-top:16px;"><label id="label-content">📝 工作内容 *</label><textarea id="cContent" placeholder="请描述今日工作内容" maxlength="300" required></textarea></div>
+                <button type="submit" class="btn btn-primary" id="cSubmit" style="width:100%;margin-top:10px;padding:16px;font-size:16px;">提交签到</button>
             </form>
         </div>
         <div class="card">
             <div class="card-title" id="my-records-title">📋 我的今日记录</div>
             <div class="table-wrap">
-                <table>
-                    <thead><tr><th id="th-type">类型</th><th id="th-time">时间</th><th id="th-trade">工种</th><th id="th-area">区域</th><th id="th-supervisor">督工</th><th id="th-content">工作内容</th></tr></thead>
-                    <tbody id="myRecords"></tbody>
-                </table>
+                <table><thead><tr><th id="th-type">类型</th><th id="th-time">时间</th><th id="th-trade">工种</th><th id="th-area">区域</th><th id="th-supervisor">督工</th><th id="th-content">工作内容</th></tr></thead><tbody id="myRecords"></tbody></table>
             </div>
         </div>
     </div>
@@ -491,33 +262,20 @@
             <div class="filter-bar">
                 <div class="form-group"><label id="query-label-date">日期</label><input type="date" id="qDate"></div>
                 <div class="form-group"><label id="query-label-name">姓名</label><input type="text" id="qName" placeholder="输入姓名"></div>
-                <div class="form-group">
-                    <label id="query-label-trade">工种</label>
-                    <select id="qTrade"><option value="">全部</option></select>
-                </div>
-                <div class="form-group">
-                    <label id="query-label-area">工作区域</label>
-                    <select id="qArea"><option value="">全部</option></select>
-                </div>
-                <div class="form-group">
-                    <label id="query-label-supervisor">督工</label>
-                    <select id="qSupervisor"><option value="">全部</option></select>
-                </div>
+                <div class="form-group"><label id="query-label-trade">工种</label><select id="qTrade"><option value="">全部</option></select></div>
+                <div class="form-group"><label id="query-label-area">工作区域</label><select id="qArea"><option value="">全部</option></select></div>
+                <div class="form-group"><label id="query-label-supervisor">督工</label><select id="qSupervisor"><option value="">全部</option></select></div>
                 <button class="btn btn-primary btn-sm" onclick="queryRecords()" id="btn-query">查询</button>
                 <button class="btn btn-secondary btn-sm" onclick="resetQuery()" id="btn-reset">重置</button>
             </div>
             <div class="table-wrap">
-                <table>
-                    <thead><tr><th id="th-q-date">日期</th><th id="th-q-type">类型</th><th id="th-q-name">姓名</th><th id="th-q-passport">准证</th><th id="th-q-trade">工种</th><th id="th-q-time">时间</th><th id="th-q-area">区域</th><th id="th-q-supervisor">督工</th><th id="th-q-content">工作内容</th></tr></thead>
-                    <tbody id="queryResult"></tbody>
-                </table>
+                <table><thead><tr><th id="th-q-date">日期</th><th id="th-q-type">类型</th><th id="th-q-name">姓名</th><th id="th-q-passport">准证</th><th id="th-q-trade">工种</th><th id="th-q-time">时间</th><th id="th-q-area">区域</th><th id="th-q-supervisor">督工</th><th id="th-q-content">工作内容</th></tr></thead><tbody id="queryResult"></tbody></table>
             </div>
         </div>
     </div>
 
     <!-- ========== 管理员后台 ========== -->
     <div id="page-admin" class="page">
-        <!-- 顶部统计 -->
         <div class="stats-grid">
             <div class="stat-card"><div class="stat-number" id="aTotalRecords">0</div><div class="stat-label" id="stat-a-total">总记录数</div></div>
             <div class="stat-card green"><div class="stat-number" id="aTodayRecords">0</div><div class="stat-label" id="stat-a-today">今日签到</div></div>
@@ -525,8 +283,6 @@
             <div class="stat-card blue"><div class="stat-number" id="aCompleteRate">0%</div><div class="stat-label" id="stat-a-rate">完整签到率</div></div>
             <div class="stat-card red"><div class="stat-number" id="aAnomalyRecords">0</div><div class="stat-label" id="stat-a-anomaly">异常记录</div></div>
         </div>
-
-        <!-- 子标签导航 -->
         <div class="admin-tabs">
             <button class="admin-tab active" onclick="switchAdminTab('stats')" id="atab-stats">📊 统计概览</button>
             <button class="admin-tab" onclick="switchAdminTab('records')" id="atab-records">📋 记录管理</button>
@@ -536,29 +292,15 @@
 
         <!-- 1. 统计概览页 -->
         <div id="admin-stats" class="admin-page active">
-            <!-- 工地位置配置 -->
             <div class="card location-config">
-                <div class="card-title">📍 工地位置配置</div>
+                <div class="card-title">📍 工地位置配置 <span id="siteLocSyncBadge" class="sync-badge sync-ok">☁️ 已同步</span></div>
                 <div class="form-grid">
-                    <div class="form-group">
-                        <label>工地中心纬度 (Latitude)</label>
-                        <input type="text" id="siteLat" placeholder="例如: 1.3521" value="">
-                    </div>
-                    <div class="form-group">
-                        <label>工地中心经度 (Longitude)</label>
-                        <input type="text" id="siteLng" placeholder="例如: 103.8198" value="">
-                    </div>
-                    <div class="form-group">
-                        <label>允许范围 (米)</label>
-                        <input type="number" id="siteRadius" placeholder="例如: 500" value="500">
-                    </div>
-                    <div class="form-group" style="display:flex;align-items:flex-end;">
-                        <button class="btn btn-primary" onclick="saveSiteLocation()">保存位置</button>
-                    </div>
+                    <div class="form-group"><label>工地中心纬度 (Latitude)</label><input type="text" id="siteLat" placeholder="例如: 1.3521"></div>
+                    <div class="form-group"><label>工地中心经度 (Longitude)</label><input type="text" id="siteLng" placeholder="例如: 103.8198"></div>
+                    <div class="form-group"><label>允许范围 (米)</label><input type="number" id="siteRadius" placeholder="例如: 500" value="500"></div>
+                    <div class="form-group" style="display:flex;align-items:flex-end;"><button class="btn btn-primary" onclick="saveSiteLocation()">💾 保存位置</button></div>
                 </div>
-                <div style="font-size:12px;color:#666;margin-top:10px;">
-                    💡 提示：打开 <a href="https://www.google.com/maps" target="_blank" style="color:#2196f3;">Google Maps</a> 右键点击工地位置即可获取经纬度
-                </div>
+                <div style="font-size:12px;color:#666;margin-top:10px;">💡 提示：打开 <a href="https://www.google.com/maps" target="_blank" style="color:#2196f3;">Google Maps</a> 右键点击工地位置即可获取经纬度</div>
             </div>
             <div class="chart-grid">
                 <div class="card"><div class="card-title" id="chart-trend-title">📊 近7日签到趋势</div><div class="chart-box"><canvas id="trendChart"></canvas></div></div>
@@ -567,15 +309,10 @@
 
             <!-- 工作区域管理 -->
             <div class="card">
-                <div class="card-title"><span id="workarea-manage-title">🏗️ 工作区域管理</span></div>
+                <div class="card-title"><span id="workarea-manage-title">🏗️ 工作区域管理</span> <span id="workAreaSyncBadge" class="sync-badge sync-ok">☁️ 已同步</span></div>
                 <div class="form-grid" style="margin-bottom:15px;">
-                    <div class="form-group">
-                        <label id="workarea-name-label">区域名称</label>
-                        <input type="text" id="newWorkAreaName" placeholder="输入区域名称（如：8区）">
-                    </div>
-                    <div class="form-group" style="display:flex;align-items:flex-end;">
-                        <button class="btn btn-success" onclick="addWorkArea()" id="btn-add-workarea">添加区域</button>
-                    </div>
+                    <div class="form-group"><label id="workarea-name-label">区域名称</label><input type="text" id="newWorkAreaName" placeholder="输入区域名称（如：8区）"></div>
+                    <div class="form-group" style="display:flex;align-items:flex-end;"><button class="btn btn-success" onclick="addWorkArea()" id="btn-add-workarea">添加区域</button></div>
                 </div>
                 <div class="card-title" id="workarea-list-title">📋 区域列表</div>
                 <div id="workAreaList"></div>
@@ -583,42 +320,24 @@
 
             <!-- 督工管理 -->
             <div class="card">
-                <div class="card-title"><span id="supervisor-manage-title">👷 督工管理</span></div>
+                <div class="card-title"><span id="supervisor-manage-title">👷 督工管理</span> <span id="supervisorSyncBadge" class="sync-badge sync-ok">☁️ 已同步</span></div>
                 <div class="form-grid" style="margin-bottom:15px;">
-                    <div class="form-group">
-                        <label id="supervisor-name-label">督工姓名</label>
-                        <input type="text" id="newSupervisorName" placeholder="输入督工姓名">
-                    </div>
-                    <div class="form-group">
-                        <label id="supervisor-passport-label">准证后四位</label>
-                        <input type="text" id="newSupervisorPassport" placeholder="准证后四位" maxlength="4">
-                    </div>
-                    <div class="form-group" style="display:flex;align-items:flex-end;">
-                        <button class="btn btn-success" onclick="addSupervisor()" id="btn-add-supervisor">添加督工</button>
-                    </div>
+                    <div class="form-group"><label id="supervisor-name-label">督工姓名</label><input type="text" id="newSupervisorName" placeholder="输入督工姓名"></div>
+                    <div class="form-group"><label id="supervisor-passport-label">准证后四位</label><input type="text" id="newSupervisorPassport" placeholder="准证后四位" maxlength="4"></div>
+                    <div class="form-group" style="display:flex;align-items:flex-end;"><button class="btn btn-success" onclick="addSupervisor()" id="btn-add-supervisor">添加督工</button></div>
                 </div>
                 <div class="card-title" id="supervisor-list-title">📋 督工列表</div>
                 <div id="supervisorList"></div>
                 <div class="card-title" id="supervisor-stats-title" style="margin-top:20px;">📊 督工签到统计</div>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>督工</th><th>准证</th><th>总签到</th><th>上班/下班</th></tr></thead>
-                        <tbody id="supervisorStatsTable"></tbody>
-                    </table>
-                </div>
+                <div class="table-wrap"><table><thead><tr><th>督工</th><th>准证</th><th>总签到</th><th>上班/下班</th></tr></thead><tbody id="supervisorStatsTable"></tbody></table></div>
             </div>
 
             <!-- 工种管理 -->
             <div class="card">
-                <div class="card-title"><span id="trade-manage-title">🔧 工种管理</span></div>
+                <div class="card-title"><span id="trade-manage-title">🔧 工种管理</span> <span id="tradeSyncBadge" class="sync-badge sync-ok">☁️ 已同步</span></div>
                 <div class="form-grid" style="margin-bottom:15px;">
-                    <div class="form-group">
-                        <label id="trade-name-label">工种名称</label>
-                        <input type="text" id="newTradeName" placeholder="输入工种名称">
-                    </div>
-                    <div class="form-group" style="display:flex;align-items:flex-end;">
-                        <button class="btn btn-success" onclick="addTrade()" id="btn-add-trade">添加工种</button>
-                    </div>
+                    <div class="form-group"><label id="trade-name-label">工种名称</label><input type="text" id="newTradeName" placeholder="输入工种名称"></div>
+                    <div class="form-group" style="display:flex;align-items:flex-end;"><button class="btn btn-success" onclick="addTrade()" id="btn-add-trade">添加工种</button></div>
                 </div>
                 <div class="card-title" id="trade-list-title">📋 工种列表</div>
                 <div id="tradeList"></div>
@@ -632,40 +351,20 @@
                 <div class="filter-bar">
                     <div class="form-group"><label id="filter-label-date">日期筛选</label><input type="date" id="aFilterDate"></div>
                     <div class="form-group"><label id="filter-label-name">姓名</label><input type="text" id="aFilterName" placeholder="输入姓名"></div>
-                    <div class="form-group">
-                        <label id="filter-label-trade">工种</label>
-                        <select id="aFilterTrade"><option value="">全部</option></select>
-                    </div>
-                    <div class="form-group">
-                        <label id="filter-label-area">区域</label>
-                        <select id="aFilterArea"><option value="">全部</option></select>
-                    </div>
-                    <div class="form-group">
-                        <label>状态筛选</label>
-                        <select id="aFilterAnomaly">
-                            <option value="">全部</option>
-                            <option value="anomaly">仅异常</option>
-                            <option value="normal">仅正常</option>
-                        </select>
-                    </div>
+                    <div class="form-group"><label id="filter-label-trade">工种</label><select id="aFilterTrade"><option value="">全部</option></select></div>
+                    <div class="form-group"><label id="filter-label-area">区域</label><select id="aFilterArea"><option value="">全部</option></select></div>
+                    <div class="form-group"><label id="filter-label-supervisor">督工</label><select id="aFilterSupervisor"><option value="">全部</option></select></div>
+                    <div class="form-group"><label>状态筛选</label><select id="aFilterAnomaly"><option value="">全部</option><option value="anomaly">仅异常</option><option value="normal">仅正常</option></select></div>
                     <button class="btn btn-primary btn-sm" onclick="adminFilter()">筛选</button>
                     <button class="btn btn-secondary btn-sm" onclick="adminResetFilter()">重置</button>
                 </div>
                 <div class="table-wrap" style="max-height:500px;overflow-y:auto;">
-                    <table>
-                        <thead><tr><th>ID</th><th id="th-a-date">日期</th><th id="th-a-type">类型</th><th id="th-a-name">姓名</th><th id="th-a-passport">准证</th><th id="th-a-trade">工种</th><th id="th-a-time">时间</th><th id="th-a-area">区域</th><th id="th-a-supervisor">督工</th><th>📍位置</th><th>距离</th><th>状态</th><th>设备</th><th>操作</th></tr></thead>
-                        <tbody id="adminTable"></tbody>
-                    </table>
+                    <table><thead><tr><th>ID</th><th id="th-a-date">日期</th><th id="th-a-type">类型</th><th id="th-a-name">姓名</th><th id="th-a-passport">准证</th><th id="th-a-trade">工种</th><th id="th-a-time">时间</th><th id="th-a-area">区域</th><th id="th-a-supervisor">督工</th><th>📍位置</th><th>距离</th><th>状态</th><th>设备</th><th>操作</th></tr></thead><tbody id="adminTable"></tbody></table>
                 </div>
             </div>
             <div class="card">
                 <div class="card-title" id="summary-title">📅 每日签到汇总表</div>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th id="th-s-date">日期</th><th id="th-s-name">姓名</th><th id="th-s-passport">准证</th><th id="th-s-trade">工种</th><th id="th-s-checkin">上班时间</th><th id="th-s-checkout">下班时间</th><th id="th-s-area">工作区域</th><th id="th-s-content">工作内容</th><th id="th-s-supervisor">督工</th><th>📍位置</th><th id="th-s-status">状态</th></tr></thead>
-                        <tbody id="summaryTable"></tbody>
-                    </table>
-                </div>
+                <div class="table-wrap"><table><thead><tr><th id="th-s-date">日期</th><th id="th-s-name">姓名</th><th id="th-s-passport">准证</th><th id="th-s-trade">工种</th><th id="th-s-checkin">上班时间</th><th id="th-s-checkout">下班时间</th><th id="th-s-area">工作区域</th><th id="th-s-content">工作内容</th><th id="th-s-supervisor">督工</th><th>📍位置</th><th id="th-s-status">状态</th></tr></thead><tbody id="summaryTable"></tbody></table></div>
             </div>
         </div>
 
@@ -674,62 +373,29 @@
             <div class="card">
                 <div class="card-title">👷 员工档案管理</div>
                 <div class="form-grid" style="margin-bottom:15px;">
-                    <div class="form-group">
-                        <label>姓名 *</label>
-                        <input type="text" id="newEmpName" placeholder="输入员工姓名">
-                    </div>
-                    <div class="form-group">
-                        <label>准证后四位 *</label>
-                        <input type="text" id="newEmpPassport" placeholder="准证后四位" maxlength="4">
-                    </div>
-                    <div class="form-group">
-                        <label>所属督工</label>
-                        <select id="newEmpSupervisor"><option value="">请选择</option></select>
-                    </div>
-                    <div class="form-group">
-                        <label>工种</label>
-                        <select id="newEmpTrade"><option value="">请选择</option></select>
-                    </div>
-                    <div class="form-group" style="display:flex;align-items:flex-end;">
-                        <button class="btn btn-success" onclick="addEmployee()">➕ 添加员工</button>
-                    </div>
+                    <div class="form-group"><label>姓名 *</label><input type="text" id="newEmpName" placeholder="输入员工姓名"></div>
+                    <div class="form-group"><label>准证后四位 *</label><input type="text" id="newEmpPassport" placeholder="准证后四位" maxlength="4"></div>
+                    <div class="form-group"><label>所属督工</label><select id="newEmpSupervisor"><option value="">请选择</option></select></div>
+                    <div class="form-group"><label>工种</label><select id="newEmpTrade"><option value="">请选择</option></select></div>
+                    <div class="form-group" style="display:flex;align-items:flex-end;"><button class="btn btn-success" onclick="addEmployee()">➕ 添加员工</button></div>
                 </div>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>姓名</th><th>准证</th><th>所属督工</th><th>工种</th><th>操作</th></tr></thead>
-                        <tbody id="employeeTable"></tbody>
-                    </table>
-                </div>
+                <div class="table-wrap"><table><thead><tr><th>姓名</th><th>准证</th><th>所属督工</th><th>工种</th><th>操作</th></tr></thead><tbody id="employeeTable"></tbody></table></div>
             </div>
         </div>
 
         <!-- 4. 系统设置页 -->
         <div id="admin-settings" class="admin-page">
             <div class="card">
-                <div class="card-title">⚙️ 签到规则设置</div>
-                <div class="settings-section">
-                    <h3>⏰ 时间规则</h3>
+                <div class="card-title">⚙️ 签到规则设置 <span id="settingsSyncBadge" class="sync-badge sync-ok">☁️ 已同步</span></div>
+                <div class="settings-section"><h3>⏰ 时间规则</h3>
                     <div class="form-grid">
-                        <div class="form-group">
-                            <label>标准上班时间</label>
-                            <input type="time" id="settingWorkStart" value="08:00">
-                        </div>
-                        <div class="form-group">
-                            <label>标准下班时间</label>
-                            <input type="time" id="settingWorkEnd" value="18:00">
-                        </div>
-                        <div class="form-group">
-                            <label>迟到阈值（分钟）</label>
-                            <input type="number" id="settingLate" value="30" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label>早退阈值（分钟）</label>
-                            <input type="number" id="settingEarly" value="30" min="0">
-                        </div>
+                        <div class="form-group"><label>标准上班时间</label><input type="time" id="settingWorkStart" value="08:00"></div>
+                        <div class="form-group"><label>标准下班时间</label><input type="time" id="settingWorkEnd" value="18:00"></div>
+                        <div class="form-group"><label>迟到阈值（分钟）</label><input type="number" id="settingLate" value="30" min="0"></div>
+                        <div class="form-group"><label>早退阈值（分钟）</label><input type="number" id="settingEarly" value="30" min="0"></div>
                     </div>
                 </div>
-                <div class="settings-section">
-                    <h3>📍 GPS 验证规则</h3>
+                <div class="settings-section"><h3>📍 GPS 验证规则</h3>
                     <div class="checkbox-group" style="margin-bottom:12px;">
                         <input type="checkbox" id="settingForceGPS">
                         <label for="settingForceGPS">强制 GPS 验证（员工签到时必须获取位置，且必须在工地范围内才能提交）</label>
@@ -737,28 +403,16 @@
                 </div>
                 <button class="btn btn-primary" onclick="saveSystemSettings()">💾 保存设置</button>
             </div>
-
             <div class="card">
                 <div class="card-title">💾 数据备份与恢复</div>
                 <p style="font-size:13px;color:#666;margin-bottom:12px;">导出当前系统的督工、员工、位置、规则等配置数据。记录数据仅缓存最近100条。</p>
-                <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
-                    <button class="btn btn-success" onclick="exportDataJSON()">📥 导出配置数据 (JSON)</button>
-                </div>
-                <div class="form-group">
-                    <label>导入配置数据（粘贴 JSON）</label>
-                    <textarea class="json-area" id="importJsonArea" placeholder="粘贴之前导出的 JSON 数据..."></textarea>
-                </div>
+                <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;"><button class="btn btn-success" onclick="exportDataJSON()">📥 导出配置数据 (JSON)</button></div>
+                <div class="form-group"><label>导入配置数据（粘贴 JSON）</label><textarea class="json-area" id="importJsonArea" placeholder="粘贴之前导出的 JSON 数据..."></textarea></div>
                 <button class="btn btn-warning" onclick="importDataJSON()" style="margin-top:8px;">📤 导入并恢复</button>
             </div>
-
             <div class="card">
                 <div class="card-title">📜 操作日志（最近50条）</div>
-                <div class="table-wrap" style="max-height:320px;overflow-y:auto;">
-                    <table>
-                        <thead><tr><th>时间</th><th>操作</th><th>详情</th><th>设备</th></tr></thead>
-                        <tbody id="adminLogsTable"></tbody>
-                    </table>
-                </div>
+                <div class="table-wrap" style="max-height:320px;overflow-y:auto;"><table><thead><tr><th>时间</th><th>操作</th><th>详情</th><th>设备</th></tr></thead><tbody id="adminLogsTable"></tbody></table></div>
             </div>
         </div>
     </div>
@@ -774,1408 +428,899 @@
             </div>
         </div>
     </div>
-
     <div class="toast" id="toast"></div>
 
     <script>
-        // ==================== 多语言支持 ====================
-        const LANGS = {
-            zh: {
-                title: '工地签到管理系统', subtitle: '云端版',
-                tab_checkin: '员工签到', tab_records: '记录查询', tab_admin: '管理员后台',
-                status_pending: '今日未签到 · 还可签到 2次',
-                status_half: '已签到 1次 · 还可签到 1次',
-                status_done: '今日已完成 2次 签到',
-                btn_checkin_in: '提交签到（上班）', btn_checkin_out: '提交签到（下班）', btn_done: '今日签到已完成',
-                label_date: '日期', label_time: '签到时间', label_name: '姓名', label_passport: '准证后四位',
-                label_trade: '工种', label_area: '工作区域', label_supervisor: '负责督工', label_content: '工作内容',
-                placeholder_name: '请输入姓名', placeholder_passport: '准证后四位', placeholder_trade: '请选择工种',
-                placeholder_area: '请选择', placeholder_supervisor: '请选择',
-                placeholder_content: '请描述今日工作内容',
-                my_records: '我的今日记录', type_in: '上班', type_out: '下班',
-                query_title: '记录查询', query_date: '日期', query_name: '姓名', query_trade: '工种',
-                query_area: '工作区域', query_supervisor: '督工', btn_query: '查询', btn_reset: '重置',
-                admin_title: '管理员后台', admin_total: '总记录数', admin_today_records: '今日签到',
-                admin_today_people: '今日人数', admin_complete_rate: '完整签到率',
-                admin_anomaly: '异常记录',
-                chart_trend: '近7日签到趋势', chart_area: '工作区域分布',
-                records_manage: '全部记录管理', btn_export: '导出Excel', btn_clear: '清空数据',
-                summary_title: '每日签到汇总表',
-                status_complete: '完整', status_in_only: '仅上班', status_out_only: '仅下班',
-                login_title: '管理员登录', login_pwd: '请输入管理员密码', login_cancel: '取消', login_ok: '登录',
-                toast_success: '签到成功', toast_limit: '今日签到次数已达上限',
-                config_ok: '云端接口已预配置', config_ready: '系统已就绪，可直接使用',
-                supervisor_manage: '督工管理', supervisor_name: '督工姓名', supervisor_passport: '准证后四位',
-                btn_add_supervisor: '添加督工', supervisor_list: '督工列表', supervisor_stats: '督工签到统计',
-                workarea_manage: '工作区域管理', workarea_name: '区域名称', btn_add_workarea: '添加区域', workarea_list: '区域列表',
-                trade_manage: '工种管理', trade_name: '工种名称', btn_add_trade: '添加工种', trade_list: '工种列表',
-                action_delete: '删除', confirm_delete: '确定删除这条记录？',
-                confirm_clear: '确定清空所有数据？此操作不可恢复！',
-                th_type: '类型', th_time: '时间', th_trade: '工种', th_area: '区域', th_supervisor: '督工', th_content: '工作内容',
-                th_date: '日期', th_name: '姓名', th_passport: '准证',
-                th_checkin: '上班时间', th_checkout: '下班时间', th_status: '状态',
-                gps_retry_title: '定位权限被拒绝或未获取', gps_retry_desc: '请开启定位权限以验证签到位置', gps_retry_btn: '重新获取定位'
-            },
-            en: {
-                title: 'Site Check-in System', subtitle: 'Cloud',
-                tab_checkin: 'Check-in', tab_records: 'Records', tab_admin: 'Admin',
-                status_pending: 'No check-in today · 2 times remaining',
-                status_half: 'Checked in 1 time · 1 time remaining',
-                status_done: 'Completed 2 check-ins today',
-                btn_checkin_in: 'Check In (Start)', btn_checkin_out: 'Check Out (End)', btn_done: 'Daily limit reached',
-                label_date: 'Date', label_time: 'Time', label_name: 'Name', label_passport: 'IC No. (Last 4)',
-                label_trade: 'Trade', label_area: 'Work Area', label_supervisor: 'Supervisor', label_content: 'Work Content',
-                placeholder_name: 'Enter name', placeholder_passport: 'Last 4 chars', placeholder_trade: 'Select trade',
-                placeholder_area: 'Select', placeholder_supervisor: 'Select',
-                placeholder_content: 'Describe work content',
-                my_records: 'My Today Records', type_in: 'Check In', type_out: 'Check Out',
-                query_title: 'Query Records', query_date: 'Date', query_name: 'Name', query_trade: 'Trade',
-                query_area: 'Work Area', query_supervisor: 'Supervisor', btn_query: 'Search', btn_reset: 'Reset',
-                admin_title: 'Admin Dashboard', admin_total: 'Total Records', admin_today_records: 'Today Records',
-                admin_today_people: 'Today People', admin_complete_rate: 'Complete Rate',
-                admin_anomaly: 'Anomalies',
-                chart_trend: '7-Day Trend', chart_area: 'Area Distribution',
-                records_manage: 'Records Management', btn_export: 'Export Excel', btn_clear: 'Clear All',
-                summary_title: 'Daily Summary',
-                status_complete: 'Complete', status_in_only: 'In Only', status_out_only: 'Out Only',
-                login_title: 'Admin Login', login_pwd: 'Enter password', login_cancel: 'Cancel', login_ok: 'Login',
-                toast_success: 'Check-in successful', toast_limit: 'Daily limit reached (2 times)',
-                config_ok: 'Cloud API configured', config_ready: 'System ready',
-                supervisor_manage: 'Supervisor Management', supervisor_name: 'Supervisor Name', supervisor_passport: 'IC No. (Last 4)',
-                btn_add_supervisor: 'Add Supervisor', supervisor_list: 'Supervisor List', supervisor_stats: 'Supervisor Statistics',
-                workarea_manage: 'Work Area Management', workarea_name: 'Area Name', btn_add_workarea: 'Add Area', workarea_list: 'Area List',
-                trade_manage: 'Trade Management', trade_name: 'Trade Name', btn_add_trade: 'Add Trade', trade_list: 'Trade List',
-                action_delete: 'Delete', confirm_delete: 'Delete this record?',
-                confirm_clear: 'Clear all data? This cannot be undone!',
-                th_type: 'Type', th_time: 'Time', th_trade: 'Trade', th_area: 'Area', th_supervisor: 'Supervisor', th_content: 'Content',
-                th_date: 'Date', th_name: 'Name', th_passport: 'Passport',
-                th_checkin: 'Check In', th_checkout: 'Check Out', th_status: 'Status',
-                gps_retry_title: 'Location permission denied', gps_retry_desc: 'Please enable location to verify check-in', gps_retry_btn: 'Retry Location'
-            },
-            bn: {
-                title: 'সাইট চেক-ইন', subtitle: 'ক্লাউড',
-                tab_checkin: 'চেক-ইন', tab_records: 'রেকর্ডস', tab_admin: 'অ্যাডমিন',
-                status_pending: 'আজ চেক-ইন নেই · ২ বার বাকি',
-                status_half: '১ বার চেক-ইন · ১ বার বাকি',
-                status_done: 'আজ ২ বার চেক-ইন সম্পন্ন',
-                btn_checkin_in: 'চেক ইন (শুরু)', btn_checkin_out: 'চেক আউট (শেষ)', btn_done: 'দৈনিক সীমা পূর্ণ',
-                label_date: 'তারিখ', label_time: 'সময়', label_name: 'নাম', label_passport: 'পাসপোর্ট (শেষ ৪)',
-                label_trade: 'ট্রেড', label_area: 'কাজের এলাকা', label_supervisor: 'সুপারভাইজার', label_content: 'কাজের বিবরণ',
-                placeholder_name: 'নাম লিখুন', placeholder_passport: 'শেষ ৪ অক্ষর', placeholder_trade: 'ট্রেড নির্বাচন',
-                placeholder_area: 'নির্বাচন', placeholder_supervisor: 'নির্বাচন',
-                placeholder_content: 'কাজের বিবরণ লিখুন',
-                my_records: 'আজকের রেকর্ড', type_in: 'চেক ইন', type_out: 'চেক আউট',
-                query_title: 'রেকর্ড অনুসন্ধান', query_date: 'তারিখ', query_name: 'নাম', query_trade: 'ট্রেড',
-                query_area: 'কাজের এলাকা', query_supervisor: 'সুপারভাইজার', btn_query: 'অনুসন্ধান', btn_reset: 'রিসেট',
-                admin_title: 'অ্যাডমিন ড্যাশবোর্ড', admin_total: 'মোট রেকর্ড', admin_today_records: 'আজকের রেকর্ড',
-                admin_today_people: 'আজকের লোক', admin_complete_rate: 'সম্পূর্ণ হার',
-                admin_anomaly: 'অস্বাভাবিক',
-                chart_trend: '৭-দিনের ট্রেন্ড', chart_area: 'এলাকা বিতরণ',
-                records_manage: 'রেকর্ড ব্যবস্থাপনা', btn_export: 'এক্সেল রপ্তানি', btn_clear: 'সব মুছুন',
-                summary_title: 'দৈনিক সারাংশ',
-                status_complete: 'সম্পূর্ণ', status_in_only: 'শুধু ইন', status_out_only: 'শুধু আউট',
-                login_title: 'অ্যাডমিন লগইন', login_pwd: 'পাসওয়ার্ড', login_cancel: 'বাতিল', login_ok: 'লগইন',
-                toast_success: 'চেক-ইন সফল', toast_limit: 'দৈনিক সীমা পূর্ণ (২ বার)',
-                config_ok: 'ক্লাউড API কনফিগারড', config_ready: 'সিস্টেম প্রস্তুত',
-                supervisor_manage: 'সুপারভাইজার ব্যবস্থাপনা', supervisor_name: 'সুপারভাইজার নাম', supervisor_passport: 'পাসপোর্ট (শেষ ৪)',
-                btn_add_supervisor: 'সুপারভাইজার যোগ করুন', supervisor_list: 'সুপারভাইজার তালিকা', supervisor_stats: 'সুপারভাইজার পরিসংখ্যান',
-                workarea_manage: 'কাজের এলাকা ব্যবস্থাপনা', workarea_name: 'এলাকার নাম', btn_add_workarea: 'এলাকা যোগ', workarea_list: 'এলাকার তালিকা',
-                trade_manage: 'ট্রেড ব্যবস্থাপনা', trade_name: 'ট্রেড নাম', btn_add_trade: 'ট্রেড যোগ', trade_list: 'ট্রেড তালিকা',
-                action_delete: 'মুছুন', confirm_delete: 'এই রেকর্ড মুছবেন?',
-                confirm_clear: 'সব ডেটা মুছবেন? এটি ফেরত যাবে না!',
-                th_type: 'ধরন', th_time: 'সময়', th_trade: 'ট্রেড', th_area: 'এলাকা', th_supervisor: 'সুপারভাইজার', th_content: 'বিবরণ',
-                th_date: 'তারিখ', th_name: 'নাম', th_passport: 'পাসপোর্ট',
-                th_checkin: 'চেক ইন', th_checkout: 'চেক আউট', th_status: 'অবস্থা',
-                gps_retry_title: 'অবস্থান অনুমতি অস্বীকৃত', gps_retry_desc: 'চেক-ইন যাচাইয়ের জন্য অবস্থান সক্ষম করুন', gps_retry_btn: 'অবস্থান পুনরায় চেষ্টা'
+    // ==================== 多语言支持 ====================
+    const LANGS = {
+        zh: {
+            title:'工地签到管理系统', subtitle:'云端版', tab_checkin:'员工签到', tab_records:'记录查询', tab_admin:'管理员后台',
+            status_pending:'今日未签到 · 还可签到 2次', status_half:'已签到 1次 · 还可签到 1次', status_done:'今日已完成 2次 签到',
+            btn_checkin_in:'提交签到（上班）', btn_checkin_out:'提交签到（下班）', btn_done:'今日签到已完成',
+            label_date:'日期', label_time:'签到时间', label_name:'姓名', label_passport:'准证后四位',
+            label_trade:'工种', label_area:'工作区域', label_supervisor:'负责督工', label_content:'工作内容',
+            placeholder_name:'请输入姓名', placeholder_passport:'准证后四位', placeholder_trade:'请选择工种',
+            placeholder_area:'请选择', placeholder_supervisor:'请选择', placeholder_content:'请描述今日工作内容',
+            my_records:'我的今日记录', type_in:'上班', type_out:'下班',
+            query_title:'记录查询', query_date:'日期', query_name:'姓名', query_trade:'工种',
+            query_area:'工作区域', query_supervisor:'督工', btn_query:'查询', btn_reset:'重置',
+            admin_total:'总记录数', admin_today_records:'今日签到', admin_today_people:'今日人数',
+            admin_complete_rate:'完整签到率', admin_anomaly:'异常记录',
+            chart_trend:'近7日签到趋势', chart_area:'工作区域分布',
+            records_manage:'全部记录管理', btn_export:'导出Excel', btn_clear:'清空数据',
+            summary_title:'每日签到汇总表', status_complete:'完整', status_in_only:'仅上班', status_out_only:'仅下班',
+            login_title:'管理员登录', login_cancel:'取消', login_ok:'登录',
+            toast_success:'签到成功', toast_limit:'今日签到次数已达上限',
+            config_ok:'云端接口已预配置', config_ready:'系统已就绪，可直接使用',
+            supervisor_manage:'督工管理', supervisor_name:'督工姓名', supervisor_passport:'准证后四位',
+            btn_add_supervisor:'添加督工', supervisor_list:'督工列表', supervisor_stats:'督工签到统计',
+            workarea_manage:'工作区域管理', workarea_name:'区域名称', btn_add_workarea:'添加区域', workarea_list:'区域列表',
+            trade_manage:'工种管理', trade_name:'工种名称', btn_add_trade:'添加工种', trade_list:'工种列表',
+            action_delete:'删除', confirm_delete:'确定删除这条记录？', confirm_clear:'确定清空所有数据？此操作不可恢复！',
+            th_type:'类型', th_time:'时间', th_trade:'工种', th_area:'区域', th_supervisor:'督工', th_content:'工作内容',
+            th_date:'日期', th_name:'姓名', th_passport:'准证', th_checkin:'上班时间', th_checkout:'下班时间', th_status:'状态',
+            gps_retry_title:'定位权限被拒绝或未获取', gps_retry_desc:'请开启定位权限以验证签到位置', gps_retry_btn:'重新获取定位',
+            sync_ok:'☁️ 已同步', sync_saving:'⏳ 同步中...', sync_err:'❌ 同步失败'
+        },
+        en: {
+            title:'Site Check-in System', subtitle:'Cloud', tab_checkin:'Check-in', tab_records:'Records', tab_admin:'Admin',
+            status_pending:'No check-in today · 2 times remaining', status_half:'Checked in 1 time · 1 remaining', status_done:'Completed 2 check-ins today',
+            btn_checkin_in:'Check In (Start)', btn_checkin_out:'Check Out (End)', btn_done:'Daily limit reached',
+            label_date:'Date', label_time:'Time', label_name:'Name', label_passport:'IC No. (Last 4)',
+            label_trade:'Trade', label_area:'Work Area', label_supervisor:'Supervisor', label_content:'Work Content',
+            placeholder_name:'Enter name', placeholder_passport:'Last 4 chars', placeholder_trade:'Select trade',
+            placeholder_area:'Select', placeholder_supervisor:'Select', placeholder_content:'Describe work content',
+            my_records:'My Today Records', type_in:'Check In', type_out:'Check Out',
+            query_title:'Query Records', query_date:'Date', query_name:'Name', query_trade:'Trade',
+            query_area:'Work Area', query_supervisor:'Supervisor', btn_query:'Search', btn_reset:'Reset',
+            admin_total:'Total Records', admin_today_records:'Today Records', admin_today_people:'Today People',
+            admin_complete_rate:'Complete Rate', admin_anomaly:'Anomalies',
+            chart_trend:'7-Day Trend', chart_area:'Area Distribution',
+            records_manage:'Records Management', btn_export:'Export Excel', btn_clear:'Clear All',
+            summary_title:'Daily Summary', status_complete:'Complete', status_in_only:'In Only', status_out_only:'Out Only',
+            login_title:'Admin Login', login_cancel:'Cancel', login_ok:'Login',
+            toast_success:'Check-in successful', toast_limit:'Daily limit reached (2 times)',
+            config_ok:'Cloud API configured', config_ready:'System ready',
+            supervisor_manage:'Supervisor Management', supervisor_name:'Supervisor Name', supervisor_passport:'IC No. (Last 4)',
+            btn_add_supervisor:'Add Supervisor', supervisor_list:'Supervisor List', supervisor_stats:'Supervisor Statistics',
+            workarea_manage:'Work Area Management', workarea_name:'Area Name', btn_add_workarea:'Add Area', workarea_list:'Area List',
+            trade_manage:'Trade Management', trade_name:'Trade Name', btn_add_trade:'Add Trade', trade_list:'Trade List',
+            action_delete:'Delete', confirm_delete:'Delete this record?', confirm_clear:'Clear all data? This cannot be undone!',
+            th_type:'Type', th_time:'Time', th_trade:'Trade', th_area:'Area', th_supervisor:'Supervisor', th_content:'Content',
+            th_date:'Date', th_name:'Name', th_passport:'Passport', th_checkin:'Check In', th_checkout:'Check Out', th_status:'Status',
+            gps_retry_title:'Location permission denied', gps_retry_desc:'Please enable location to verify check-in', gps_retry_btn:'Retry Location',
+            sync_ok:'☁️ Synced', sync_saving:'⏳ Syncing...', sync_err:'❌ Sync failed'
+        },
+        bn: {
+            title:'সাইট চেক-ইন', subtitle:'ক্লাউড', tab_checkin:'চেক-ইন', tab_records:'রেকর্ডস', tab_admin:'অ্যাডমিন',
+            status_pending:'আজ চেক-ইন নেই · ২ বার বাকি', status_half:'১ বার চেক-ইন · ১ বার বাকি', status_done:'আজ ২ বার চেক-ইন সম্পন্ন',
+            btn_checkin_in:'চেক ইন (শুরু)', btn_checkin_out:'চেক আউট (শেষ)', btn_done:'দৈনিক সীমা পূর্ণ',
+            label_date:'তারিখ', label_time:'সময়', label_name:'নাম', label_passport:'পাসপোর্ট (শেষ ৪)',
+            label_trade:'ট্রেড', label_area:'কাজের এলাকা', label_supervisor:'সুপারভাইজার', label_content:'কাজের বিবরণ',
+            placeholder_name:'নাম লিখুন', placeholder_passport:'শেষ ৪ অক্ষর', placeholder_trade:'ট্রেড নির্বাচন',
+            placeholder_area:'নির্বাচন', placeholder_supervisor:'নির্বাচন', placeholder_content:'কাজের বিবরণ লিখুন',
+            my_records:'আজকের রেকর্ড', type_in:'চেক ইন', type_out:'চেক আউট',
+            query_title:'রেকর্ড অনুসন্ধান', query_date:'তারিখ', query_name:'নাম', query_trade:'ট্রেড',
+            query_area:'কাজের এলাকা', query_supervisor:'সুপারভাইজার', btn_query:'অনুসন্ধান', btn_reset:'রিসেট',
+            admin_total:'মোট রেকর্ড', admin_today_records:'আজকের রেকর্ড', admin_today_people:'আজকের লোক',
+            admin_complete_rate:'সম্পূর্ণ হার', admin_anomaly:'অস্বাভাবিক',
+            chart_trend:'৭-দিনের ট্রেন্ড', chart_area:'এলাকা বিতরণ',
+            records_manage:'রেকর্ড ব্যবস্থাপনা', btn_export:'এক্সেল রপ্তানি', btn_clear:'সব মুছুন',
+            summary_title:'দৈনিক সারাংশ', status_complete:'সম্পূর্ণ', status_in_only:'শুধু ইন', status_out_only:'শুধু আউট',
+            login_title:'অ্যাডমিন লগইন', login_cancel:'বাতিল', login_ok:'লগইন',
+            toast_success:'চেক-ইন সফল', toast_limit:'দৈনিক সীমা পূর্ণ (২ বার)',
+            config_ok:'ক্লাউড API কনফিগারড', config_ready:'সিস্টেম প্রস্তুত',
+            supervisor_manage:'সুপারভাইজার ব্যবস্থাপনা', supervisor_name:'সুপারভাইজার নাম', supervisor_passport:'পাসপোর্ট (শেষ ৪)',
+            btn_add_supervisor:'সুপারভাইজার যোগ করুন', supervisor_list:'সুপারভাইজার তালিকা', supervisor_stats:'সুপারভাইজার পরিসংখ্যান',
+            workarea_manage:'কাজের এলাকা ব্যবস্থাপনা', workarea_name:'এলাকার নাম', btn_add_workarea:'এলাকা যোগ', workarea_list:'এলাকার তালিকা',
+            trade_manage:'ট্রেড ব্যবস্থাপনা', trade_name:'ট্রেড নাম', btn_add_trade:'ট্রেড যোগ', trade_list:'ট্রেড তালিকা',
+            action_delete:'মুছুন', confirm_delete:'এই রেকর্ড মুছবেন?', confirm_clear:'সব ডেটা মুছবেন? এটি ফেরত যাবে না!',
+            th_type:'ধরন', th_time:'সময়', th_trade:'ট্রেড', th_area:'এলাকা', th_supervisor:'সুপারভাইজার', th_content:'বিবরণ',
+            th_date:'তারিখ', th_name:'নাম', th_passport:'পাসপোর্ট', th_checkin:'চেক ইন', th_checkout:'চেক আউট', th_status:'অবস্থা',
+            gps_retry_title:'অবস্থান অনুমতি অস্বীকৃত', gps_retry_desc:'চেক-ইন যাচাইয়ের জন্য অবস্থান সক্ষম করুন', gps_retry_btn:'অবস্থান পুনরায় চেষ্টা',
+            sync_ok:'☁️ সিঙ্ক হয়েছে', sync_saving:'⏳ সিঙ্ক হচ্ছে...', sync_err:'❌ সিঙ্ক ব্যর্থ'
+        }
+    };
+    function detectSystemLang() {
+        const nl = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        if (nl.startsWith('zh')) return 'zh'; if (nl.startsWith('bn')) return 'bn'; if (nl.startsWith('en')) return 'en'; return 'zh';
+    }
+    let currentLang = localStorage.getItem('checkin_lang') || detectSystemLang();
+    function t(key) { return (LANGS[currentLang] && LANGS[currentLang][key]) || key; }
+    function setLang(lang) { currentLang = lang; localStorage.setItem('checkin_lang', lang); location.reload(); }
+
+    // ==================== 配置（全部从服务器同步） ====================
+    const API_URL = 'https://script.google.com/macros/s/AKfycbz0ooz3j6aGnXHsLR8ugHiBDc0c4SxS_hpEXIOiv5EH0hAJNLDpCtEo2oclSTxbA7NV1Q/exec';
+    const ADMIN_PASSWORD = 'admin888'; // 仅用于本地登录校验，实际操作需后端验证
+    let isAdmin = false;
+    let chartInstances = {};
+    let allRecordsCache = [];
+    let myCheckinCount = 0; // 用变量存储签到次数而非读取 DOM
+
+    // —— 配置数据：优先从服务器加载，localStorage 作为缓存 ——
+    let supervisors = [];
+    let trades = [];
+    let workAreas = [];
+    let systemSettings = { workStart:'08:00', workEnd:'18:00', forceGPS:false, lateThreshold:30, earlyThreshold:30 };
+    let siteLocation = { lat:'', lng:'', radius:500 };
+    let employees = [];
+    let adminLogs = [];
+    let configLoaded = false;
+
+    // ==================== 设备指纹 ====================
+    function getDeviceId() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.textBaseline = 'top'; ctx.font = '14px Arial'; ctx.fillText('fp', 2, 2);
+        const fp = canvas.toDataURL();
+        const raw = [navigator.userAgent, navigator.language, screen.width, screen.height, new Date().getTimezoneOffset(), fp, navigator.hardwareConcurrency].join('|');
+        let h = 0;
+        for (let i = 0; i < raw.length; i++) h = ((h << 5) - h) + raw.charCodeAt(i), h |= 0;
+        return 'D' + Math.abs(h).toString(36).toUpperCase().slice(0, 6);
+    }
+    const DEVICE_ID = getDeviceId();
+
+    // ==================== API 封装 ====================
+    async function apiCall(action, params = {}) {
+        const url = new URL(API_URL);
+        url.searchParams.append('action', action);
+        Object.keys(params).forEach(k => {
+            if (params[k] !== undefined && params[k] !== null && params[k] !== '') {
+                url.searchParams.append(k, String(params[k]));
             }
-        };
-
-        function detectSystemLang() {
-            const navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-            if (navLang.startsWith('zh')) return 'zh';
-            if (navLang.startsWith('bn')) return 'bn';
-            if (navLang.startsWith('en')) return 'en';
-            return 'zh';
-        }
-        let currentLang = localStorage.getItem('checkin_lang') || detectSystemLang();
-        function t(key) { return LANGS[currentLang][key] || key; }
-        function setLang(lang) {
-            currentLang = lang;
-            localStorage.setItem('checkin_lang', lang);
-            location.reload();
-        }
-
-        // ==================== 配置 ====================
-        const API_URL = 'https://script.google.com/macros/s/AKfycbz0ooz3j6aGnXHsLR8ugHiBDc0c4SxS_hpEXIOiv5EH0hAJNLDpCtEo2oclSTxbA7NV1Q/exec';
-        const ADMIN_PASSWORD = 'admin888';
-        let isAdmin = false;
-        let chartInstances = {};
-        let allRecordsCache = [];
-        let supervisors = JSON.parse(localStorage.getItem('checkin_supervisors') || '[{"name":"Shahjahan","passport":"0001"},{"name":"Alagesan","passport":"0002"}]');
-        let trades = JSON.parse(localStorage.getItem('checkin_trades') || '["钢筋工","木工","混凝土工","电工","焊工","管道工","杂工"]');
-        let employees = JSON.parse(localStorage.getItem('checkin_employees') || '[]');
-        let systemSettings = JSON.parse(localStorage.getItem('checkin_settings') || '{"workStart":"08:00","workEnd":"18:00","forceGPS":false,"lateThreshold":30,"earlyThreshold":30}');
-        let adminLogs = JSON.parse(localStorage.getItem('checkin_logs') || '[]');
-
-        // ==================== 设备指纹 ====================
-        function getDeviceId() {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            ctx.textBaseline = 'top'; ctx.font = '14px Arial'; ctx.fillText('fp', 2, 2);
-            const fp = canvas.toDataURL();
-            const raw = [navigator.userAgent, navigator.language, screen.width, screen.height, new Date().getTimezoneOffset(), fp, navigator.hardwareConcurrency].join('|');
-            let h = 0;
-            for (let i = 0; i < raw.length; i++) h = ((h << 5) - h) + raw.charCodeAt(i), h |= 0;
-            return 'D' + Math.abs(h).toString(36).toUpperCase().slice(0, 6);
-        }
-        const DEVICE_ID = getDeviceId();
-
-        // ==================== API 封装 (全 GET 架构) ====================
-        async function apiGet(action, params = {}) {
-            const url = new URL(API_URL);
-            url.searchParams.append('action', action);
-            Object.keys(params).forEach(k => {
-                if (params[k] !== undefined && params[k] !== null && params[k] !== '') {
-                    url.searchParams.append(k, String(params[k]));
-                }
-            });
-            console.log('[API GET]', action, params, '→ URL:', url.toString());
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000);
-            try {
-                const res = await fetch(url.toString(), { 
-                    method: 'GET', 
-                    mode: 'cors', 
-                    cache: 'no-cache',
-                    signal: controller.signal
-                });
-                clearTimeout(timeoutId);
-                const data = await res.json();
-                console.log('[API RES]', action, '→', data);
-                return data;
-            } catch(err) {
-                clearTimeout(timeoutId);
-                console.log('[API ERR]', action, '→', err.message);
-                return { success: false, error: err.message };
-            }
-        }
-        async function apiPost(action, data = {}) {
-            const url = new URL(API_URL);
-            url.searchParams.append('action', action);
-            Object.keys(data).forEach(k => {
-                if (data[k] !== undefined && data[k] !== null) {
-                    url.searchParams.append(k, String(data[k]));
-                }
-            });
-            console.log('[API POST]', action, data, '→ URL:', url.toString());
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000);
-            try {
-                const res = await fetch(url.toString(), { 
-                    method: 'GET', 
-                    mode: 'cors', 
-                    cache: 'no-cache',
-                    signal: controller.signal
-                });
-                clearTimeout(timeoutId);
-                const result = await res.json();
-                console.log('[API RES]', action, '→', result);
-                return result;
-            } catch(err) {
-                clearTimeout(timeoutId);
-                console.log('[API ERR]', action, '→', err.message);
-                return { success: false, error: err.message };
-            }
-        }
-
-        // ==================== 督工管理 ====================
-        async function saveSupervisors() {
-        localStorage.setItem('checkin_supervisors', JSON.stringify(supervisors));
-         updateSupervisorSelects();
-          try {
-        await apiPost('saveSupervisors', { supervisors: JSON.stringify(supervisors) });
-         } catch(e) { console.log('Sync supervisors failed:', e); }
-        }
-       
-        function updateSupervisorSelects() {
-            const selects = ['cSupervisor', 'qSupervisor'];
-            const filterSup = document.getElementById('aFilterSupervisor');
-            if (filterSup) selects.push('aFilterSupervisor');
-            selects.forEach(id => {
-                const el = document.getElementById(id);
-                if (!el) return;
-                const currentVal = el.value;
-                el.innerHTML = '<option value="">' + t('placeholder_supervisor') + '</option>';
-                supervisors.forEach(s => {
-                    const opt = document.createElement('option');
-                    opt.value = s.name;
-                    opt.textContent = s.name + ' (' + s.passport + ')';
-                    el.appendChild(opt);
-                });
-                el.value = currentVal;
-            });
-            const empSup = document.getElementById('newEmpSupervisor');
-            if (empSup) {
-                const cur = empSup.value;
-                empSup.innerHTML = '<option value="">请选择</option>';
-                supervisors.forEach(s => {
-                    const opt = document.createElement('option');
-                    opt.value = s.name;
-                    opt.textContent = s.name;
-                    empSup.appendChild(opt);
-                });
-                empSup.value = cur;
-            }
-        }
-        async function addSupervisor() {
-            const name = document.getElementById('newSupervisorName').value.trim();
-            const passport = document.getElementById('newSupervisorPassport').value.trim();
-            if (!name || !passport || passport.length !== 4 || !/^[\dA-Za-z]{4}$/.test(passport)) {
-                showToast(currentLang === 'zh' ? '请输入有效的姓名和4位准证号码（字母或数字）' : 'Invalid name or passport', 'error');
-                return;
-            }
-            if (supervisors.find(s => s.name === name)) {
-                showToast('该督工已存在', 'error');
-                return;
-            }
-            supervisors.push({ name, passport });
-            await saveSupervisors();
-            document.getElementById('newSupervisorName').value = '';
-            document.getElementById('newSupervisorPassport').value = '';
-            renderSupervisorList();
-            renderSupervisorStats();
-            addAdminLog('添加督工', '添加督工: ' + name);
-            showToast('督工添加成功', 'success');
-        }
-        async function deleteSupervisor(index) {
-            if (!confirm('确定删除督工 ' + supervisors[index].name + '？')) return;
-            addAdminLog('删除督工', '删除督工: ' + supervisors[index].name);
-            supervisors.splice(index, 1);
-            await saveSupervisors();
-            renderSupervisorList();
-            renderSupervisorStats();
-        }
-        function renderSupervisorList() {
-            const container = document.getElementById('supervisorList');
-            if (!container) return;
-            if (supervisors.length === 0) {
-                container.innerHTML = '<div style="text-align:center;color:#999;padding:20px;">暂无督工</div>';
-                return;
-            }
-            container.innerHTML = supervisors.map((s, i) => `
-                <div class="supervisor-card">
-                    <div class="supervisor-info">
-                        <div class="supervisor-name">${esc(s.name)}</div>
-                        <div class="supervisor-passport">Passport: ****${esc(s.passport)}</div>
-                    </div>
-                    <button class="btn btn-danger btn-sm" onclick="deleteSupervisor(${i})">${t('action_delete')}</button>
-                </div>
-            `).join('');
-        }
-        function renderSupervisorStats() {
-            const tbody = document.getElementById('supervisorStatsTable');
-            if (!tbody || !allRecordsCache.length) {
-                if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#999;">暂无数据</td></tr>';
-                return;
-            }
-            const stats = {};
-            supervisors.forEach(s => { stats[s.name] = { count: 0, in: 0, out: 0 }; });
-            allRecordsCache.forEach(r => {
-                const sup = r['负责督工'];
-                if (stats[sup]) {
-                    stats[sup].count++;
-                    if (r['签到类型'] === '上班') stats[sup].in++;
-                    else stats[sup].out++;
-                }
-            });
-            tbody.innerHTML = supervisors.map(s => `
-                <tr>
-                    <td>${esc(s.name)}</td>
-                    <td>****${esc(s.passport)}</td>
-                    <td>${stats[s.name]?.count || 0}</td>
-                    <td><span class="badge badge-in">${t('type_in')}: ${stats[s.name]?.in || 0}</span> <span class="badge badge-out">${t('type_out')}: ${stats[s.name]?.out || 0}</span></td>
-                </tr>
-            `).join('');
-        }
-
-        // ==================== 工种管理 ====================
-        
-        async function saveTrades() {
-    localStorage.setItem('checkin_trades', JSON.stringify(trades));
-    updateTradeSelects();
-    try {
-        await apiPost('saveTrades', { trades: JSON.stringify(trades) });
-    } catch(e) { console.log('Sync trades failed:', e); }
-}
-        function updateWorkAreaSelects() {
-            const selects = [
-                { id: 'cArea', placeholder: '请选择', includeAll: false },
-                { id: 'qArea', placeholder: '全部', includeAll: true },
-                { id: 'aFilterArea', placeholder: '全部', includeAll: true }
-            ];
-            selects.forEach(cfg => {
-                const el = document.getElementById(cfg.id);
-                if (!el) return;
-                const currentVal = el.value;
-                el.innerHTML = '<option value="">' + cfg.placeholder + '</option>';
-                workAreas.forEach(area => {
-                    const opt = document.createElement('option');
-                    opt.value = area;
-                    opt.textContent = area;
-                    el.appendChild(opt);
-                });
-                el.value = currentVal;
-            });
-        }
-        function updateTradeSelects() {
-            const selects = ['cTrade', 'qTrade', 'aFilterTrade'];
-            selects.forEach(id => {
-                const el = document.getElementById(id);
-                if (!el) return;
-                const currentVal = el.value;
-                el.innerHTML = '<option value="">' + (id === 'cTrade' ? t('placeholder_trade') : '全部') + '</option>';
-                trades.forEach(trade => {
-                    const opt = document.createElement('option');
-                    opt.value = trade;
-                    opt.textContent = trade;
-                    el.appendChild(opt);
-                });
-                el.value = currentVal;
-            });
-            const empTrade = document.getElementById('newEmpTrade');
-            if (empTrade) {
-                const cur = empTrade.value;
-                empTrade.innerHTML = '<option value="">请选择</option>';
-                trades.forEach(trade => {
-                    const opt = document.createElement('option');
-                    opt.value = trade;
-                    opt.textContent = trade;
-                    empTrade.appendChild(opt);
-                });
-                empTrade.value = cur;
-            }
-        }
-        async function addTrade() {
-            const name = document.getElementById('newTradeName').value.trim();
-            if (!name) { showToast('请输入工种名称', 'error'); return; }
-            if (trades.includes(name)) { showToast('该工种已存在', 'error'); return; }
-            trades.push(name);
-            saveTrades();
-            document.getElementById('newTradeName').value = '';
-            await renderTradeList();
-            addAdminLog('添加工种', name);
-            showToast('工种添加成功', 'success');
-        }
-        async function deleteTrade(index) {
-            if (!confirm('确定删除工种 ' + trades[index] + '？')) return;
-            addAdminLog('删除工种', trades[index]);
-            trades.splice(index, 1);
-            await saveTrades();
-            renderTradeList();
-        }
-        function renderTradeList() {
-            const container = document.getElementById('tradeList');
-            if (!container) return;
-            if (trades.length === 0) {
-                container.innerHTML = '<div style="text-align:center;color:#999;padding:10px;">暂无工种</div>';
-                return;
-            }
-            container.innerHTML = trades.map((tr, i) => `
-                <div class="supervisor-card" style="margin-bottom:8px;">
-                    <div class="supervisor-info"><div class="supervisor-name">${esc(tr)}</div></div>
-                    <button class="btn btn-danger btn-sm" onclick="deleteTrade(${i})">${t('action_delete')}</button>
-                </div>
-            `).join('');
-        }
-
-        // ==================== 员工档案管理 ====================
-        function renderEmployeeManagement() {
-            const tbody = document.getElementById('employeeTable');
-            if (!tbody) return;
-            if (employees.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#999;padding:20px;">暂无员工档案</td></tr>';
-                return;
-            }
-            tbody.innerHTML = employees.map((e, i) => `
-                <tr>
-                    <td>${esc(e.name)}</td>
-                    <td>****${esc(e.passport)}</td>
-                    <td>${esc(e.supervisor || '-')}</td>
-                    <td>${esc(e.trade || '-')}</td>
-                    <td><button class="btn btn-danger btn-sm" onclick="deleteEmployee(${i})">删除</button></td>
-                </tr>
-            `).join('');
-        }
-        async function addEmployee() {
-            const name = document.getElementById('newEmpName').value.trim();
-            const passport = document.getElementById('newEmpPassport').value.trim();
-            const supervisor = document.getElementById('newEmpSupervisor').value;
-            const trade = document.getElementById('newEmpTrade').value;
-            if (!name || !passport || passport.length !== 4 || !/^[\dA-Za-z]{4}$/.test(passport)) {
-                showToast('请输入有效的姓名和4位准证号码（字母或数字）', 'error');
-                return;
-            }
-            if (employees.find(e => e.passport === passport)) {
-                showToast('该准证号码已存在', 'error');
-                return;
-            }
-            employees.push({ name, passport, supervisor, trade, created: new Date().toISOString() });
-            localStorage.setItem('checkin_employees', JSON.stringify(employees));
-            try {
-        await apiPost('saveEmployees', { employees: JSON.stringify(employees) });
-    } catch(e) { console.log('Sync employees failed:', e); }
-            document.getElementById('newEmpName').value = '';
-            document.getElementById('newEmpPassport').value = '';
-            renderEmployeeManagement();
-            addAdminLog('添加员工', '添加员工: ' + name + (supervisor ? ' (督工:'+supervisor+')' : '') + (trade ? ' (工种:'+trade+')' : ''));
-            showToast('员工添加成功', 'success');
-        }
-        async function deleteEmployee(index) {
-            if (!confirm('确定删除员工 ' + employees[index].name + '？')) return;
-            addAdminLog('删除员工', '删除员工: ' + employees[index].name);
-            employees.splice(index, 1);
-            localStorage.setItem('checkin_employees', JSON.stringify(employees));
-            try {
-        await apiPost('saveEmployees', { employees: JSON.stringify(employees) });
-    } catch(e) { console.log('Sync employees failed:', e); }
-            renderEmployeeManagement();
-        }
-
-        // ==================== 系统设置 ====================
-        function loadSystemSettings() {
-            document.getElementById('settingWorkStart').value = systemSettings.workStart;
-            document.getElementById('settingWorkEnd').value = systemSettings.workEnd;
-            document.getElementById('settingLate').value = systemSettings.lateThreshold;
-            document.getElementById('settingEarly').value = systemSettings.earlyThreshold;
-            document.getElementById('settingForceGPS').checked = systemSettings.forceGPS;
-        }
-        function saveSystemSettings() {
-            systemSettings = {
-                workStart: document.getElementById('settingWorkStart').value,
-                workEnd: document.getElementById('settingWorkEnd').value,
-                lateThreshold: parseInt(document.getElementById('settingLate').value) || 30,
-                earlyThreshold: parseInt(document.getElementById('settingEarly').value) || 30,
-                forceGPS: document.getElementById('settingForceGPS').checked
-            };
-            localStorage.setItem('checkin_settings', JSON.stringify(systemSettings));
-            addAdminLog('修改设置', '更新签到规则: 上班' + systemSettings.workStart + ' 下班' + systemSettings.workEnd + (systemSettings.forceGPS ? ' [强制GPS]' : ''));
-            showToast('设置已保存', 'success');
-        }
-
-        // ==================== 异常检测引擎 ====================
-        function getAnomalies(r) {
-            const list = [];
-            if (r['距离'] && r['距离'] !== '' && parseInt(r['距离']) > (siteLocation.radius || 500)) {
-                list.push(currentLang === 'zh' ? 'GPS越界' : (currentLang === 'en' ? 'GPS Out' : 'GPS বাইরে'));
-            }
-            const time = r['时间'] || '';
-            const [h, m] = time.split(':').map(Number);
-            if (!isNaN(h) && !isNaN(m)) {
-                const mins = h * 60 + m;
-                const [sh, sm] = systemSettings.workStart.split(':').map(Number);
-                const [eh, em] = systemSettings.workEnd.split(':').map(Number);
-                const startMins = sh * 60 + sm + (systemSettings.lateThreshold || 30);
-                const endMins = eh * 60 + em - (systemSettings.earlyThreshold || 30);
-                if (r['签到类型'] === '上班' && mins > startMins) {
-                    list.push(currentLang === 'zh' ? '迟到' : (currentLang === 'en' ? 'Late' : 'দেরি'));
-                }
-                if (r['签到类型'] === '下班' && mins < endMins) {
-                    list.push(currentLang === 'zh' ? '早退' : (currentLang === 'en' ? 'Early' : 'তাড়াতাড়ি'));
-                }
-            }
-            return list;
-        }
-
-        // ==================== 操作日志 ====================
-        function addAdminLog(action, detail) {
-            adminLogs.unshift({
-                time: new Date().toLocaleString('zh-CN', { hour12: false }),
-                action: action,
-                detail: detail,
-                device: DEVICE_ID
-            });
-            if (adminLogs.length > 50) adminLogs = adminLogs.slice(0, 50);
-            localStorage.setItem('checkin_logs', JSON.stringify(adminLogs));
-            renderAdminLogs();
-        }
-        function renderAdminLogs() {
-            const tbody = document.getElementById('adminLogsTable');
-            if (!tbody) return;
-            if (adminLogs.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#999;padding:20px;">暂无日志</td></tr>';
-                return;
-            }
-            tbody.innerHTML = adminLogs.map(l => `
-                <tr>
-                    <td style="font-size:12px;white-space:nowrap;">${esc(l.time)}</td>
-                    <td><span class="badge badge-area">${esc(l.action)}</span></td>
-                    <td>${esc(l.detail)}</td>
-                    <td style="font-size:11px;color:#999;">${esc(l.device)}</td>
-                </tr>
-            `).join('');
-        }
-
-        // ==================== 数据备份与恢复 ====================
-        function exportDataJSON() {
-            const payload = {
-                exportTime: new Date().toISOString(),
-                version: '2.1',
-                supervisors: supervisors,
-                trades: trades,
-                employees: employees,
-                systemSettings: systemSettings,
-                siteLocation: siteLocation,
-                logs: adminLogs,
-                records: allRecordsCache.slice(0, 100)
-            };
-            const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'checkin_backup_' + new Date().toISOString().slice(0, 10) + '.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            addAdminLog('导出数据', '导出JSON备份');
-            showToast('数据已导出', 'success');
-        }
-        function importDataJSON() {
-            try {
-                const text = document.getElementById('importJsonArea').value.trim();
-                if (!text) { showToast('请输入JSON数据', 'error'); return; }
-                const data = JSON.parse(text);
-                if (data.supervisors) { supervisors = data.supervisors; saveSupervisors(); }
-                if (data.trades) { trades = data.trades; saveTrades(); }
-                if (data.employees) { employees = data.employees; localStorage.setItem('checkin_employees', JSON.stringify(employees)); renderEmployeeManagement(); }
-                if (data.systemSettings) { systemSettings = data.systemSettings; localStorage.setItem('checkin_settings', JSON.stringify(systemSettings)); loadSystemSettings(); }
-                if (data.siteLocation) { siteLocation = data.siteLocation; localStorage.setItem('checkin_site_location', JSON.stringify(siteLocation)); loadSiteLocation(); }
-                if (data.logs) { adminLogs = data.logs.slice(0, 50); localStorage.setItem('checkin_logs', JSON.stringify(adminLogs)); renderAdminLogs(); }
-                addAdminLog('导入数据', '从JSON恢复系统配置');
-                showToast('数据已恢复', 'success');
-            } catch (e) {
-                showToast('JSON格式错误: ' + e.message, 'error');
-            }
-        }
-
-        // ==================== 页面切换 ====================
-        function switchPage(page) {
-            if (page === 'admin' && !isAdmin) { openAdminModal(); return; }
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById('page-' + page).classList.add('active');
-            const clickedBtn = Array.from(document.querySelectorAll('.nav-tab')).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + page + "'"));
-            if (clickedBtn) clickedBtn.classList.add('active');
-            if (page === 'admin') renderAdmin();
-            if (page === 'records') queryRecords();
-        }
-
-        // ==================== 管理员后台子标签切换 ====================
-        function switchAdminTab(tab) {
-            document.querySelectorAll('.admin-page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById('admin-' + tab).classList.add('active');
-            document.getElementById('atab-' + tab).classList.add('active');
-            if (tab === 'employees') renderEmployeeManagement();
-            if (tab === 'settings') { loadSystemSettings(); renderAdminLogs(); }
-        }
-
-        // ==================== 管理员登录 ====================
-        function openAdminModal() {
-            document.getElementById('adminModal').classList.add('show');
-            document.getElementById('adminPwd').value = '';
-            setTimeout(() => document.getElementById('adminPwd').focus(), 100);
-        }
-        function closeAdminModal() { document.getElementById('adminModal').classList.remove('show'); }
-        function adminLogin() {
-            if (document.getElementById('adminPwd').value === ADMIN_PASSWORD) {
-                isAdmin = true; closeAdminModal();
-                addAdminLog('登录', '管理员登录成功');
-                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                document.getElementById('page-admin').classList.add('active');
-                document.querySelectorAll('.nav-tab')[2].classList.add('active');
-                renderAdmin();
-                showToast('✅ 管理员登录成功', 'success');
-            } else { showToast('❌ 密码错误', 'error'); }
-        }
-
-        // ==================== 签到页 ====================
-        async function updateCheckinPage() {
-            const now = new Date();
-            const dateStr = now.getFullYear() + '年' + String(now.getMonth()+1).padStart(2,'0') + '月' + String(now.getDate()).padStart(2,'0') + '日';
-            const timeStr = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0') + ':' + String(now.getSeconds()).padStart(2,'0');
-            document.getElementById('cDate').value = dateStr;
-            document.getElementById('cTime').value = timeStr;
-            document.getElementById('currentTime').textContent = timeStr.slice(0,5);
-            document.getElementById('deviceIdShort').textContent = DEVICE_ID;
-
-            try {
-                const res = await apiGet('getRecords', { deviceId: DEVICE_ID, dateString: now.toDateString() });
-                const myRecords = res.success ? res.records.sort((a,b) => new Date(a['时间戳']) - new Date(b['时间戳'])) : [];
-                const count = myRecords.length;
-                document.getElementById('todayCount').textContent = count;
-
-                const statusEl = document.getElementById('checkinStatus');
-                const btn = document.getElementById('cSubmit');
-                if (count === 0) {
-                    statusEl.className = 'checkin-status status-pending';
-                    statusEl.innerHTML = '🟡 ' + t('status_pending').replace('2', '<b>2</b>');
-                    btn.textContent = '⬆️ ' + t('btn_checkin_in'); btn.disabled = false;
-                } else if (count === 1) {
-                    statusEl.className = 'checkin-status status-half';
-                    statusEl.innerHTML = '🟢 ' + t('status_half').replace('1', '<b>1</b>');
-                    btn.textContent = '⬇️ ' + t('btn_checkin_out'); btn.disabled = false;
-                } else {
-                    statusEl.className = 'checkin-status status-done';
-                    statusEl.innerHTML = '🔴 ' + t('status_done').replace('2', '<b>2</b>');
-                    btn.textContent = '✅ ' + t('btn_done'); btn.disabled = true;
-                }
-
-                const tbody = document.getElementById('myRecords');
-                if (myRecords.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#999;">暂无记录</td></tr>';
-                } else {
-                    tbody.innerHTML = myRecords.map((r,i) => {
-                        const timeStr = formatTimeField(r['时间']) || formatTimeFromTimestamp(r['时间戳']) || '-';
-                        return `<tr>
-                            <td><span class="badge ${i===0?'badge-in':'badge-out'}">${i===0?t('type_in'):t('type_out')}</span></td>
-                            <td>${timeStr}</td>
-                            <td><span class="badge badge-area">${esc(r['工种'] || '-')}</span></td>
-                            <td><span class="badge badge-area">${esc(r['工作区域'])}</span></td>
-                            <td>${esc(r['负责督工'])}</td>
-                            <td>${esc((r['工作内容'] || '').substring(0,20))}${(r['工作内容'] || '').length>20?'...':''}</td>
-                        </tr>`;
-                    }).join('');
-                }
-            } catch(e) {
-                console.log('updateCheckinPage error:', e);
-                statusEl.className = 'checkin-status status-pending';
-                statusEl.innerHTML = '🟡 ' + t('status_pending').replace('2', '<b>2</b>');
-                btn.textContent = '⬆️ ' + t('btn_checkin_in'); btn.disabled = false;
-                document.getElementById('todayCount').textContent = '?';
-            }
-        }
-
-        document.getElementById('checkinForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('cSubmit');
-
-            if (systemSettings.forceGPS) {
-                if (!currentLocation.lat) {
-                    showToast(currentLang === 'zh' ? '请先允许GPS定位' : 'Please enable GPS', 'error');
-                    return;
-                }
-                if (siteLocation.lat && siteLocation.lng) {
-                    const dist = getDistance(currentLocation.lat, currentLocation.lng, siteLocation.lat, siteLocation.lng);
-                    if (dist > siteLocation.radius) {
-                        showToast(currentLang === 'zh' ? '当前位置不在工地范围内，无法签到' : 'Out of site range', 'error');
-                        return;
-                    }
-                }
-            }
-
-            const content = document.getElementById('cContent').value.trim();
-            if (content.length > 300) {
-                showToast(currentLang === 'zh' ? '工作内容过长，请控制在300字以内' : 'Content too long', 'error');
-                return;
-            }
-
-            btn.disabled = true;
-            btn.innerHTML = '<span class="loading"></span> ' + (currentLang === 'zh' ? '提交中...' : currentLang === 'en' ? 'Submitting...' : 'জমা দেওয়া হচ্ছে...');
-
-            try {
-                const now = new Date();
-                let distance = '';
-                let inRange = '';
-                if (currentLocation.lat && siteLocation.lat) {
-                    distance = getDistance(currentLocation.lat, currentLocation.lng, siteLocation.lat, siteLocation.lng);
-                    inRange = distance <= siteLocation.radius ? '范围内' : '范围外';
-                }
-
-                const data = {
-                    deviceId: DEVICE_ID,
-                    dateString: now.toDateString(),
-                    date: document.getElementById('cDate').value,
-                    time: document.getElementById('cTime').value,
-                    name: document.getElementById('cName').value.trim(),
-                    passport: document.getElementById('cPassport').value.trim(),
-                    trade: document.getElementById('cTrade').value,
-                    workArea: document.getElementById('cArea').value,
-                    workContent: document.getElementById('cContent').value.trim(),
-                    supervisor: document.getElementById('cSupervisor').value,
-                    checkinType: document.getElementById('todayCount').textContent === '0' ? '上班' : '下班',
-                    lat: currentLocation.lat || '',
-                    lng: currentLocation.lng || '',
-                    distance: distance,
-                    inRange: inRange
-                };
-                const res = await apiPost('checkin', data);
-                if (res.success) {
-                    showToast(t('toast_success') + ' (' + res.checkinType + ')', 'success');
-                    document.getElementById('cArea').value = '';
-                    document.getElementById('cContent').value = '';
-                    document.getElementById('cSupervisor').value = '';
-                    document.getElementById('cTrade').value = '';
-                } else {
-                    showToast(res.error || t('toast_limit'), 'error');
-                }
-            } catch(err) {
-                showToast('Network error: ' + err.message, 'error');
-            }
-            await updateCheckinPage();
         });
+        const controller = new AbortController();
+        const tid = setTimeout(() => controller.abort(), 15000);
+        try {
+            const res = await fetch(url.toString(), { method:'GET', mode:'cors', cache:'no-cache', signal:controller.signal });
+            clearTimeout(tid);
+            return await res.json();
+        } catch(err) { clearTimeout(tid); return { success:false, error:err.message }; }
+    }
 
-        // ==================== 记录查询 ====================
-        async function queryRecords() {
-            const tbody = document.getElementById('queryResult');
-            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;">Loading...</td></tr>';
-            try {
-                const params = {};
-                const date = document.getElementById('qDate').value;
-                if (date) params.dateString = getSGDateStringISO(new Date(date));
-                if (document.getElementById('qName').value) params.name = document.getElementById('qName').value.trim();
-                if (document.getElementById('qTrade').value) params.trade = document.getElementById('qTrade').value;
-                if (document.getElementById('qArea').value) params.workArea = document.getElementById('qArea').value;
-                if (document.getElementById('qSupervisor').value) params.supervisor = document.getElementById('qSupervisor').value;
+    // ==================== 配置同步核心 ====================
+    function updateSyncBadge(id, status) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (status === 'ok') { el.className = 'sync-badge sync-ok'; el.textContent = t('sync_ok'); }
+        else if (status === 'saving') { el.className = 'sync-badge sync-loading'; el.innerHTML = '<span class="loading" style="width:10px;height:10px;border-width:1px;"></span> ' + t('sync_saving'); }
+        else if (status === 'err') { el.className = 'sync-badge sync-err'; el.textContent = t('sync_err'); }
+    }
 
-                const res = await apiGet('getRecords', params);
-                if (res.success) renderQueryTable(res.records);
-                else tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;">Failed</td></tr>';
-            } catch(e) {
-                tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;">Network error</td></tr>';
+    async function loadConfigFromServer() {
+        const badge = document.getElementById('syncStatusBadge');
+        if (badge) { badge.className = 'sync-badge sync-loading'; badge.innerHTML = '<span class="loading" style="width:10px;height:10px;border-width:1px;"></span> 同步中'; }
+        try {
+            const res = await apiCall('getConfig');
+            if (res.success) {
+                if (res.siteLocation) siteLocation = res.siteLocation;
+                if (res.workAreas && res.workAreas.length > 0) workAreas = res.workAreas;
+                if (res.trades && res.trades.length > 0) trades = res.trades;
+                if (res.supervisors && res.supervisors.length > 0) supervisors = res.supervisors;
+                if (res.systemSettings) systemSettings = { ...systemSettings, ...res.systemSettings };
+                // 缓存到 localStorage
+                localStorage.setItem('checkin_site_location', JSON.stringify(siteLocation));
+                localStorage.setItem('checkin_work_areas', JSON.stringify(workAreas));
+                localStorage.setItem('checkin_trades', JSON.stringify(trades));
+                localStorage.setItem('checkin_supervisors', JSON.stringify(supervisors));
+                localStorage.setItem('checkin_settings', JSON.stringify(systemSettings));
+                configLoaded = true;
+                if (badge) { badge.className = 'sync-badge sync-ok'; badge.textContent = '☁️ 已同步'; }
+                // 刷新所有下拉框
+                updateAllSelects();
+                loadSiteLocation();
+                if (isAdmin) loadSystemSettings();
+                return true;
             }
-        }
-        function formatDateFromTimestamp(ts) {
-            if (!ts) return '-';
-            try {
-                const d = new Date(ts);
-                if (isNaN(d.getTime())) return String(ts).slice(0, 10);
-                const offsetMs = 8 * 60 * 60 * 1000;
-                const sgDate = new Date(d.getTime() + offsetMs);
-                return sgDate.getUTCFullYear() + '-' + 
-                       String(sgDate.getUTCMonth() + 1).padStart(2, '0') + '-' + 
-                       String(sgDate.getUTCDate()).padStart(2, '0');
-            } catch(e) { 
-                return String(ts).slice(0, 10); 
-            }
-        }
-        function formatTimeFromTimestamp(ts) {
-            if (!ts) return '-';
-            try {
-                const d = new Date(ts);
-                if (isNaN(d.getTime())) return String(ts);
-                const offsetMs = 8 * 60 * 60 * 1000;
-                const sgDate = new Date(d.getTime() + offsetMs);
-                return String(sgDate.getUTCHours()).padStart(2, '0') + ':' + 
-                       String(sgDate.getUTCMinutes()).padStart(2, '0') + ':' + 
-                       String(sgDate.getUTCSeconds()).padStart(2, '0');
-            } catch(e) { 
-                return String(ts); 
-            }
-        }
-        function formatTimeField(timeVal) {
-            if (!timeVal) return '-';
-            // 情况1：已经是纯文本 HH:MM:SS，直接返回
-            if (typeof timeVal === 'string' && /^\d{1,2}:\d{2}:\d{2}$/.test(timeVal.trim())) {
-                return timeVal.trim();
-            }
-            try {
-                const d = new Date(timeVal);
-                if (isNaN(d.getTime())) return String(timeVal);
-                // 情况2：Google Sheets Time类型（1899-12-30），用本地时间读取
-                if (d.getFullYear() < 2000) {
-                    return String(d.getHours()).padStart(2, '0') + ':' + 
-                           String(d.getMinutes()).padStart(2, '0') + ':' + 
-                           String(d.getSeconds()).padStart(2, '0');
-                }
-                // 情况3：正常时间戳，统一按 GMT+8 显示
-                const offsetMs = 8 * 60 * 60 * 1000;
-                const sgDate = new Date(d.getTime() + offsetMs);
-                return String(sgDate.getUTCHours()).padStart(2, '0') + ':' + 
-                       String(sgDate.getUTCMinutes()).padStart(2, '0') + ':' + 
-                       String(sgDate.getUTCSeconds()).padStart(2, '0');
-            } catch(e) { 
-                return String(timeVal); 
-            }
-        }
-        function renderQueryTable(records) {
-            const tbody = document.getElementById('queryResult');
-            if (records.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;padding:30px;">No records</td></tr>';
-                return;
-            }
-            tbody.innerHTML = records.map(r => {
-                const dateStr = formatDateFromTimestamp(r['时间戳']) || r['日期'] || '-';
-                const timeStr = formatTimeField(r['时间']) || formatTimeFromTimestamp(r['时间戳']) || '-';
-                return `<tr>
-                    <td>${dateStr}</td>
-                    <td><span class="badge ${r['签到类型']==='上班'?'badge-in':'badge-out'}">${r['签到类型']==='上班'?t('type_in'):t('type_out')}</span></td>
-                    <td>${esc(r['姓名'])}</td>
-                    <td>****${esc(r['准证后四位'])}</td>
-                    <td><span class="badge badge-area">${esc(r['工种'] || '-')}</span></td>
-                    <td>${timeStr}</td>
-                    <td><span class="badge badge-area">${esc(r['工作区域'])}</span></td>
-                    <td>${esc(r['负责督工'])}</td>
-                    <td>${esc((r['工作内容'] || '').substring(0,15))}${(r['工作内容'] || '').length>15?'...':''}</td>
-                </tr>`;
-            }).join('');
-        }
-        function resetQuery() {
-            document.getElementById('qDate').value = '';
-            document.getElementById('qName').value = '';
-            document.getElementById('qTrade').value = '';
-            document.getElementById('qArea').value = '';
-            document.getElementById('qSupervisor').value = '';
-            queryRecords();
-        }
+        } catch(e) { console.log('Config load failed:', e); }
+        // 降级：从 localStorage 读取缓存
+        try { siteLocation = JSON.parse(localStorage.getItem('checkin_site_location')) || siteLocation; } catch(e) {}
+        try { workAreas = JSON.parse(localStorage.getItem('checkin_work_areas')) || workAreas; } catch(e) {}
+        try { trades = JSON.parse(localStorage.getItem('checkin_trades')) || trades; } catch(e) {}
+        try { supervisors = JSON.parse(localStorage.getItem('checkin_supervisors')) || supervisors; } catch(e) {}
+        try { systemSettings = JSON.parse(localStorage.getItem('checkin_settings')) || systemSettings; } catch(e) {}
+        if (badge) { badge.className = 'sync-badge sync-err'; badge.textContent = '❌ 离线模式'; }
+        updateAllSelects();
+        loadSiteLocation();
+        return false;
+    }
 
-        // ==================== 管理员后台 ====================
-        async function renderAdmin() {
-            try {
-                const [statsRes, recordsRes, summaryRes] = await Promise.all([
-                    apiGet('getStats'),
-                    apiGet('getRecords', {}),
-                    apiGet('getSummary')
-                ]);
-
-                if (statsRes.success) {
-                    document.getElementById('aTotalRecords').textContent = statsRes.totalRecords || 0;
-                    document.getElementById('aTodayRecords').textContent = statsRes.todayRecords || 0;
-                    document.getElementById('aTodayPeople').textContent = statsRes.todayPeople || 0;
-                    document.getElementById('aCompleteRate').textContent = (statsRes.completeRate || 0) + '%';
-                    renderCharts(statsRes);
-                }
-
-                if (recordsRes.success) {
-                    allRecordsCache = recordsRes.records;
-                    const anomalyCount = allRecordsCache.filter(r => getAnomalies(r).length > 0).length;
-                    document.getElementById('aAnomalyRecords').textContent = anomalyCount;
-                    adminFilter();
-                }
-
-                if (summaryRes.success) renderSummaryTable(summaryRes.summary);
-                renderWorkAreaList();
-                renderSupervisorList();
-                renderSupervisorStats();
-                renderTradeList();
-            } catch(e) {
-                showToast('Admin load failed: ' + e.message, 'error');
-            }
-        }
-
-        function renderCharts(stats) {
-            const days = [], counts = [];
-            for (let i = 6; i >= 0; i--) {
-                const d = new Date(); d.setDate(d.getDate() - i);
-                const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-                days.push(String(d.getMonth()+1) + '/' + String(d.getDate()));
-                counts.push(stats.dailyCount[key] || 0);
-            }
-            if (chartInstances.trend) chartInstances.trend.destroy();
-            chartInstances.trend = new Chart(document.getElementById('trendChart'), {
-                type: 'line',
-                data: { labels: days, datasets: [{ label: 'Check-ins', data: counts, borderColor: '#667eea', backgroundColor: 'rgba(102,126,234,0.1)', fill: true, tension: 0.4 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+    async function saveConfigToServer(configObj) {
+        const keys = Object.keys(configObj);
+        keys.forEach(k => updateSyncBadge(k + 'SyncBadge', 'saving'));
+        updateSyncBadge('syncStatusBadge', 'saving');
+        try {
+            const params = { action:'saveConfig', password: ADMIN_PASSWORD };
+            // 逐项添加配置到 URL 参数
+            Object.keys(configObj).forEach(k => {
+                let val = configObj[k];
+                if (typeof val === 'object') val = JSON.stringify(val);
+                params[k] = val;
             });
-
-            const areas = Object.keys(stats.areaCount || {});
-            const areaCounts = Object.values(stats.areaCount || {});
-            if (chartInstances.area) chartInstances.area.destroy();
-            chartInstances.area = new Chart(document.getElementById('areaChart'), {
-                type: 'doughnut',
-                data: { labels: areas, datasets: [{ data: areaCounts, backgroundColor: ['#667eea','#764ba2','#f093fb','#f5576c','#4facfe','#00f2fe','#11998e','#38ef7d'] }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } } } }
-            });
-        }
-
-        function adminFilter() {
-            const date = document.getElementById('aFilterDate').value;
-            const name = document.getElementById('aFilterName').value.trim().toLowerCase();
-            const trade = document.getElementById('aFilterTrade').value;
-            const area = document.getElementById('aFilterArea').value;
-            const anomalyFilter = document.getElementById('aFilterAnomaly').value;
-
-            let records = [...allRecordsCache];
-            if (date) {
-                const ds = getSGDateStringISO(new Date(date));
-                records = records.filter(r => { try { return getSGDateStringISO(new Date(r['时间戳'])) === ds; } catch(e) { return false; } });
+            const res = await apiCall('saveConfig', params);
+            if (res.success) {
+                keys.forEach(k => updateSyncBadge(k + 'SyncBadge', 'ok'));
+                updateSyncBadge('syncStatusBadge', 'ok');
+                // 更新 localStorage 缓存
+                if (configObj.siteLocation) localStorage.setItem('checkin_site_location', JSON.stringify(configObj.siteLocation));
+                if (configObj.workAreas) localStorage.setItem('checkin_work_areas', JSON.stringify(configObj.workAreas));
+                if (configObj.trades) localStorage.setItem('checkin_trades', JSON.stringify(configObj.trades));
+                if (configObj.supervisors) localStorage.setItem('checkin_supervisors', JSON.stringify(configObj.supervisors));
+                if (configObj.systemSettings) localStorage.setItem('checkin_settings', JSON.stringify(configObj.systemSettings));
+                return true;
+            } else {
+                keys.forEach(k => updateSyncBadge(k + 'SyncBadge', 'err'));
+                updateSyncBadge('syncStatusBadge', 'err');
+                showToast(res.error || '保存失败', 'error');
+                return false;
             }
-            if (name) records = records.filter(r => r['姓名'] && String(r['姓名']).toLowerCase().includes(name));
-            if (trade) records = records.filter(r => r['工种'] === trade);
-            if (area) records = records.filter(r => r['工作区域'] === area);
-
-            if (anomalyFilter) {
-                records = records.filter(r => {
-                    const hasAnomaly = getAnomalies(r).length > 0;
-                    return anomalyFilter === 'anomaly' ? hasAnomaly : !hasAnomaly;
-                });
-            }
-
-            const tbody = document.getElementById('adminTable');
-            if (records.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="14" style="text-align:center;color:#999;padding:30px;">No records</td></tr>';
-                return;
-            }
-            tbody.innerHTML = records.map(r => {
-                const anomalies = getAnomalies(r);
-                const isAnomaly = anomalies.length > 0;
-                const rowClass = isAnomaly ? 'class="anomaly-row"' : '';
-                const anomalyHtml = isAnomaly ? `<div style="margin-top:4px;">${anomalies.map(a=>`<span class="anomaly-tag">${esc(a)}</span>`).join('')}</div>` : '<span style="color:#2e7d32;font-size:11px;">✓ 正常</span>';
-                const distBadge = r['距离'] ? `<span class="distance-badge ${parseInt(r['距离'])>(siteLocation.radius||500)?'dist-far':'dist-ok'}">${r['距离']}m</span>` : '--';
-                const locInfo = r['纬度'] ? `${parseFloat(r['纬度']).toFixed(4)}, ${parseFloat(r['经度']).toFixed(4)}` : '--';
-                const dateStr = formatDateFromTimestamp(r['时间戳']) || r['日期'] || '-';
-                const timeStr = formatTimeField(r['时间']) || formatTimeFromTimestamp(r['时间戳']) || '-';
-                return `<tr ${rowClass}>
-                    <td>${String(r['ID']).slice(-6)}</td>
-                    <td>${dateStr}</td>
-                    <td><span class="badge ${r['签到类型']==='上班'?'badge-in':'badge-out'}">${r['签到类型']==='上班'?t('type_in'):t('type_out')}</span></td>
-                    <td>${esc(r['姓名'])}</td>
-                    <td>****${esc(r['准证后四位'])}</td>
-                    <td><span class="badge badge-area">${esc(r['工种'] || '-')}</span></td>
-                    <td>${timeStr}</td>
-                    <td><span class="badge badge-area">${esc(r['工作区域'])}</span></td>
-                    <td>${esc(r['负责督工'])}</td>
-                    <td style="font-size:11px;color:#666;">${locInfo}</td>
-                    <td>${distBadge}</td>
-                    <td>${anomalyHtml}</td>
-                    <td>${r['设备ID']}</td>
-                    <td><button class="btn btn-danger btn-sm" onclick="delRecord(${r['ID']})">${t('action_delete')}</button></td>
-                </tr>`;
-            }).join('');
-        }
-        function adminResetFilter() {
-            document.getElementById('aFilterDate').value = '';
-            document.getElementById('aFilterName').value = '';
-            document.getElementById('aFilterTrade').value = '';
-            document.getElementById('aFilterArea').value = '';
-            document.getElementById('aFilterAnomaly').value = '';
-            adminFilter();
-        }
-
-        function renderSummaryTable(summary) {
-            const tbody = document.getElementById('summaryTable');
-            if (!summary || summary.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;color:#999;">No data</td></tr>';
-                return;
-            }
-            tbody.innerHTML = summary.map(s => {
-                const locInfo = s.lat ? `${parseFloat(s.lat).toFixed(4)}, ${parseFloat(s.lng).toFixed(4)}` : '--';
-                let statusHtml = '';
-                if (s.status === '完整') statusHtml = '✅ ' + t('status_complete');
-                else if (s.status === '仅上班') statusHtml = '🟡 ' + t('status_in_only');
-                else statusHtml = '🟠 ' + t('status_out_only');
-                const dateStr = s.date ? s.date.replace(/[年月日]/g, '-') : '-';
-                const checkinTimeStr = formatTimeField(s.checkinTime) || s.checkinTime || '-';
-                const checkoutTimeStr = formatTimeField(s.checkoutTime) || s.checkoutTime || '-';
-                return `<tr>
-                    <td>${dateStr}</td>
-                    <td>${esc(s.name)}</td>
-                    <td>****${esc(s.passport)}</td>
-                    <td><span class="badge badge-area">${esc(s.trade || '-')}</span></td>
-                    <td>${checkinTimeStr}</td>
-                    <td>${checkoutTimeStr}</td>
-                    <td><span class="badge badge-area">${esc(s.workArea)}</span></td>
-                    <td>${esc((s.workContent || '').substring(0,15))}${(s.workContent || '').length>15?'...':''}</td>
-                    <td>${esc(s.supervisor)}</td>
-                    <td style="font-size:11px;color:#666;">${locInfo}</td>
-                    <td>${statusHtml}</td>
-                </tr>`;
-            }).join('');
-        }
-
-        async function delRecord(id) {
-            if (!confirm(t('confirm_delete'))) return;
-            try {
-                const res = await apiPost('delete', { id });
-                if (res.success) { showToast('Deleted', 'success'); addAdminLog('删除记录', '删除ID: ' + id); renderAdmin(); }
-                else showToast(res.error, 'error');
-            } catch(e) { showToast('Delete failed', 'error'); }
-        }
-
-        async function adminExport() {
-            try {
-                const [recordsRes, summaryRes] = await Promise.all([apiGet('getRecords', {}), apiGet('getSummary')]);
-                if (!recordsRes.success || recordsRes.records.length === 0) { showToast('No data', 'error'); return; }
-
-                const wb = XLSX.utils.book_new();
-                const detail = recordsRes.records.map(r => ({
-                    'Date': r['日期'], 'Type': r['签到类型'], 'Name': r['姓名'], 'Passport': r['准证后四位'],
-                    'Trade': r['工种'] || '', 'Time': r['时间'], 'Area': r['工作区域'], 'Content': r['工作内容'],
-                    'Supervisor': r['负责督工'], 'Device': r['设备ID'], 'Lat': r['纬度'], 'Lng': r['经度'], 'Distance': r['距离']
-                }));
-                XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(detail), 'Records');
-
-                if (summaryRes.success) {
-                    const sum = summaryRes.summary.map(s => ({
-                        'Date': s.date, 'Name': s.name, 'Passport': s.passport, 'Trade': s.trade || '',
-                        'Check In': s.checkinTime, 'Check Out': s.checkoutTime || '',
-                        'Area': s.workArea, 'Content': s.workContent, 'Supervisor': s.supervisor, 'Count': s.count
-                    }));
-                    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(sum), 'Summary');
-                }
-
-                const today = new Date();
-                XLSX.writeFile(wb, 'Checkin_' + today.getFullYear() + String(today.getMonth()+1).padStart(2,'0') + String(today.getDate()).padStart(2,'0') + '.xlsx');
-                addAdminLog('导出Excel', '导出Excel报表');
-                showToast('Excel exported', 'success');
-            } catch(e) { showToast('Export failed', 'error'); }
-        }
-
-        async function adminClear() {
-            if (!confirm(t('confirm_clear'))) return;
-            try {
-                const res = await apiPost('clearAll', { password: ADMIN_PASSWORD });
-                if (res.success) { showToast('Cleared', 'success'); addAdminLog('清空数据', '清空所有记录'); renderAdmin(); }
-                else showToast(res.error, 'error');
-            } catch(e) { showToast('Clear failed', 'error'); }
-        }
-
-        // ==================== 工具 ====================
-        function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-        function showToast(msg, type) {
-            const t = document.getElementById('toast');
-            t.textContent = msg; t.className = 'toast ' + type + ' show';
-            setTimeout(() => t.classList.remove('show'), 3000);
-        }
-        function getSGDateStringISO(date) {
-            const offsetMs = 8 * 60 * 60 * 1000;
-            const sgDate = new Date(date.getTime() + offsetMs);
-            return sgDate.getUTCFullYear() + '-' + String(sgDate.getUTCMonth() + 1).padStart(2, '0') + '-' + String(sgDate.getUTCDate()).padStart(2, '0');
-        }
-        function getTodayStr() {
-            const d = new Date();
-            return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-        }
-
-        // ==================== GPS位置管理 ====================
-        let currentLocation = { lat: null, lng: null, accuracy: null };
-        let siteLocation = { lat: '', lng: '', radius: 500 };
-        let workAreas = ["1区","2区","3区","4区","5区","6区","7区","预制厂"];
-
-        async function loadConfigFromServer() {
-            try {
-                const res = await apiGet('getConfig');
-                if (res.success) {
-                    siteLocation = {
-                        lat: res.siteLat || '',
-                        lng: res.siteLng || '',
-                        radius: parseInt(res.siteRadius) || 500
-                    };
-                    if (res.workAreas && res.workAreas.length > 0) {
-                        workAreas = res.workAreas;
-                    }
-                    localStorage.setItem('checkin_site_location', JSON.stringify(siteLocation));
-                    localStorage.setItem('checkin_work_areas', JSON.stringify(workAreas));
-                    return true;
-                }
-            } catch(e) { console.log('Config load failed:', e); }
-            const savedSite = localStorage.getItem('checkin_site_location');
-            const savedAreas = localStorage.getItem('checkin_work_areas');
-            if (savedSite) { try { siteLocation = JSON.parse(savedSite); } catch(e) {} }
-            if (savedAreas) { try { workAreas = JSON.parse(savedAreas); } catch(e) {} }
+        } catch(e) {
+            keys.forEach(k => updateSyncBadge(k + 'SyncBadge', 'err'));
+            updateSyncBadge('syncStatusBadge', 'err');
             return false;
         }
+    }
 
-        async function loadSupervisorsFromServer() {
-    try {
-        const res = await apiGet('getSupervisors');
-        if (res.success && res.supervisors && res.supervisors.length > 0) {
-            supervisors = res.supervisors;
-            localStorage.setItem('checkin_supervisors', JSON.stringify(supervisors));
-            updateSupervisorSelects();
-        }
-    } catch(e) { console.log('Supervisors load failed:', e); }
-}
+    // 定时从服务器刷新配置（每60秒）
+    let configRefreshTimer = null;
+    function startConfigRefresh() {
+        if (configRefreshTimer) clearInterval(configRefreshTimer);
+        configRefreshTimer = setInterval(() => {
+            if (!document.hidden) loadConfigFromServer();
+        }, 60000);
+    }
 
-async function loadTradesFromServer() {
-    try {
-        const res = await apiGet('getTrades');
-        if (res.success && res.trades && res.trades.length > 0) {
-            trades = res.trades;
-            localStorage.setItem('checkin_trades', JSON.stringify(trades));
-            updateTradeSelects();
-        }
-    } catch(e) { console.log('Trades load failed:', e); }
-}
-
-async function loadEmployeesFromServer() {
-    try {
-        const res = await apiGet('getEmployees');
-        if (res.success && res.employees && res.employees.length > 0) {
-            employees = res.employees;
-            localStorage.setItem('checkin_employees', JSON.stringify(employees));
-        }
-    } catch(e) { console.log('Employees load failed:', e); }
-}
-
-        async function saveSiteLocation() {
-            const lat = document.getElementById('siteLat').value.trim();
-            const lng = document.getElementById('siteLng').value.trim();
-            const radius = parseInt(document.getElementById('siteRadius').value) || 500;
-            if (!lat || !lng || isNaN(parseFloat(lat)) || isNaN(parseFloat(lng))) {
-                showToast('请输入有效的经纬度', 'error');
-                return;
-            }
-            siteLocation = { lat: parseFloat(lat), lng: parseFloat(lng), radius: radius };
-            localStorage.setItem('checkin_site_location', JSON.stringify(siteLocation));
-            try {
-                await apiPost('saveConfig', {
-                    siteLat: siteLocation.lat,
-                    siteLng: siteLocation.lng,
-                    siteRadius: siteLocation.radius
-                });
-            } catch(e) { console.log('Save config to server failed:', e); }
-            addAdminLog('修改位置', '更新工地位置: ' + lat + ', ' + lng + ' 范围' + radius + 'm');
-            showToast('工地位置已保存（已同步云端）', 'success');
-        }
-
-        function loadSiteLocation() {
-            const elLat = document.getElementById('siteLat');
-            const elLng = document.getElementById('siteLng');
-            const elRadius = document.getElementById('siteRadius');
-            if (elLat && siteLocation.lat !== undefined && siteLocation.lat !== '') elLat.value = siteLocation.lat;
-            if (elLng && siteLocation.lng !== undefined && siteLocation.lng !== '') elLng.value = siteLocation.lng;
-            if (elRadius && siteLocation.radius) elRadius.value = siteLocation.radius;
-        }
-        function saveWorkAreas() {
-            localStorage.setItem('checkin_work_areas', JSON.stringify(workAreas));
-        }
-        async function syncWorkAreasToServer() {
-            try {
-                await apiPost('saveConfig', { workAreas: JSON.stringify(workAreas) });
-            } catch(e) { console.log('Sync workAreas failed:', e); }
-        }
-        function addWorkArea() {
-            const name = document.getElementById('newWorkAreaName').value.trim();
-            if (!name) { showToast('请输入区域名称', 'error'); return; }
-            if (workAreas.includes(name)) { showToast('该区域已存在', 'error'); return; }
-            workAreas.push(name);
-            saveWorkAreas();
-            syncWorkAreasToServer();
-            document.getElementById('newWorkAreaName').value = '';
-            renderWorkAreaList();
-            updateWorkAreaSelects();
-            addAdminLog('添加区域', name);
-            showToast('工作区域添加成功（已同步云端）', 'success');
-        }
-        function deleteWorkArea(index) {
-            if (!confirm('确定删除工作区域 ' + workAreas[index] + '？')) return;
-            addAdminLog('删除区域', '删除区域: ' + workAreas[index]);
-            workAreas.splice(index, 1);
-            saveWorkAreas();
-            syncWorkAreasToServer();
-            renderWorkAreaList();
-            updateWorkAreaSelects();
-        }
-        function renderWorkAreaList() {
-            const container = document.getElementById('workAreaList');
-            if (!container) return;
-            if (workAreas.length === 0) {
-                container.innerHTML = '<div style="text-align:center;color:#999;padding:10px;">暂无工作区域</div>';
-                return;
-            }
-            container.innerHTML = workAreas.map((area, i) => `
-                <div class="supervisor-card" style="margin-bottom:8px;">
-                    <div class="supervisor-info"><div class="supervisor-name">${esc(area)}</div></div>
-                    <button class="btn btn-danger btn-sm" onclick="deleteWorkArea(${i})">${t('action_delete')}</button>
-                </div>
-            `).join('');
-        }
-
-        function getDistance(lat1, lng1, lat2, lng2) {
-            const R = 6371000;
-            const dLat = (lat2 - lat1) * Math.PI / 180;
-            const dLng = (lng2 - lng1) * Math.PI / 180;
-            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                      Math.sin(dLng/2) * Math.sin(dLng/2);
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            return Math.round(R * c);
-        }
-
-        function getLocationStatus() {
-            return new Promise((resolve) => {
-                if (!navigator.geolocation) {
-                    resolve({ lat: null, lng: null, accuracy: null, error: '浏览器不支持定位' });
-                    return;
-                }
-                navigator.geolocation.getCurrentPosition(
-                    (pos) => {
-                        resolve({
-                            lat: pos.coords.latitude,
-                            lng: pos.coords.longitude,
-                            accuracy: Math.round(pos.coords.accuracy),
-                            error: null
-                        });
-                    },
-                    (err) => {
-                        let msg = '定位失败';
-                        switch(err.code) {
-                            case 1: msg = '用户拒绝定位权限'; break;
-                            case 2: msg = '位置不可用'; break;
-                            case 3: msg = '定位超时'; break;
-                        }
-                        resolve({ lat: null, lng: null, accuracy: null, error: msg });
-                    },
-                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-                );
-            });
-        }
-
-        async function updateGPSStatus() {
-            const statusEl = document.getElementById('gpsStatus');
-            const distEl = document.getElementById('distanceStatus');
-            const retryBox = document.getElementById('gpsRetryBox');
-
-            const loc = await getLocationStatus();
-            currentLocation = loc;
-
-            if (loc.error) {
-                statusEl.className = 'gps-status gps-out';
-                statusEl.innerHTML = '⚠️ ' + loc.error;
-                distEl.style.display = 'none';
-                if (retryBox) retryBox.classList.add('show');
-                return;
-            }
-
-            if (retryBox) retryBox.classList.remove('show');
-            statusEl.className = 'gps-status gps-in';
-            statusEl.innerHTML = '✅ GPS已获取 (精度±' + loc.accuracy + 'm)';
-
-            if (siteLocation.lat && siteLocation.lng) {
-                const dist = getDistance(loc.lat, loc.lng, siteLocation.lat, siteLocation.lng);
-                const inRange = dist <= siteLocation.radius;
-                distEl.style.display = 'inline-flex';
-                distEl.className = 'gps-status ' + (inRange ? 'gps-in' : 'gps-out');
-                distEl.innerHTML = '📍 ' + (inRange ? '✅ 范围内' : '⚠️ 范围外') + ' · ' + dist + 'm';
-            } else {
-                distEl.style.display = 'inline-flex';
-                distEl.className = 'gps-status gps-loading';
-                distEl.innerHTML = '📍 <span id="distanceText">未配置工地位置</span>';
-            }
-        }
-
-        // ==================== 初始化 ====================
-        document.getElementById('configAlert').style.display = 'none';
-        document.getElementById('lang-' + currentLang).classList.add('active');
-
-        // 应用语言
-        document.getElementById('nav-title').textContent = t('title');
-        document.getElementById('nav-sub').textContent = t('subtitle');
-        document.getElementById('page-title').textContent = t('title');
-        document.querySelectorAll('.nav-text').forEach((el, i) => {
-            const keys = ['tab_checkin', 'tab_records', 'tab_admin'];
-            el.textContent = t(keys[i]);
-        });
-
-        const labels = {
-            'label-date': t('label_date'), 'label-time': t('label_time'), 'label-name': t('label_name'),
-            'label-passport': t('label_passport'), 'label-trade': t('label_trade'), 'label-area': t('label_area'),
-            'label-supervisor': t('label_supervisor'), 'label-content': t('label_content')
-        };
-        Object.keys(labels).forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = labels[id];
-        });
-
-        document.getElementById('cName').placeholder = t('placeholder_name');
-        document.getElementById('cPassport').placeholder = t('placeholder_passport');
-        document.getElementById('cContent').placeholder = t('placeholder_content');
-
-        // GPS 重试框多语言
-        document.getElementById('gps-retry-title').textContent = t('gps_retry_title');
-        document.getElementById('gps-retry-desc').textContent = t('gps_retry_desc');
-        document.getElementById('gps-retry-btn').textContent = t('gps_retry_btn');
-
+    // ==================== 下拉框统一更新 ====================
+    function updateAllSelects() {
         updateWorkAreaSelects();
-        updateSupervisorSelects();
         updateTradeSelects();
-        loadSiteLocation();
-        loadConfigFromServer().then(() => {
-            updateWorkAreaSelects();
-        }).catch(e => console.log('Config load failed:', e));
-        loadConfigFromServer().then(() => {
-    updateWorkAreaSelects();
-}).catch(e => console.log('Config load failed:', e));
-loadSupervisorsFromServer().catch(e => console.log('Supervisors load failed:', e));
-loadTradesFromServer().catch(e => console.log('Trades load failed:', e));
-loadEmployeesFromServer().catch(e => console.log('Employees load failed:', e));
-        updateGPSStatus();
-
-        const thMap = {
-            'th-type': 'th_type', 'th-time': 'th_time', 'th-trade': 'th_trade', 'th-area': 'th_area',
-            'th-supervisor': 'th_supervisor', 'th-content': 'th_content',
-            'th-q-date': 'th_date', 'th-q-type': 'th_type', 'th-q-name': 'th_name',
-            'th-q-passport': 'th_passport', 'th-q-trade': 'th_trade', 'th-q-time': 'th_time', 'th-q-area': 'th_area',
-            'th-q-supervisor': 'th_supervisor', 'th-q-content': 'th_content',
-            'th-a-date': 'th_date', 'th-a-type': 'th_type', 'th-a-name': 'th_name',
-            'th-a-passport': 'th_passport', 'th-a-trade': 'th_trade', 'th-a-time': 'th_time', 'th-a-area': 'th_area',
-            'th-a-supervisor': 'th_supervisor',
-            'th-s-date': 'th_date', 'th-s-name': 'th_name', 'th-s-passport': 'th_passport',
-            'th-s-trade': 'th_trade', 'th-s-checkin': 'th_checkin', 'th-s-checkout': 'th_checkout',
-            'th-s-area': 'th_area', 'th-s-content': 'th_content',
-            'th-s-supervisor': 'th_supervisor', 'th-s-status': 'th_status'
-        };
-        Object.keys(thMap).forEach(id => {
+        updateSupervisorSelects();
+    }
+    function updateSupervisorSelects() {
+        const selects = ['cSupervisor','qSupervisor','aFilterSupervisor'];
+        selects.forEach(id => {
             const el = document.getElementById(id);
-            if (el) el.textContent = t(thMap[id]);
+            if (!el) return;
+            const cur = el.value;
+            el.innerHTML = '<option value="">' + (id === 'cSupervisor' ? t('placeholder_supervisor') : (currentLang==='zh'?'全部':'All')) + '</option>';
+            supervisors.forEach(s => { const o = document.createElement('option'); o.value = s.name; o.textContent = s.name + ' (' + s.passport + ')'; el.appendChild(o); });
+            el.value = cur;
         });
-
-        const textMap = {
-            'my-records-title': 'my_records',
-            'query-title': 'query_title',
-            'query-label-date': 'query_date',
-            'query-label-name': 'query_name',
-            'query-label-trade': 'query_trade',
-            'query-label-area': 'query_area',
-            'query-label-supervisor': 'query_supervisor',
-            'btn-query': 'btn_query',
-            'btn-reset': 'btn_reset',
-            'chart-trend-title': 'chart_trend',
-            'chart-area-title': 'chart_area',
-            'records-manage-title': 'records_manage',
-            'summary-title': 'summary_title',
-            'supervisor-manage-title': 'supervisor_manage',
-            'supervisor-name-label': 'supervisor_name',
-            'supervisor-passport-label': 'supervisor_passport',
-            'btn-add-supervisor': 'btn_add_supervisor',
-            'supervisor-list-title': 'supervisor_list',
-            'supervisor-stats-title': 'supervisor_stats',
-            'trade-manage-title': 'trade_manage',
-            'trade-name-label': 'trade_name',
-            'btn-add-trade': 'btn_add_trade',
-            'trade-list-title': 'trade_list',
-            'filter-label-date': 'query_date',
-            'filter-label-name': 'query_name',
-            'filter-label-trade': 'query_trade',
-            'filter-label-area': 'query_area',
-            'stat-today': 'admin_today_records',
-            'stat-device': 'admin_total',
-            'stat-time': 'admin_complete_rate',
-            'stat-a-total': 'admin_total',
-            'stat-a-today': 'admin_today_records',
-            'stat-a-people': 'admin_today_people',
-            'stat-a-rate': 'admin_complete_rate',
-            'stat-a-anomaly': 'admin_anomaly',
-            'config-title': 'config_ok',
-            'config-desc': 'config_ready',
-            'login-title': 'login_title',
-            'login-cancel': 'login_cancel',
-            'login-ok': 'login_ok'
-        };
-        Object.keys(textMap).forEach(id => {
+        const empSup = document.getElementById('newEmpSupervisor');
+        if (empSup) {
+            const cur = empSup.value;
+            empSup.innerHTML = '<option value="">请选择</option>';
+            supervisors.forEach(s => { const o = document.createElement('option'); o.value = s.name; o.textContent = s.name; empSup.appendChild(o); });
+            empSup.value = cur;
+        }
+    }
+    function updateWorkAreaSelects() {
+        const selects = [
+            { id:'cArea', placeholder:'请选择', includeAll:false },
+            { id:'qArea', placeholder:currentLang==='zh'?'全部':'All', includeAll:true },
+            { id:'aFilterArea', placeholder:currentLang==='zh'?'全部':'All', includeAll:true }
+        ];
+        selects.forEach(cfg => {
+            const el = document.getElementById(cfg.id);
+            if (!el) return;
+            const cur = el.value;
+            el.innerHTML = '<option value="">' + cfg.placeholder + '</option>';
+            workAreas.forEach(a => { const o = document.createElement('option'); o.value = a; o.textContent = a; el.appendChild(o); });
+            el.value = cur;
+        });
+    }
+    function updateTradeSelects() {
+        const selects = ['cTrade','qTrade','aFilterTrade'];
+        selects.forEach(id => {
             const el = document.getElementById(id);
-            if (el) {
-                if (el.tagName === 'INPUT') el.placeholder = t(textMap[id]);
-                else el.textContent = t(textMap[id]);
+            if (!el) return;
+            const cur = el.value;
+            el.innerHTML = '<option value="">' + (id === 'cTrade' ? t('placeholder_trade') : (currentLang==='zh'?'全部':'All')) + '</option>';
+            trades.forEach(tr => { const o = document.createElement('option'); o.value = tr; o.textContent = tr; el.appendChild(o); });
+            el.value = cur;
+        });
+        const empTr = document.getElementById('newEmpTrade');
+        if (empTr) {
+            const cur = empTr.value;
+            empTr.innerHTML = '<option value="">请选择</option>';
+            trades.forEach(tr => { const o = document.createElement('option'); o.value = tr; o.textContent = tr; empTr.appendChild(o); });
+            empTr.value = cur;
+        }
+    }
+
+    // ==================== 督工管理 ====================
+    function addSupervisor() {
+        const name = document.getElementById('newSupervisorName').value.trim();
+        const passport = document.getElementById('newSupervisorPassport').value.trim();
+        if (!name || !passport || passport.length !== 4 || !/^[\dA-Za-z]{4}$/.test(passport)) {
+            showToast(currentLang==='zh'?'请输入有效的姓名和4位准证号码':'Invalid name or passport', 'error'); return;
+        }
+        if (supervisors.find(s => s.name === name)) { showToast('该督工已存在', 'error'); return; }
+        supervisors.push({ name, passport });
+        saveConfigToServer({ supervisors });
+        document.getElementById('newSupervisorName').value = '';
+        document.getElementById('newSupervisorPassport').value = '';
+        updateSupervisorSelects();
+        renderSupervisorList(); renderSupervisorStats();
+        addAdminLog('添加督工', name);
+        showToast('督工添加成功', 'success');
+    }
+    function deleteSupervisor(index) {
+        if (!confirm('确定删除督工 ' + supervisors[index].name + '？')) return;
+        addAdminLog('删除督工', supervisors[index].name);
+        supervisors.splice(index, 1);
+        saveConfigToServer({ supervisors });
+        updateSupervisorSelects();
+        renderSupervisorList(); renderSupervisorStats();
+    }
+    function renderSupervisorList() {
+        const c = document.getElementById('supervisorList');
+        if (!c) return;
+        if (supervisors.length === 0) { c.innerHTML = '<div style="text-align:center;color:#999;padding:20px;">暂无督工</div>'; return; }
+        c.innerHTML = supervisors.map((s,i) => `<div class="supervisor-card"><div class="supervisor-info"><div class="supervisor-name">${esc(s.name)}</div><div class="supervisor-passport">Passport: ****${esc(s.passport)}</div></div><button class="btn btn-danger btn-sm" onclick="deleteSupervisor(${i})">${t('action_delete')}</button></div>`).join('');
+    }
+    function renderSupervisorStats() {
+        const tbody = document.getElementById('supervisorStatsTable');
+        if (!tbody) return;
+        if (!allRecordsCache.length) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#999;">暂无数据</td></tr>'; return; }
+        const stats = {};
+        supervisors.forEach(s => { stats[s.name] = { count:0, in:0, out:0 }; });
+        allRecordsCache.forEach(r => { const sup = r['负责督工']; if (stats[sup]) { stats[sup].count++; if (r['签到类型']==='上班') stats[sup].in++; else stats[sup].out++; } });
+        tbody.innerHTML = supervisors.map(s => `<tr><td>${esc(s.name)}</td><td>****${esc(s.passport)}</td><td>${stats[s.name]?.count||0}</td><td><span class="badge badge-in">${t('type_in')}: ${stats[s.name]?.in||0}</span> <span class="badge badge-out">${t('type_out')}: ${stats[s.name]?.out||0}</span></td></tr>`).join('');
+    }
+
+    // ==================== 工种管理 ====================
+    function addTrade() {
+        const name = document.getElementById('newTradeName').value.trim();
+        if (!name) { showToast('请输入工种名称', 'error'); return; }
+        if (trades.includes(name)) { showToast('该工种已存在', 'error'); return; }
+        trades.push(name);
+        saveConfigToServer({ trades });
+        document.getElementById('newTradeName').value = '';
+        updateTradeSelects();
+        renderTradeList();
+        addAdminLog('添加工种', name);
+        showToast('工种添加成功', 'success');
+    }
+    function deleteTrade(index) {
+        if (!confirm('确定删除工种 ' + trades[index] + '？')) return;
+        addAdminLog('删除工种', trades[index]);
+        trades.splice(index, 1);
+        saveConfigToServer({ trades });
+        updateTradeSelects();
+        renderTradeList();
+    }
+    function renderTradeList() {
+        const c = document.getElementById('tradeList');
+        if (!c) return;
+        if (trades.length === 0) { c.innerHTML = '<div style="text-align:center;color:#999;padding:10px;">暂无工种</div>'; return; }
+        c.innerHTML = trades.map((tr,i) => `<div class="supervisor-card" style="margin-bottom:8px;"><div class="supervisor-info"><div class="supervisor-name">${esc(tr)}</div></div><button class="btn btn-danger btn-sm" onclick="deleteTrade(${i})">${t('action_delete')}</button></div>`).join('');
+    }
+
+    // ==================== 工作区域管理 ====================
+    function addWorkArea() {
+        const name = document.getElementById('newWorkAreaName').value.trim();
+        if (!name) { showToast('请输入区域名称', 'error'); return; }
+        if (workAreas.includes(name)) { showToast('该区域已存在', 'error'); return; }
+        workAreas.push(name);
+        saveConfigToServer({ workAreas });
+        document.getElementById('newWorkAreaName').value = '';
+        updateWorkAreaSelects();
+        renderWorkAreaList();
+        addAdminLog('添加区域', name);
+        showToast('工作区域添加成功', 'success');
+    }
+    function deleteWorkArea(index) {
+        if (!confirm('确定删除工作区域 ' + workAreas[index] + '？')) return;
+        addAdminLog('删除区域', workAreas[index]);
+        workAreas.splice(index, 1);
+        saveConfigToServer({ workAreas });
+        updateWorkAreaSelects();
+        renderWorkAreaList();
+    }
+    function renderWorkAreaList() {
+        const c = document.getElementById('workAreaList');
+        if (!c) return;
+        if (workAreas.length === 0) { c.innerHTML = '<div style="text-align:center;color:#999;padding:10px;">暂无工作区域</div>'; return; }
+        c.innerHTML = workAreas.map((a,i) => `<div class="supervisor-card" style="margin-bottom:8px;"><div class="supervisor-info"><div class="supervisor-name">${esc(a)}</div></div><button class="btn btn-danger btn-sm" onclick="deleteWorkArea(${i})">${t('action_delete')}</button></div>`).join('');
+    }
+
+    // ==================== 员工档案管理 ====================
+    function renderEmployeeManagement() {
+        const tbody = document.getElementById('employeeTable');
+        if (!tbody) return;
+        if (employees.length === 0) { tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#999;padding:20px;">暂无员工档案</td></tr>'; return; }
+        tbody.innerHTML = employees.map((e,i) => `<tr><td>${esc(e.name)}</td><td>****${esc(e.passport)}</td><td>${esc(e.supervisor||'-')}</td><td>${esc(e.trade||'-')}</td><td><button class="btn btn-danger btn-sm" onclick="deleteEmployee(${i})">删除</button></td></tr>`).join('');
+    }
+    function addEmployee() {
+        const name = document.getElementById('newEmpName').value.trim();
+        const passport = document.getElementById('newEmpPassport').value.trim();
+        const supervisor = document.getElementById('newEmpSupervisor').value;
+        const trade = document.getElementById('newEmpTrade').value;
+        if (!name || !passport || passport.length !== 4 || !/^[\dA-Za-z]{4}$/.test(passport)) { showToast('请输入有效的姓名和4位准证号码', 'error'); return; }
+        if (employees.find(e => e.passport === passport)) { showToast('该准证号码已存在', 'error'); return; }
+        employees.push({ name, passport, supervisor, trade, created: new Date().toISOString() });
+        localStorage.setItem('checkin_employees', JSON.stringify(employees));
+        document.getElementById('newEmpName').value = ''; document.getElementById('newEmpPassport').value = '';
+        renderEmployeeManagement();
+        addAdminLog('添加员工', name);
+        showToast('员工添加成功', 'success');
+    }
+    function deleteEmployee(index) {
+        if (!confirm('确定删除员工 ' + employees[index].name + '？')) return;
+        addAdminLog('删除员工', employees[index].name);
+        employees.splice(index, 1);
+        localStorage.setItem('checkin_employees', JSON.stringify(employees));
+        renderEmployeeManagement();
+    }
+
+    // ==================== 系统设置 ====================
+    function loadSystemSettings() {
+        document.getElementById('settingWorkStart').value = systemSettings.workStart;
+        document.getElementById('settingWorkEnd').value = systemSettings.workEnd;
+        document.getElementById('settingLate').value = systemSettings.lateThreshold;
+        document.getElementById('settingEarly').value = systemSettings.earlyThreshold;
+        document.getElementById('settingForceGPS').checked = systemSettings.forceGPS;
+    }
+    function saveSystemSettings() {
+        systemSettings = {
+            workStart: document.getElementById('settingWorkStart').value,
+            workEnd: document.getElementById('settingWorkEnd').value,
+            lateThreshold: parseInt(document.getElementById('settingLate').value) || 30,
+            earlyThreshold: parseInt(document.getElementById('settingEarly').value) || 30,
+            forceGPS: document.getElementById('settingForceGPS').checked
+        };
+        saveConfigToServer({ systemSettings });
+        addAdminLog('修改设置', '上班' + systemSettings.workStart + ' 下班' + systemSettings.workEnd + (systemSettings.forceGPS ? ' [强制GPS]' : ''));
+        showToast('设置已保存', 'success');
+    }
+
+    // ==================== 异常检测 ====================
+    function getAnomalies(r) {
+        const list = [];
+        // 修复：使用正确的字段名 '距离(米)'
+        const dist = r['距离(米)'];
+        if (dist !== undefined && dist !== '' && parseInt(dist) > (siteLocation.radius || 500)) {
+            list.push(currentLang==='zh'?'GPS越界':(currentLang==='en'?'GPS Out':'GPS বাইরে'));
+        }
+        const time = r['时间'] || '';
+        const [h, m] = String(time).split(':').map(Number);
+        if (!isNaN(h) && !isNaN(m)) {
+            const mins = h * 60 + m;
+            const [sh, sm] = systemSettings.workStart.split(':').map(Number);
+            const [eh, em] = systemSettings.workEnd.split(':').map(Number);
+            const startMins = sh * 60 + sm + (systemSettings.lateThreshold || 30);
+            const endMins = eh * 60 + em - (systemSettings.earlyThreshold || 30);
+            if (r['签到类型'] === '上班' && mins > startMins) list.push(currentLang==='zh'?'迟到':(currentLang==='en'?'Late':'দেরি'));
+            if (r['签到类型'] === '下班' && mins < endMins) list.push(currentLang==='zh'?'早退':(currentLang==='en'?'Early':'তাড়াতাড়ি'));
+        }
+        return list;
+    }
+
+    // ==================== 操作日志 ====================
+    function addAdminLog(action, detail) {
+        adminLogs.unshift({ time: new Date().toLocaleString('zh-CN',{hour12:false}), action, detail, device: DEVICE_ID });
+        if (adminLogs.length > 50) adminLogs = adminLogs.slice(0, 50);
+        localStorage.setItem('checkin_logs', JSON.stringify(adminLogs));
+        renderAdminLogs();
+    }
+    function renderAdminLogs() {
+        const tbody = document.getElementById('adminLogsTable');
+        if (!tbody) return;
+        if (adminLogs.length === 0) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#999;">暂无日志</td></tr>'; return; }
+        tbody.innerHTML = adminLogs.map(l => `<tr><td style="font-size:12px;white-space:nowrap;">${esc(l.time)}</td><td><span class="badge badge-area">${esc(l.action)}</span></td><td>${esc(l.detail)}</td><td style="font-size:11px;color:#999;">${esc(l.device)}</td></tr>`).join('');
+    }
+
+    // ==================== 数据备份与恢复 ====================
+    function exportDataJSON() {
+        const payload = { exportTime: new Date().toISOString(), version:'3.0', supervisors, trades, workAreas, employees, systemSettings, siteLocation, logs: adminLogs, records: allRecordsCache.slice(0,100) };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type:'application/json' });
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'checkin_backup_' + new Date().toISOString().slice(0,10) + '.json';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        addAdminLog('导出数据', '导出JSON备份'); showToast('数据已导出', 'success');
+    }
+    function importDataJSON() {
+        try {
+            const text = document.getElementById('importJsonArea').value.trim();
+            if (!text) { showToast('请输入JSON数据', 'error'); return; }
+            const data = JSON.parse(text);
+            const configToSync = {};
+            if (data.supervisors) { supervisors = data.supervisors; configToSync.supervisors = supervisors; }
+            if (data.trades) { trades = data.trades; configToSync.trades = trades; }
+            if (data.workAreas) { workAreas = data.workAreas; configToSync.workAreas = workAreas; }
+            if (data.systemSettings) { systemSettings = data.systemSettings; configToSync.systemSettings = systemSettings; }
+            if (data.siteLocation) { siteLocation = data.siteLocation; configToSync.siteLocation = siteLocation; }
+            if (data.employees) { employees = data.employees; localStorage.setItem('checkin_employees', JSON.stringify(employees)); renderEmployeeManagement(); }
+            if (data.logs) { adminLogs = data.logs.slice(0,50); localStorage.setItem('checkin_logs', JSON.stringify(adminLogs)); renderAdminLogs(); }
+            if (Object.keys(configToSync).length > 0) saveConfigToServer(configToSync);
+            updateAllSelects(); loadSiteLocation(); if (isAdmin) loadSystemSettings();
+            addAdminLog('导入数据', '从JSON恢复系统配置');
+            showToast('数据已恢复', 'success');
+        } catch(e) { showToast('JSON格式错误: ' + e.message, 'error'); }
+    }
+
+    // ==================== 页面切换 ====================
+    function switchPage(page) {
+        if (page === 'admin' && !isAdmin) { openAdminModal(); return; }
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('page-' + page).classList.add('active');
+        const btn = Array.from(document.querySelectorAll('.nav-tab')).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + page + "'"));
+        if (btn) btn.classList.add('active');
+        if (page === 'admin') renderAdmin();
+        if (page === 'records') queryRecords();
+    }
+    function switchAdminTab(tab) {
+        document.querySelectorAll('.admin-page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('admin-' + tab).classList.add('active');
+        document.getElementById('atab-' + tab).classList.add('active');
+        if (tab === 'employees') renderEmployeeManagement();
+        if (tab === 'settings') { loadSystemSettings(); renderAdminLogs(); }
+    }
+
+    // ==================== 管理员登录 ====================
+    function openAdminModal() { document.getElementById('adminModal').classList.add('show'); document.getElementById('adminPwd').value = ''; setTimeout(() => document.getElementById('adminPwd').focus(), 100); }
+    function closeAdminModal() { document.getElementById('adminModal').classList.remove('show'); }
+    function adminLogin() {
+        if (document.getElementById('adminPwd').value === ADMIN_PASSWORD) {
+            isAdmin = true; closeAdminModal();
+            addAdminLog('登录', '管理员登录成功');
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('page-admin').classList.add('active');
+            document.querySelectorAll('.nav-tab')[2].classList.add('active');
+            renderAdmin();
+            showToast('管理员登录成功', 'success');
+        } else { showToast('密码错误', 'error'); }
+    }
+
+    // ==================== 签到页 ====================
+    async function updateCheckinPage() {
+        const now = new Date();
+        const dateStr = now.getFullYear() + '年' + String(now.getMonth()+1).padStart(2,'0') + '月' + String(now.getDate()).padStart(2,'0') + '日';
+        const timeStr = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0') + ':' + String(now.getSeconds()).padStart(2,'0');
+        document.getElementById('cDate').value = dateStr;
+        document.getElementById('cTime').value = timeStr;
+        document.getElementById('currentTime').textContent = timeStr.slice(0,5);
+        document.getElementById('deviceIdShort').textContent = DEVICE_ID;
+
+        try {
+            const todayISO = getSGDateStringISO(now);
+            const res = await apiCall('getRecords', { dateISO: todayISO, deviceId: DEVICE_ID });
+            const myRecords = res.success ? res.records.sort((a,b) => new Date(a['时间戳']) - new Date(b['时间戳'])) : [];
+            myCheckinCount = myRecords.length;
+            document.getElementById('todayCount').textContent = myCheckinCount;
+
+            const statusEl = document.getElementById('checkinStatus');
+            const btn = document.getElementById('cSubmit');
+            if (myCheckinCount === 0) {
+                statusEl.className = 'checkin-status status-pending';
+                statusEl.innerHTML = '🟡 ' + t('status_pending').replace('2','<b>2</b>');
+                btn.textContent = '⬆️ ' + t('btn_checkin_in'); btn.disabled = false;
+            } else if (myCheckinCount === 1) {
+                statusEl.className = 'checkin-status status-half';
+                statusEl.innerHTML = '🟢 ' + t('status_half').replace('1','<b>1</b>');
+                btn.textContent = '⬇️ ' + t('btn_checkin_out'); btn.disabled = false;
+            } else {
+                statusEl.className = 'checkin-status status-done';
+                statusEl.innerHTML = '🔴 ' + t('status_done').replace('2','<b>2</b>');
+                btn.textContent = '✅ ' + t('btn_done'); btn.disabled = true;
             }
+
+            const tbody = document.getElementById('myRecords');
+            if (myRecords.length === 0) { tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#999;">暂无记录</td></tr>'; }
+            else {
+                tbody.innerHTML = myRecords.map((r,i) => {
+                    const ts = formatTimeField(r['时间']) || formatTimeFromTimestamp(r['时间戳']) || '-';
+                    return `<tr><td><span class="badge ${r['签到类型']==='上班'?'badge-in':'badge-out'}">${r['签到类型']==='上班'?t('type_in'):t('type_out')}</span></td><td>${ts}</td><td><span class="badge badge-area">${esc(r['工种']||'-')}</span></td><td><span class="badge badge-area">${esc(r['工作区域'])}</span></td><td>${esc(r['负责督工'])}</td><td>${esc((r['工作内容']||'').substring(0,20))}${(r['工作内容']||'').length>20?'...':''}</td></tr>`;
+                }).join('');
+            }
+        } catch(e) { console.log('updateCheckinPage error:', e); }
+    }
+
+    document.getElementById('checkinForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('cSubmit');
+        if (systemSettings.forceGPS) {
+            if (!currentLocation.lat) { showToast(currentLang==='zh'?'请先允许GPS定位':'Please enable GPS', 'error'); return; }
+            if (siteLocation.lat && siteLocation.lng) {
+                const dist = getDistance(currentLocation.lat, currentLocation.lng, siteLocation.lat, siteLocation.lng);
+                if (dist > siteLocation.radius) { showToast(currentLang==='zh'?'当前位置不在工地范围内，无法签到':'Out of site range', 'error'); return; }
+            }
+        }
+        const content = document.getElementById('cContent').value.trim();
+        if (content.length > 300) { showToast('工作内容过长，请控制在300字以内', 'error'); return; }
+
+        btn.disabled = true;
+        btn.innerHTML = '<span class="loading"></span> ' + (currentLang==='zh'?'提交中...':'Submitting...');
+
+        try {
+            let distance = '', inRange = '';
+            if (currentLocation.lat && siteLocation.lat) {
+                distance = getDistance(currentLocation.lat, currentLocation.lng, siteLocation.lat, siteLocation.lng);
+                inRange = distance <= siteLocation.radius ? '范围内' : '范围外';
+            }
+            const data = {
+                deviceId: DEVICE_ID,
+                name: document.getElementById('cName').value.trim(),
+                passport: document.getElementById('cPassport').value.trim(),
+                trade: document.getElementById('cTrade').value,
+                workArea: document.getElementById('cArea').value,
+                workContent: content,
+                supervisor: document.getElementById('cSupervisor').value,
+                checkinType: myCheckinCount === 0 ? '上班' : '下班',
+                lat: currentLocation.lat || '',
+                lng: currentLocation.lng || '',
+                distance: distance,
+                inRange: inRange
+            };
+            const res = await apiCall('checkin', data);
+            if (res.success) {
+                showToast(t('toast_success') + ' (' + res.checkinType + ')', 'success');
+                document.getElementById('cArea').value = '';
+                document.getElementById('cContent').value = '';
+                document.getElementById('cSupervisor').value = '';
+                document.getElementById('cTrade').value = '';
+            } else { showToast(res.error || t('toast_limit'), 'error'); }
+        } catch(err) { showToast('Network error: ' + err.message, 'error'); }
+        await updateCheckinPage();
+    });
+
+    // ==================== 记录查询 ====================
+    async function queryRecords() {
+        const tbody = document.getElementById('queryResult');
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;">Loading...</td></tr>';
+        try {
+            const params = {};
+            const date = document.getElementById('qDate').value;
+            if (date) params.dateISO = getSGDateStringISO(new Date(date + 'T00:00:00'));
+            if (document.getElementById('qName').value) params.name = document.getElementById('qName').value.trim();
+            if (document.getElementById('qTrade').value) params.trade = document.getElementById('qTrade').value;
+            if (document.getElementById('qArea').value) params.workArea = document.getElementById('qArea').value;
+            if (document.getElementById('qSupervisor').value) params.supervisor = document.getElementById('qSupervisor').value;
+            const res = await apiCall('getRecords', params);
+            if (res.success) renderQueryTable(res.records);
+            else tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;">Failed</td></tr>';
+        } catch(e) { tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;">Error</td></tr>'; }
+    }
+    function resetQuery() { document.getElementById('qDate').value = ''; document.getElementById('qName').value = ''; document.getElementById('qTrade').value = ''; document.getElementById('qArea').value = ''; document.getElementById('qSupervisor').value = ''; queryRecords(); }
+
+    // ==================== 管理员后台 ====================
+    async function renderAdmin() {
+        try {
+            const [statsRes, recordsRes, summaryRes] = await Promise.all([apiCall('getStats'), apiCall('getRecords', {}), apiCall('getSummary')]);
+            if (statsRes.success) {
+                document.getElementById('aTotalRecords').textContent = statsRes.totalRecords || 0;
+                document.getElementById('aTodayRecords').textContent = statsRes.todayRecords || 0;
+                document.getElementById('aTodayPeople').textContent = statsRes.todayPeople || 0;
+                document.getElementById('aCompleteRate').textContent = (statsRes.completeRate || 0) + '%';
+                renderCharts(statsRes);
+            }
+            if (recordsRes.success) {
+                allRecordsCache = recordsRes.records;
+                const anomalyCount = allRecordsCache.filter(r => getAnomalies(r).length > 0).length;
+                document.getElementById('aAnomalyRecords').textContent = anomalyCount;
+                adminFilter();
+            }
+            if (summaryRes.success) renderSummaryTable(summaryRes.summary);
+            renderWorkAreaList(); renderSupervisorList(); renderSupervisorStats(); renderTradeList();
+        } catch(e) { showToast('Admin load failed: ' + e.message, 'error'); }
+    }
+
+    function renderCharts(stats) {
+        const days = [], counts = [];
+        for (let i = 6; i >= 0; i--) {
+            const d = new Date(); d.setDate(d.getDate() - i);
+            // 使用 GMT+8 日期作为 key
+            const key = getSGDateStringISO(d);
+            days.push(String(d.getMonth()+1) + '/' + String(d.getDate()));
+            counts.push((stats.dailyCount || {})[key] || 0);
+        }
+        if (chartInstances.trend) chartInstances.trend.destroy();
+        chartInstances.trend = new Chart(document.getElementById('trendChart'), {
+            type:'line', data:{ labels:days, datasets:[{ label:'Check-ins', data:counts, borderColor:'#667eea', backgroundColor:'rgba(102,126,234,0.1)', fill:true, tension:0.4 }] },
+            options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, ticks:{ stepSize:1 } } } }
         });
+        const areas = Object.keys(stats.areaCount || {}), areaCounts = Object.values(stats.areaCount || {});
+        if (chartInstances.area) chartInstances.area.destroy();
+        chartInstances.area = new Chart(document.getElementById('areaChart'), {
+            type:'doughnut', data:{ labels:areas, datasets:[{ data:areaCounts, backgroundColor:['#667eea','#764ba2','#f093fb','#f5576c','#4facfe','#00f2fe','#11998e','#38ef7d'] }] },
+            options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'right', labels:{ boxWidth:12, font:{ size:11 } } } } }
+        });
+    }
 
-        setInterval(() => { if (!document.hidden) updateCheckinPage(); }, 5000);
-        updateCheckinPage();
+    function adminFilter() {
+        const date = document.getElementById('aFilterDate').value;
+        const name = document.getElementById('aFilterName').value.trim().toLowerCase();
+        const trade = document.getElementById('aFilterTrade').value;
+        const area = document.getElementById('aFilterArea').value;
+        const sup = document.getElementById('aFilterSupervisor').value;
+        const anomalyFilter = document.getElementById('aFilterAnomaly').value;
+        let records = [...allRecordsCache];
+        if (date) { const ds = getSGDateStringISO(new Date(date + 'T00:00:00')); records = records.filter(r => { try { return getSGDateStringISO(new Date(r['时间戳'])) === ds; } catch(e) { return false; } }); }
+        if (name) records = records.filter(r => r['姓名'] && String(r['姓名']).toLowerCase().includes(name));
+        if (trade) records = records.filter(r => r['工种'] === trade);
+        if (area) records = records.filter(r => r['工作区域'] === area);
+        if (sup) records = records.filter(r => r['负责督工'] === sup);
+        if (anomalyFilter) records = records.filter(r => { const hasA = getAnomalies(r).length > 0; return anomalyFilter === 'anomaly' ? hasA : !hasA; });
+        const tbody = document.getElementById('adminTable');
+        if (records.length === 0) { tbody.innerHTML = '<tr><td colspan="14" style="text-align:center;color:#999;">No records</td></tr>'; return; }
+        tbody.innerHTML = records.map(r => {
+            const anomalies = getAnomalies(r); const isAnomaly = anomalies.length > 0;
+            const rowClass = isAnomaly ? 'class="anomaly-row"' : '';
+            const anomalyHtml = isAnomaly ? `<div style="margin-top:4px;">${anomalies.map(a=>`<span class="anomaly-tag">${esc(a)}</span>`).join('')}</div>` : '<span style="color:#2e7d32;font-size:11px;">✓ 正常</span>';
+            const distVal = r['距离(米)'];
+            const distBadge = distVal ? `<span class="distance-badge ${parseInt(distVal)>(siteLocation.radius||500)?'dist-far':'dist-ok'}">${distVal}m</span>` : '--';
+            const locInfo = r['纬度'] ? `${parseFloat(r['纬度']).toFixed(4)}, ${parseFloat(r['经度']).toFixed(4)}` : '--';
+            const dateStr = formatDateFromTimestamp(r['时间戳']) || r['日期'] || '-';
+            const timeStr = formatTimeField(r['时间']) || formatTimeFromTimestamp(r['时间戳']) || '-';
+            return `<tr ${rowClass}><td>${String(r['ID']).slice(-6)}</td><td>${dateStr}</td><td><span class="badge ${r['签到类型']==='上班'?'badge-in':'badge-out'}">${r['签到类型']==='上班'?t('type_in'):t('type_out')}</span></td><td>${esc(r['姓名'])}</td><td>****${esc(r['准证后四位'])}</td><td><span class="badge badge-area">${esc(r['工种']||'-')}</span></td><td>${timeStr}</td><td><span class="badge badge-area">${esc(r['工作区域'])}</span></td><td>${esc(r['负责督工'])}</td><td style="font-size:11px;color:#666;">${locInfo}</td><td>${distBadge}</td><td>${anomalyHtml}</td><td>${r['设备ID']}</td><td><button class="btn btn-danger btn-sm" onclick="delRecord(${r['ID']})">${t('action_delete')}</button></td></tr>`;
+        }).join('');
+    }
+    function adminResetFilter() { document.getElementById('aFilterDate').value=''; document.getElementById('aFilterName').value=''; document.getElementById('aFilterTrade').value=''; document.getElementById('aFilterArea').value=''; document.getElementById('aFilterSupervisor').value=''; document.getElementById('aFilterAnomaly').value=''; adminFilter(); }
 
-        document.getElementById('qDate').value = getTodayStr();
-        document.getElementById('aFilterDate').value = getTodayStr();
-        document.getElementById('adminModal').addEventListener('click', function(e) { if (e.target === this) closeAdminModal(); });
+    function renderSummaryTable(summary) {
+        const tbody = document.getElementById('summaryTable');
+        if (!summary || summary.length === 0) { tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;color:#999;">No data</td></tr>'; return; }
+        tbody.innerHTML = summary.map(s => {
+            const locInfo = s.lat ? `${parseFloat(s.lat).toFixed(4)}, ${parseFloat(s.lng).toFixed(4)}` : '--';
+            let statusHtml = s.status==='完整' ? '✅ '+t('status_complete') : s.status==='仅上班' ? '🟡 '+t('status_in_only') : '🟠 '+t('status_out_only');
+            return `<tr><td>${s.date?s.date.replace(/[年月日]/g,'-'):'-'}</td><td>${esc(s.name)}</td><td>****${esc(s.passport)}</td><td><span class="badge badge-area">${esc(s.trade||'-')}</span></td><td>${formatTimeField(s.checkinTime)||s.checkinTime||'-'}</td><td>${formatTimeField(s.checkoutTime)||s.checkoutTime||'-'}</td><td><span class="badge badge-area">${esc(s.workArea)}</span></td><td>${esc((s.workContent||'').substring(0,15))}${(s.workContent||'').length>15?'...':''}</td><td>${esc(s.supervisor)}</td><td style="font-size:11px;color:#666;">${locInfo}</td><td>${statusHtml}</td></tr>`;
+        }).join('');
+    }
+
+    async function delRecord(id) { if (!confirm(t('confirm_delete'))) return; try { const res = await apiCall('delete', { id }); if (res.success) { showToast('Deleted', 'success'); addAdminLog('删除记录', 'ID: ' + id); renderAdmin(); } else showToast(res.error, 'error'); } catch(e) { showToast('Delete failed', 'error'); } }
+    async function adminExport() {
+        try {
+            const [recordsRes, summaryRes] = await Promise.all([apiCall('getRecords', {}), apiCall('getSummary')]);
+            if (!recordsRes.success || recordsRes.records.length === 0) { showToast('No data', 'error'); return; }
+            const wb = XLSX.utils.book_new();
+            const detail = recordsRes.records.map(r => ({ '日期':r['日期'],'类型':r['签到类型'],'姓名':r['姓名'],'准证':r['准证后四位'],'工种':r['工种']||'','时间':r['时间'],'区域':r['工作区域'],'工作内容':r['工作内容'],'督工':r['负责督工'],'设备':r['设备ID'],'纬度':r['纬度'],'经度':r['经度'],'距离':r['距离(米)'] }));
+            XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(detail), '签到明细');
+            if (summaryRes.success) {
+                const sum = summaryRes.summary.map(s => ({ '日期':s.date,'姓名':s.name,'准证':s.passport,'工种':s.trade||'','上班':s.checkinTime,'下班':s.checkoutTime||'','区域':s.workArea,'工作内容':s.workContent,'督工':s.supervisor,'次数':s.count }));
+                XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(sum), '每日汇总');
+            }
+            const today = new Date();
+            XLSX.writeFile(wb, '签到数据_' + today.getFullYear() + String(today.getMonth()+1).padStart(2,'0') + String(today.getDate()).padStart(2,'0') + '.xlsx');
+            addAdminLog('导出Excel', '导出Excel报表'); showToast('Excel exported', 'success');
+        } catch(e) { showToast('Export failed', 'error'); }
+    }
+    async function adminClear() { if (!confirm(t('confirm_clear'))) return; try { const res = await apiCall('clearAll', { password: ADMIN_PASSWORD }); if (res.success) { showToast('Cleared', 'success'); addAdminLog('清空数据', '清空所有记录'); renderAdmin(); } else showToast(res.error, 'error'); } catch(e) { showToast('Clear failed', 'error'); } }
+
+    // ==================== 工具函数 ====================
+    function esc(s) { if (s === null || s === undefined) return ''; const d = document.createElement('div'); d.textContent = String(s); return d.innerHTML; }
+    function showToast(msg, type) { const t = document.getElementById('toast'); t.textContent = msg; t.className = 'toast ' + type + ' show'; setTimeout(() => t.classList.remove('show'), 3000); }
+    function getSGDateStringISO(date) {
+        const offsetMs = 8 * 60 * 60 * 1000;
+        const sg = new Date(date.getTime() + offsetMs);
+        return sg.getUTCFullYear() + '-' + String(sg.getUTCMonth()+1).padStart(2,'0') + '-' + String(sg.getUTCDate()).padStart(2,'0');
+    }
+    function getTodayStr() { return getSGDateStringISO(new Date()); }
+    function formatDateFromTimestamp(ts) {
+        if (!ts) return '-';
+        try { const d = new Date(ts); if (isNaN(d.getTime())) return String(ts).slice(0,10); return getSGDateStringISO(d); } catch(e) { return String(ts).slice(0,10); }
+    }
+    function formatTimeFromTimestamp(ts) {
+        if (!ts) return '-';
+        try { const d = new Date(ts); if (isNaN(d.getTime())) return String(ts); const offsetMs = 8*60*60*1000; const sg = new Date(d.getTime()+offsetMs); return String(sg.getUTCHours()).padStart(2,'0')+':'+String(sg.getUTCMinutes()).padStart(2,'0')+':'+String(sg.getUTCSeconds()).padStart(2,'0'); } catch(e) { return String(ts); }
+    }
+    function formatTimeField(timeVal) {
+        if (!timeVal) return '-';
+        if (typeof timeVal === 'string' && /^\d{1,2}:\d{2}:\d{2}$/.test(timeVal.trim())) return timeVal.trim();
+        try { const d = new Date(timeVal); if (isNaN(d.getTime())) return String(timeVal); if (d.getFullYear() < 2000) return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+':'+String(d.getSeconds()).padStart(2,'0'); const offsetMs = 8*60*60*1000; const sg = new Date(d.getTime()+offsetMs); return String(sg.getUTCHours()).padStart(2,'0')+':'+String(sg.getUTCMinutes()).padStart(2,'0')+':'+String(sg.getUTCSeconds()).padStart(2,'0'); } catch(e) { return String(timeVal); }
+    }
+    function renderQueryTable(records) {
+        const tbody = document.getElementById('queryResult');
+        if (records.length === 0) { tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999;padding:30px;">No records</td></tr>'; return; }
+        tbody.innerHTML = records.map(r => {
+            const ds = formatDateFromTimestamp(r['时间戳']) || r['日期'] || '-';
+            const ts = formatTimeField(r['时间']) || formatTimeFromTimestamp(r['时间戳']) || '-';
+            return `<tr><td>${ds}</td><td><span class="badge ${r['签到类型']==='上班'?'badge-in':'badge-out'}">${r['签到类型']==='上班'?t('type_in'):t('type_out')}</span></td><td>${esc(r['姓名'])}</td><td>****${esc(r['准证后四位'])}</td><td><span class="badge badge-area">${esc(r['工种']||'-')}</span></td><td>${ts}</td><td><span class="badge badge-area">${esc(r['工作区域'])}</span></td><td>${esc(r['负责督工'])}</td><td>${esc((r['工作内容']||'').substring(0,15))}${(r['工作内容']||'').length>15?'...':''}</td></tr>`;
+        }).join('');
+    }
+
+    // ==================== GPS 位置管理 ====================
+    let currentLocation = { lat:null, lng:null, accuracy:null };
+
+    async function saveSiteLocation() {
+        const lat = document.getElementById('siteLat').value.trim();
+        const lng = document.getElementById('siteLng').value.trim();
+        const radius = parseInt(document.getElementById('siteRadius').value) || 500;
+        if (!lat || !lng || isNaN(parseFloat(lat)) || isNaN(parseFloat(lng))) { showToast('请输入有效的经纬度', 'error'); return; }
+        siteLocation = { lat:parseFloat(lat), lng:parseFloat(lng), radius };
+        updateSyncBadge('siteLocSyncBadge', 'saving');
+        const ok = await saveConfigToServer({ siteLocation });
+        if (ok) updateSyncBadge('siteLocSyncBadge', 'ok');
+        else updateSyncBadge('siteLocSyncBadge', 'err');
+        addAdminLog('修改位置', '更新工地位置: ' + lat + ', ' + lng + ' 范围' + radius + 'm');
+        showToast('工地位置已保存（已同步云端）', 'success');
+    }
+    function loadSiteLocation() {
+        const elLat = document.getElementById('siteLat');
+        const elLng = document.getElementById('siteLng');
+        const elR = document.getElementById('siteRadius');
+        if (elLat && siteLocation.lat !== undefined && siteLocation.lat !== '') elLat.value = siteLocation.lat;
+        if (elLng && siteLocation.lng !== undefined && siteLocation.lng !== '') elLng.value = siteLocation.lng;
+        if (elR && siteLocation.radius) elR.value = siteLocation.radius;
+    }
+    function getDistance(lat1, lng1, lat2, lng2) {
+        const R = 6371000;
+        const dLat = (lat2-lat1)*Math.PI/180; const dLng = (lng2-lng1)*Math.PI/180;
+        const a = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)*Math.sin(dLng/2);
+        return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+    }
+    function getLocationStatus() {
+        return new Promise(resolve => {
+            if (!navigator.geolocation) { resolve({lat:null,lng:null,accuracy:null,error:'浏览器不支持定位'}); return; }
+            navigator.geolocation.getCurrentPosition(
+                pos => resolve({ lat:pos.coords.latitude, lng:pos.coords.longitude, accuracy:Math.round(pos.coords.accuracy), error:null }),
+                err => { let msg='定位失败'; if(err.code===1) msg='用户拒绝定位权限'; else if(err.code===2) msg='位置不可用'; else if(err.code===3) msg='定位超时'; resolve({lat:null,lng:null,accuracy:null,error:msg}); },
+                { enableHighAccuracy:true, timeout:10000, maximumAge:0 }
+            );
+        });
+    }
+    async function updateGPSStatus() {
+        const statusEl = document.getElementById('gpsStatus');
+        const distEl = document.getElementById('distanceStatus');
+        const retryBox = document.getElementById('gpsRetryBox');
+        const loc = await getLocationStatus();
+        currentLocation = loc;
+        if (loc.error) { statusEl.className='gps-status gps-out'; statusEl.innerHTML='⚠️ '+loc.error; distEl.style.display='none'; if(retryBox) retryBox.classList.add('show'); return; }
+        if (retryBox) retryBox.classList.remove('show');
+        statusEl.className='gps-status gps-in'; statusEl.innerHTML='✅ GPS已获取 (精度±'+loc.accuracy+'m)';
+        if (siteLocation.lat && siteLocation.lng) {
+            const dist = getDistance(loc.lat, loc.lng, siteLocation.lat, siteLocation.lng);
+            const inRange = dist <= siteLocation.radius;
+            distEl.style.display='inline-flex'; distEl.className='gps-status '+(inRange?'gps-in':'gps-out');
+            distEl.innerHTML='📍 '+(inRange?'✅ 范围内':'⚠️ 范围外')+' · '+dist+'m';
+        } else { distEl.style.display='inline-flex'; distEl.className='gps-status gps-loading'; distEl.innerHTML='📍 未配置工地位置'; }
+    }
+
+    // ==================== 初始化 ====================
+    document.getElementById('lang-' + currentLang).classList.add('active');
+    // 多语言应用
+    document.getElementById('nav-title').textContent = t('title');
+    document.getElementById('nav-sub').textContent = t('subtitle');
+    document.getElementById('page-title').textContent = t('title');
+    document.querySelectorAll('.nav-text').forEach((el,i) => { const keys = ['tab_checkin','tab_records','tab_admin']; el.textContent = t(keys[i]); });
+    const labels = {'label-date':t('label_date'),'label-time':t('label_time'),'label-name':t('label_name'),'label-passport':t('label_passport'),'label-trade':t('label_trade'),'label-area':t('label_area'),'label-supervisor':t('label_supervisor'),'label-content':t('label_content')};
+    Object.keys(labels).forEach(id => { const el = document.getElementById(id); if(el) el.textContent = labels[id]; });
+    document.getElementById('cName').placeholder = t('placeholder_name');
+    document.getElementById('cPassport').placeholder = t('placeholder_passport');
+    document.getElementById('cContent').placeholder = t('placeholder_content');
+    document.getElementById('gps-retry-title').textContent = t('gps_retry_title');
+    document.getElementById('gps-retry-desc').textContent = t('gps_retry_desc');
+    document.getElementById('gps-retry-btn').textContent = t('gps_retry_btn');
+
+    // 从 localStorage 加载缓存（先显示），然后从服务器同步最新
+    try { employees = JSON.parse(localStorage.getItem('checkin_employees') || '[]'); } catch(e) { employees = []; }
+    try { adminLogs = JSON.parse(localStorage.getItem('checkin_logs') || '[]'); } catch(e) { adminLogs = []; }
+
+    // 加载配置（服务器优先）
+    loadConfigFromServer().then(() => {
+        updateAllSelects();
+    });
+
+    updateGPSStatus();
+
+    // 表头多语言
+    const thMap = {'th-type':'th_type','th-time':'th_time','th-trade':'th_trade','th-area':'th_area','th-supervisor':'th_supervisor','th-content':'th_content','th-q-date':'th_date','th-q-type':'th_type','th-q-name':'th_name','th-q-passport':'th_passport','th-q-trade':'th_trade','th-q-time':'th_time','th-q-area':'th_area','th-q-supervisor':'th_supervisor','th-q-content':'th_content','th-a-date':'th_date','th-a-type':'th_type','th-a-name':'th_name','th-a-passport':'th_passport','th-a-trade':'th_trade','th-a-time':'th_time','th-a-area':'th_area','th-a-supervisor':'th_supervisor','th-s-date':'th_date','th-s-name':'th_name','th-s-passport':'th_passport','th-s-trade':'th_trade','th-s-checkin':'th_checkin','th-s-checkout':'th_checkout','th-s-area':'th_area','th-s-content':'th_content','th-s-supervisor':'th_supervisor','th-s-status':'th_status'};
+    Object.keys(thMap).forEach(id => { const el = document.getElementById(id); if(el) el.textContent = t(thMap[id]); });
+    const textMap = {'my-records-title':'my_records','query-title':'query_title','query-label-date':'query_date','query-label-name':'query_name','query-label-trade':'query_trade','query-label-area':'query_area','query-label-supervisor':'query_supervisor','btn-query':'btn_query','btn-reset':'btn_reset','chart-trend-title':'chart_trend','chart-area-title':'chart_area','records-manage-title':'records_manage','summary-title':'summary_title','supervisor-manage-title':'supervisor_manage','supervisor-name-label':'supervisor_name','supervisor-passport-label':'supervisor_passport','btn-add-supervisor':'btn_add_supervisor','supervisor-list-title':'supervisor_list','supervisor-stats-title':'supervisor_stats','trade-manage-title':'trade_manage','trade-name-label':'trade_name','btn-add-trade':'btn_add_trade','trade-list-title':'trade_list','workarea-manage-title':'workarea_manage','workarea-name-label':'workarea_name','btn-add-workarea':'btn_add_workarea','workarea-list-title':'workarea_list','filter-label-date':'query_date','filter-label-name':'query_name','filter-label-trade':'query_trade','filter-label-area':'query_area','filter-label-supervisor':'query_supervisor','stat-today':'admin_today_records','stat-device':'admin_total','stat-time':'admin_complete_rate','stat-a-total':'admin_total','stat-a-today':'admin_today_records','stat-a-people':'admin_today_people','stat-a-rate':'admin_complete_rate','stat-a-anomaly':'admin_anomaly','login-title':'login_title','login-cancel':'login_cancel','login-ok':'login_ok'};
+    Object.keys(textMap).forEach(id => { const el = document.getElementById(id); if(el) { if(el.tagName==='INPUT') el.placeholder = t(textMap[id]); else el.textContent = t(textMap[id]); } });
+
+    // 签到页自动刷新（30秒，避免 API 配额超限）
+    setInterval(() => { if (!document.hidden) updateCheckinPage(); }, 30000);
+    updateCheckinPage();
+
+    document.getElementById('qDate').value = getTodayStr();
+    document.getElementById('aFilterDate').value = getTodayStr();
+    document.getElementById('adminModal').addEventListener('click', function(e) { if (e.target === this) closeAdminModal(); });
+
+    // 启动配置定时同步
+    startConfigRefresh();
     </script>
 </body>
 </html>
